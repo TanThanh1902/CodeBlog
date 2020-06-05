@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_TaiKhoan.cshtml";
+}
+
+
+
+    <form action="#" method="post">
+        <input type="text" class="form-control" name="txtTaiKhoan" placeholder="Nhập tài khoản..." autocomplete="off" required />
+        <br />
+        <input type="password" class="form-control" name="txtMatKhau" placeholder="Nhập mật khẩu..." autocomplete="off" required />
+        <br />
+        <div class="form_footer">
+            <input type="submit" value="Đăng nhập" style="width: 99%" class="btn btn-success"/>
+            <br /><br />
+            <p>Hoặc đăng nhập nhanh với</p>
+            <a href="#" class="btn btn-danger">Đăng nhập với Google</a>
+            <a href="#" class="btn btn-primary">Đăng nhập với Facebook</a>
+            <br /><br />
+            <a href="#">Quên tài khoản?</a>&nbsp;<a href="#">Quên mật khẩu?</a>
+            <br />
+            <span>Bạn chưa có tài khoản, hãy đăng kí tại đây <a href="@Url.Action("Dangky", "TaiKhoan")">đây</a></span>
+        </div>
+    </form>

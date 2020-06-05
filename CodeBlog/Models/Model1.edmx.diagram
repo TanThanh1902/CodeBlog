@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="99f99f4317754fb4bd049b3b02316b62" Name="Diagram1">
+        <EntityTypeShape EntityType="CodeBlogModel.AdminTable" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.BlogTable" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.ChuDeTable" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.CodeTable" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.DanhMuc_TheLoaiTable" Width="1.5" PointX="6" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.DanhMucTable" Width="1.5" PointX="3.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.NgonNgu_BlogTable" Width="1.5" PointX="6.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.NgonNgu_CodeTable" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.NgonNguTable" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.NguoiDungTable" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.TheLoaiTable" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CodeBlogModel.TinTucTable" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="CodeBlogModel.FK_CodeTable_AdminTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CodeBlogModel.FK_TinTucTable_AdminTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CodeBlogModel.FK_BlogTable_NguoiDungTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CodeBlogModel.FK_NgonNgu_BlogTable_BlogTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CodeBlogModel.FK_TinTucTable_ChuDeTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CodeBlogModel.FK_CodeTable_NguoiDungTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CodeBlogModel.FK_CodeTable_TheLoaiTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CodeBlogModel.FK_NgonNgu_CodeTable_CodeTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CodeBlogModel.FK_DanhMuc_TheLoaiTable_DanhMucTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CodeBlogModel.FK_DanhMuc_TheLoaiTable_TheLoaiTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CodeBlogModel.FK_NgonNgu_BlogTable_NgonNguTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CodeBlogModel.FK_NgonNgu_CodeTable_NgonNguTable" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
