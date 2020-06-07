@@ -57,6 +57,12 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -131,7 +137,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HoTroController.cs" />
+    <Compile Include="Controllers\NgonNguTablesController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
+    <Compile Include="DAO\CodeNoiBat.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,7 +207,20 @@
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\images\default_background\desktop_background.jpg" />
+    <Content Include="Content\images\default_background\game_background.png" />
+    <Content Include="Content\images\default_background\IoT_background.jpg" />
+    <Content Include="Content\images\default_background\layout_background.jpg" />
+    <Content Include="Content\images\default_background\mobile_app_background.jpg" />
+    <Content Include="Content\images\default_background\web_background.jpg" />
+    <Content Include="Content\images\image_code\demo_code.jpg" />
+    <Content Include="Content\images\image_tintuc\game_technology_news.jpg" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\css\jquery-3.4.1.js" />
+    <Content Include="Content\css\jquery-3.4.1.min.js" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\fontawesome-free-5.13.0-web\css\all.css" />
     <Content Include="Content\fontawesome-free-5.13.0-web\css\all.min.css" />
@@ -1827,6 +1850,7 @@
     <Content Include="Content\fontawesome-free-5.13.0-web\webfonts\fa-solid-900.svg" />
     <Content Include="Content\fonts\stylesheet.css" />
     <Content Include="Content\images\default_background\background_code_blog.png" />
+    <Content Include="Content\images\default_background\default_user.png" />
     <Content Include="Content\js\jquery-ui.js" />
     <Content Include="Content\js\jquery-ui.min.js" />
     <Content Include="Content\js\jquery.easing.min.js" />
@@ -1852,8 +1876,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
@@ -2026,8 +2048,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -2043,6 +2063,22 @@
     <Content Include="Views\Shared\_TaiKhoan.cshtml" />
     <Content Include="Views\TaiKhoan\Dangky.cshtml" />
     <Content Include="Views\Home\CodeNoiBat.cshtml" />
+    <Content Include="Views\NgonNguTables\Create.cshtml" />
+    <Content Include="Views\NgonNguTables\Delete.cshtml" />
+    <Content Include="Views\NgonNguTables\Details.cshtml" />
+    <Content Include="Views\NgonNguTables\Edit.cshtml" />
+    <Content Include="Views\NgonNguTables\Index.cshtml" />
+    <Content Include="Views\HoTro\LayTheLoaiTheoMaDanhMuc.cshtml" />
+    <Content Include="Views\HoTro\ToolLeft_Code.cshtml" />
+    <Content Include="Views\HoTro\NgonNguCode.cshtml" />
+    <Content Include="Views\HoTro\TheLoaiCode.cshtml" />
+    <Content Include="Views\HoTro\DanhMucCode.cshtml" />
+    <Content Include="Views\HoTro\HotCode.cshtml" />
+    <Content Include="Views\TimKiem\DanhSachKetQuaCode.cshtml" />
+    <Content Include="Views\Home\TinCongNghe.cshtml" />
+    <Content Include="Views\TimKiem\DanhSachKetQuaTinCongNghe.cshtml" />
+    <Content Include="Views\HoTro\ChuDeTinCongNghe.cshtml" />
+    <Content Include="Views\TimKiem\TimKiemTuKhoa_TinCongNghe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

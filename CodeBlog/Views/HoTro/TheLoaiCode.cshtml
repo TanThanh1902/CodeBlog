@@ -1,0 +1,25 @@
+﻿@using CodeBlog.Models;
+@model List<TheLoaiTable>
+@{
+    var arrow = "arrow_right_theloai";
+}
+@foreach (var item in Model)
+{
+    if (Request.Url.Query.Contains("?matheloai=" + item.MaTheLoai))
+    {
+        <a href="@Url.Action("LocCodeTheoMaTheLoai", "TimKiem", new { matheloai = item.MaTheLoai})" class="active"><li class="list-group-item">@item.TheLoai <span id="@arrow@item.MaTheLoai" style="float: right;"><i class="fa fa-arrow-alt-circle-right"></i></span></li></a>
+    }
+    else
+    {
+        <a href="@Url.Action("LocCodeTheoMaTheLoai", "TimKiem", new { matheloai = item.MaTheLoai})" onmouseover="show_arrow_right_theloai(@item.MaTheLoai)" onmouseout="hide_arow_right_theloai(@item.MaTheLoai)"><li class="list-group-item">@item.TheLoai <span id="@arrow@item.MaTheLoai" style="float: right; font-size: 0px"><i class="fa fa-arrow-alt-circle-right"></i></span></li></a>
+    }
+}
+
+<script>
+    function show_arrow_right_theloai(id) {
+        document.getElementById("arrow_right_theloai" + id).style.fontSize = "15px";
+    }
+    function hide_arow_right_theloai(id) {
+        document.getElementById("arrow_right_theloai" + id).style.fontSize = "0px";
+    }
+</script>

@@ -1,0 +1,60 @@
+﻿@using CodeBlog.Models;
+@model List<ChuDeTable>
+@{
+    var arrow = "arrow_right_chude";
+}
+<div class="panel-group" id="accordion">
+    <a href="@Url.Action("TatCaTinCongNghe", "TimKiem")" style="text-decoration: none; text-align: center;text-transform: uppercase">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title hot_code">
+                    tất cả
+                </h4>
+            </div>
+        </div>
+    </a>
+    <a href="#" style="text-decoration: none; text-align: center;text-transform: uppercase">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title" style="color: red">
+                    hot
+                </h4>
+            </div>
+        </div>
+    </a>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a style="text-decoration: none">
+                    Danh mục
+                </a>
+            </h4>
+        </div>
+        <div class="panel-collapse">
+            <div class="panel-body">
+                @foreach (var item in Model)
+                {
+                    if (Request.Url.Query.Contains("?machude=" + item.MaChuDe))
+                    {
+                        <a href="@Url.Action("LocTinCongNgheTheoMaChuDe", "TimKiem", new { machude = item.MaChuDe})" class="active"><li class="list-group-item">@item.ChuDe <span id="@arrow@item.MaChuDe" style="float: right;"><i class="fa fa-arrow-alt-circle-right"></i></span></li></a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("LocTinCongNgheTheoMaChuDe", "TimKiem", new { machude = item.MaChuDe})" onmouseover="show_arrow_right_ngonngu(@item.MaChuDe)" onmouseout="hide_arrow_right_ngonngu(@item.MaChuDe)"><li class="list-group-item">@item.ChuDe <span id="@arrow@item.MaChuDe" style="float: right; font-size: 0px"><i class="fa fa-arrow-alt-circle-right"></i></span></li></a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Action("HotCode", "HoTro")
+
+<script>
+    function show_arrow_right_ngonngu(id) {
+        document.getElementById("arrow_right_chude" + id).style.fontSize = "15px";
+    }
+    function hide_arrow_right_ngonngu(id) {
+        document.getElementById("arrow_right_chude" + id).style.fontSize = "0px";
+    }
+</script>

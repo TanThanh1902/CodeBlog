@@ -1,0 +1,37 @@
+﻿@using CodeBlog.Models;
+@model List<TinTucTable>
+
+
+<div class="blog-articlas">
+    <div class="wrap">
+        <div class="content-top-header">
+            <h3>Tin công nghệ</h3>
+            <p>Cập nhật thông tin công nghệ!</p>
+        </div>
+        <div class="clear"> </div>
+        <div class="blog-articla-grids">
+            @foreach (var item in Model)
+            {
+                <div class="blog-articla-grid">
+                    <div class="blog-articla-grid-pic">
+                        <a href="bsingle.html"><img src="~/Content/images/image_tintuc/@item.AnhMinhHoa" alt="@item.TenTinTuc" height="170"/></a>
+                    </div>
+                    <div class="blog-articla-grid-info" style="padding-left: 51px;padding-top: 10px">
+                        <h3><a href="bsingle.html">@item.TenTinTuc</a></h3>
+                        <ul>
+                            <li><p>Ngày đăng <span>@item.NgayDang.Value.ToString("MMMM"), @item.NgayDang.Value.Day @item.NgayDang.Value.Year</span></p></li>
+                            <li><p>Người đăng <a href="bsingle.html">@item.AdminTable.TenHienThi</a></p></li>
+                            <li><a href="@Url.Action("LocTinCongNgheTheoMaChuDe", "TimKiem", new { machude = item.MaChuDe})"> @item.ChuDeTable.ChuDe</a></li>
+                            <p class="artical-para">
+                                @item.NoiDung.Substring(0, item.NoiDung.Length > 100 ? 100 : item.NoiDung.Length) ...
+                            </p>
+                            <a class="artbtn" href="bsingle.html">Read More</a>
+                        </ul>
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+            }
+            <a href="@Url.Action("TatCaTinCongNghe", "TimKiem")" class="btn btn-success" style="width: 20%">Xem thêm</a>
+        </div>
+    </div>
+</div>

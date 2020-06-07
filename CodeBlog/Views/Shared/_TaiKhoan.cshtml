@@ -1,6 +1,11 @@
 ﻿
 @{
     Layout = null;
+    HttpCookie tenND = Request.Cookies["TenND"];
+    if(tenND != null)
+    {
+        Response.Redirect("/Home/Index");
+    }
 }
 
 <!DOCTYPE html>
@@ -15,10 +20,11 @@
 <body>
     <style>
         .form_login h3 {
+            margin: 0;
             background: red;
             text-align: center;
             height: 50px;
-            padding-top: 5px;
+            padding-top: 13px;
             text-transform: uppercase;
         }
         .form_login .form_border {
@@ -43,19 +49,19 @@
         }
     </style>
     <div class="form_login">
-        <h3>CodeBlog</h3>
+        <a href="/Home/Index"><h3>CodeBlog</h3></a>
         <div class="container">
             <div class="form_border">
                 <div class="form_content">
                     <h3 style="background: none">@ViewBag.Title</h3>
                     <br />
-                    @if (ViewBag.ErrorAccount != null)
-                    {
-                        <div class="alert alert-danger">
-                            @ViewBag.ErrorAccount
-                        </div>
-                    }
                     <div class="form_content_account">
+                        @if (ViewBag.ThongBao != null)
+                        {
+                            <div class="alert alert-danger" style="text-align: center">
+                                @ViewBag.ThongBao
+                            </div>
+                        }
                         @RenderBody()
                     </div>
                 </div>

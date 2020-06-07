@@ -1,0 +1,81 @@
+﻿@using CodeBlog.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<CodeTable>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .list_code a {
+        color: #7e592a;
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+        .list_code a:hover {
+            color: #84c52c;
+        }
+
+    .list_code p {
+        font-size: 14px;
+    }
+
+    .list_code .col-sm-3 {
+        padding-bottom: 22px;
+    }
+
+    .chi_tiet_list_code_footer {
+        font-size: 13px;
+        color: orange;
+    }
+</style>
+<div class="container">
+    <div class="alert alert-info" style="margin-right: -1%">
+        <span>
+            <a href="/Home/Index">Trang chủ</a>
+            <i class="fa fa-chevron-right"></i>
+            <span>@ViewBag.Title</span>
+            <span>Kết quả tìm kiếm: @ViewBag.ketquatimkiem</span>
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            @Html.Action("ToolLeft_Code", "HoTro")
+        </div>
+        <div class="col-lg-9">
+            <div class="row list_code">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 13rem;">
+                            <img src="~/Content/images/image_code/@item.AnhMinhHoa" class="card-img-top" alt="@item.TenCode">
+                            <div class="card-body">
+                                <a href="#"><h4 class="card-title">@item.TenCode</h4></a><br />
+                                <div class="chi_tiet_list_code_footer">
+                                    <span style="float: left">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </span>
+                                    <span style="float: right">
+                                        <i class="fa fa-download">&nbsp;@item.LuotTai</i>
+                                        <i class="fa fa-heart">&nbsp;@item.LuotYeuThich</i>
+                                        <i>&nbsp;&nbsp;</i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div>
+                <center>
+                    @Html.PagedListPager(Model, page => "/TimKiem/" + ViewContext.RouteData.Values["Action"].ToString() + (page == 1 ? ViewBag.searchText : ViewBag.phantrang + page))
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+

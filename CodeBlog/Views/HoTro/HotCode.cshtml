@@ -1,0 +1,36 @@
+﻿@using CodeBlog.Models;
+@model List<CodeTable>
+
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-danger" style="background-color: coral"><h4 style="text-transform: uppercase;text-align: center;color: white;font-weight: 500">Code nổi bật</h4></li>
+    @foreach(var item in Model)
+    {
+        <li class="list-group-item">
+            <div style="padding-bottom: 30px">
+                <div class="row">
+                    <div class="col-lg-4" style="padding-right:0px">
+                        <img src="~/Content/images/image_code/@item.AnhMinhHoa" style="width: 100%" />
+                    </div>
+                    <div class="col-lg-8">
+                        <a href="#" style="font-size:13px">@item.TenCode</a>
+                    </div>
+                </div>
+                <br />
+                <div style="font-size: 13px; color:orange">
+                    <span style="float: left">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span style="float: right">
+                        <i class="fa fa-download">&nbsp;@item.LuotTai</i>
+                        <i class="fa fa-heart">&nbsp;@item.LuotYeuThich</i>
+                    </span>
+                </div>
+            </div>
+        </li>
+    }
+</ul>

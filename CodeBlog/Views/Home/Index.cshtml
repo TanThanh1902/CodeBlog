@@ -1,25 +1,48 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    HttpCookie tenND = Request.Cookies["TenND"];
 }
 
-    <div class="slider">
+<div class="slider">
+    @if (tenND != null)
+    {
+        <div class="wrap">
+            <div class="slider-left">
+                <em> </em>
+                <h1>Xin chào @tenND.Value.ToString()</h1>
+                <p>Chào mừng bạn đến với CodeBlog, bạn có thể tìm kiếm mọi thứ về lập trình tại đây!</p>
+                <label>Hãy chia sẻ kiến thức lập trình hoặc những bài code chất lượng của bạn!</label>
+                <a href="@Url.Action("DangNhap", "TaiKhoan")"><input type="submit" value="Đăng nhập" style="width: 30%" /></a>
+                <a href="@Url.Action("DangKy", "TaiKhoan")"><input type="submit" value="Đăng ký" style="width: 30%" /></a>
+            </div>
+            <div class="slider-right">
+                <img src="~/Content/images/default_background/background_code_blog.png" alt="" />
+            </div>
+            <div class="clear"> </div>
+        </div>
+    }
+    else
+    {
         <div class="wrap">
             <div class="slider-left">
                 <em> </em>
                 <h1>CodeBlog chia sẻ code chuyên nghiệp</h1>
                 <p>Chúng tôi cung cấp những bài code, bài viết được chia sẻ chất lượng nhât cho bạn <span>FREE!</span></p>
                 <label>Gia nhập với chúng tôi để nhận nhiều ưu đãi!</label>
-                <form>
-                    <a href="#"><input type="submit" value="Đăng nhập" style="width: 30%"/></a>
-                    <a href="#"><input type="submit" value="Đăng ký" style="width: 30%"/></a>
-                </form>
+                <a href="@Url.Action("DangNhap", "TaiKhoan")"><input type="submit" value="Đăng nhập" style="width: 30%" /></a>
+                <a href="@Url.Action("DangKy", "TaiKhoan")"><input type="submit" value="Đăng ký" style="width: 30%" /></a>
             </div>
             <div class="slider-right">
-                <img src="~/Content/images/default_background/background_code_blog.png" alt=""/>
+                <img src="~/Content/images/default_background/background_code_blog.png" alt="" />
             </div>
             <div class="clear"> </div>
         </div>
-    </div>
+    }
+</div>
 
+
+<!---start-content---->
+@Html.Action("CodeNoiBat", "Home")
+<!---start-test-monial---->

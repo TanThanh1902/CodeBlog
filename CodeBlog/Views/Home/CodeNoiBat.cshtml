@@ -1,215 +1,74 @@
-﻿<div class="content-top-grids">
-    <div class="wrap">
-        <div class="content-top-header">
-            <h3>Fresh freebies</h3>
-            <p>Download Till Your Heart's Content!</p>
-        </div>
-        <div class="clear"> </div>
-        <div class="content-top-grids-box">
-            <div class='content-top-grid'>
-                <img class="grid-img" src='images/grid-pic1.jpg' alt="" />
-                <div class='description'>
-                    <div class='description_content'>
-                        <div class='description_content-left'>
-                            <a href="iconsingle.html">June 28,2013</a>
+﻿@using CodeBlog.Models;
+@using CodeBlog.DAO;
+@model List<CodeNoiBat>
+@{ 
+    int last = 1;
+}
+
+<style>
+    .a_chuyen_trang a {
+        color: #86C83F;
+    }
+    .a_chuyen_trang a:hover{
+        color: black;
+    }
+</style>
+    <div class="content-top-grids">
+        <div class="wrap">
+            <div class="content-top-header">
+                <h3>Code nổi bật</h3>
+                <p>Code được quan tâm và tải nhiều!</p>
+            </div>
+            <div class="clear"> </div>
+            @foreach (var item in Model)
+            {
+                if (last % 3 == 0)
+                {
+                    <div class="content-top-grids-box last-grid-box">
+                        <a href="#">
+                            <div class='content-top-grid'>
+                                <img class="grid-img" src='~/Content/images/default_background/@item.AnhDanhMuc' height="217" />
+                            </div>
+                        </a>
+                        <div class="content-top-grid-title">
+                            <div class="content-top-grid-title-left">
+                                <h4><a href="@Url.Action("LocCodeTheoMaDanhMuc", "TimKiem", new { madanhmuc = item.MaDanhMuc})">@item.TenDanhMuc</a></h4>
+                                <ul>
+                                    @Html.Action("LayTheLoaiTheoMaDanhMuc", "HoTro", new { maDM = item.MaDanhMuc })
+                                </ul>
+                            </div>
+                            <div class="content-top-grid-title-right a_chuyen_trang">
+                                <a href="@Url.Action("LocCodeTheoMaDanhMuc", "TimKiem", new { madanhmuc = item.MaDanhMuc})"><i class="fa fa-chevron-circle-right" style="font-size: 25px;"></i></a>
+                            </div>
+                            <div class="clear"> </div>
                         </div>
-                        <div class='description_content-right'>
-                            <ul>
-                                <li><a href="iconsingle.html"><span> </span>328</a></li>
-                                <li><a href="iconsingle.html"><span> </span>12</a></li>
-                                <li><a href="iconsingle.html"><span> </span>128</a></li>
-                                <div class="clear"> </div>
-                            </ul>
-                        </div>
-                        <div class="clear"> </div>
                     </div>
-                </div>
-            </div>
-            <div class="content-top-grid-title">
-                <div class="content-top-grid-title-left">
-                    <h4><a href="iconsingle.html">Responsive Showcase</a></h4>
-                    <ul>
-                        <li><a href="iconsingle.html">Templates ,</a></li>
-                        <li><a href="iconsingle.html">PSD</a></li>
-                    </ul>
-                </div>
-                <div class="content-top-grid-title-right">
-                    <a href="iconsingle.html"> </a>
-                </div>
-                <div class="clear"> </div>
-            </div>
-        </div>
-        <div class="content-top-grids-box">
-            <div class='content-top-grid'>
-                <img class="grid-img" src='images/grid-pic2.jpg' alt="" />
-                <div class='description'>
-                    <div class='description_content'>
-                        <div class='description_content-left'>
-                            <a href="iconsingle.html">June 28,2013</a>
+                }
+                else
+                {
+                    <div class="content-top-grids-box">
+                        <a href="#">
+                            <div class='content-top-grid'>
+                                <img class="grid-img" src='~/Content/images/default_background/@item.AnhDanhMuc' height="217" />
+                            </div>
+                        </a>
+                        <div class="content-top-grid-title">
+                            <div class="content-top-grid-title-left">
+                                <h4><a href="@Url.Action("LocCodeTheoMaDanhMuc", "TimKiem", new { madanhmuc = item.MaDanhMuc})">@item.TenDanhMuc</a></h4>
+                                <ul>
+                                    @Html.Action("LayTheLoaiTheoMaDanhMuc", "HoTro", new { maDM = item.MaDanhMuc})
+                                </ul>
+                            </div>
+                            <div class="content-top-grid-title-right a_chuyen_trang">
+                                <a href="@Url.Action("LocCodeTheoMaDanhMuc", "TimKiem", new { madanhmuc = item.MaDanhMuc})"><i class="fa fa-chevron-circle-right" style="font-size: 25px;"></i></a>
+                            </div>
+                            <div class="clear"> </div>
                         </div>
-                        <div class='description_content-right'>
-                            <ul>
-                                <li><a href="iconsingle.html"><span> </span>328</a></li>
-                                <li><a href="iconsingle.html"><span> </span>12</a></li>
-                                <li><a href="iconsingle.html"><span> </span>128</a></li>
-                                <div class="clear"> </div>
-                            </ul>
-                        </div>
-                        <div class="clear"> </div>
                     </div>
-                </div>
-            </div>
-            <div class="content-top-grid-title">
-                <div class="content-top-grid-title-left">
-                    <h4><a href="iconsingle.html">Contrary to popular</a></h4>
-                    <ul>
-                        <li><a href="iconsingle.html">Templates ,</a></li>
-                        <li><a href="iconsingle.html">PSD</a></li>
-                    </ul>
-                </div>
-                <div class="content-top-grid-title-right">
-                    <a href="iconsingle.html"> </a>
-                </div>
-                <div class="clear"> </div>
-            </div>
+                }
+                last++;
+            }
+            <div class="clear"> </div>
+            <a class="btn btn-success" href="@Url.Action("TatCaCode", "TimKiem")" style="width: 20%;"><span style="text-align: center">Xem thêm</span></a>
         </div>
-        <div class="content-top-grids-box last-grid-box">
-            <div class='content-top-grid'>
-                <img class="grid-img" src='images/grid-pic3.jpg' alt="" />
-                <div class='description'>
-                    <div class='description_content'>
-                        <div class='description_content-left'>
-                            <a href="iconsingle.html">June 28,2013</a>
-                        </div>
-                        <div class='description_content-right'>
-                            <ul>
-                                <li><a href="iconsingle.html"><span> </span>328</a></li>
-                                <li><a href="iconsingle.html"><span> </span>12</a></li>
-                                <li><a href="iconsingle.html"><span> </span>128</a></li>
-                                <div class="clear"> </div>
-                            </ul>
-                        </div>
-                        <div class="clear"> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-top-grid-title">
-                <div class="content-top-grid-title-left">
-                    <h4><a href="iconsingle.html">Lorem Ipsum is not</a></h4>
-                    <ul>
-                        <li><a href="iconsingle.html">Templates ,</a></li>
-                        <li><a href="iconsingle.html">PSD</a></li>
-                    </ul>
-                </div>
-                <div class="content-top-grid-title-right">
-                    <a href="iconsingle.html"> </a>
-                </div>
-                <div class="clear"> </div>
-            </div>
-        </div>
-        <div class="content-top-grids-box">
-            <div class='content-top-grid'>
-                <img class="grid-img" src='images/grid-pic1.jpg' alt="" />
-                <div class='description'>
-                    <div class='description_content'>
-                        <div class='description_content-left'>
-                            <a href="iconsingle.html">June 28,2013</a>
-                        </div>
-                        <div class='description_content-right'>
-                            <ul>
-                                <li><a href="iconsingle.html"><span> </span>328</a></li>
-                                <li><a href="iconsingle.html"><span> </span>12</a></li>
-                                <li><a href="iconsingle.html"><span> </span>128</a></li>
-                                <div class="clear"> </div>
-                            </ul>
-                        </div>
-                        <div class="clear"> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-top-grid-title">
-                <div class="content-top-grid-title-left">
-                    <h4><a href="iconsingle.html">Simply random text</a></h4>
-                    <ul>
-                        <li><a href="iconsingle.html">Templates ,</a></li>
-                        <li><a href="iconsingle.html">PSD</a></li>
-                    </ul>
-                </div>
-                <div class="content-top-grid-title-right">
-                    <a href="iconsingle.html"> </a>
-                </div>
-                <div class="clear"> </div>
-            </div>
-        </div>
-        <div class="content-top-grids-box">
-            <div class='content-top-grid'>
-                <img class="grid-img" src='images/grid-pic2.jpg' alt="" />
-                <div class='description'>
-                    <div class='description_content'>
-                        <div class='description_content-left'>
-                            <a href="iconsingle.html">June 28,2013</a>
-                        </div>
-                        <div class='description_content-right'>
-                            <ul>
-                                <li><a href="iconsingle.html"><span> </span>328</a></li>
-                                <li><a href="iconsingle.html"><span> </span>12</a></li>
-                                <li><a href="iconsingle.html"><span> </span>128</a></li>
-                                <div class="clear"> </div>
-                            </ul>
-                        </div>
-                        <div class="clear"> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-top-grid-title">
-                <div class="content-top-grid-title-left">
-                    <h4><a href="iconsingle.html">classical literature</a></h4>
-                    <ul>
-                        <li><a href="iconsingle.html">Templates ,</a></li>
-                        <li><a href="iconsingle.html">PSD</a></li>
-                    </ul>
-                </div>
-                <div class="content-top-grid-title-right">
-                    <a href="iconsingle.html"> </a>
-                </div>
-                <div class="clear"> </div>
-            </div>
-        </div>
-        <div class="content-top-grids-box last-grid-box">
-            <div class='content-top-grid'>
-                <img class="grid-img" src='images/grid-pic3.jpg' alt="" />
-                <div class='description'>
-                    <div class='description_content'>
-                        <div class='description_content-left'>
-                            <a href="iconsingle.html">June 28,2013</a>
-                        </div>
-                        <div class='description_content-right'>
-                            <ul>
-                                <li><a href="iconsingle.html"><span> </span>328</a></li>
-                                <li><a href="iconsingle.html"><span> </span>12</a></li>
-                                <li><a href="iconsingle.html"><span> </span>128</a></li>
-                                <div class="clear"> </div>
-                            </ul>
-                        </div>
-                        <div class="clear"> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-top-grid-title">
-                <div class="content-top-grid-title-left">
-                    <h4><a href="iconsingle.html">variations of passages</a></h4>
-                    <ul>
-                        <li><a href="iconsingle.html">Templates ,</a></li>
-                        <li><a href="iconsingle.html">PSD</a></li>
-                    </ul>
-                </div>
-                <div class="content-top-grid-title-right">
-                    <a href="iconsingle.html"> </a>
-                </div>
-                <div class="clear"> </div>
-            </div>
-        </div>
-        <div class="clear"> </div>
-        <a class="btn" href="iconsingle.html">More freebies</a>
     </div>
-</div>

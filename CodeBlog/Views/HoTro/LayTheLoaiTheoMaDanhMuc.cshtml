@@ -1,0 +1,17 @@
+﻿@using CodeBlog.Models;
+@model List<TheLoaiTable>
+@{
+    int lastItem = 1;
+}
+@foreach (var item in Model)
+{
+    if (lastItem == Model.Count())
+    {
+        <li><a href="@Url.Action("LocCodeTheoMaTheLoai", "TimKiem", new { matheloai = item.MaTheLoai})">@item.TheLoai</a></li>
+    }
+    else
+    {
+        <li><a href="@Url.Action("LocCodeTheoMaTheLoai", "TimKiem", new { matheloai = item.MaTheLoai})">@item.TheLoai,</a></li>
+    }
+    lastItem++;
+}

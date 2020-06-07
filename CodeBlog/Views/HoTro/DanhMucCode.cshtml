@@ -1,0 +1,24 @@
+﻿@using CodeBlog.Models;
+@model List<DanhMucTable>
+@{
+    var arrow = "arrow_right_danhmuc";
+}
+@foreach (var item in Model)
+{
+    if (Request.Url.Query.Contains("?madanhmuc=" + item.MaDanhMuc))
+    {
+        <a href="@Url.Action("LocCodeTheoMaDanhMuc", "TimKiem", new { madanhmuc = item.MaDanhMuc})" class="active"><li class="list-group-item">@item.TenDanhMuc <span id="@arrow@item.MaDanhMuc" style="float: right;"><i class="fa fa-arrow-alt-circle-right"></i></span></li></a>
+    }
+    else
+    {
+        <a href="@Url.Action("LocCodeTheoMaDanhMuc", "TimKiem", new { madanhmuc = item.MaDanhMuc})" onmouseover="show_arrow_right_danhmuc(@item.MaDanhMuc)" onmouseout="hide_arrow_right_danhmuc(@item.MaDanhMuc)"><li class="list-group-item">@item.TenDanhMuc <span id="@arrow@item.MaDanhMuc" style="float: right; font-size: 0px"><i class="fa fa-arrow-alt-circle-right"></i></span></li></a>
+    }
+}
+<script>
+    function show_arrow_right_danhmuc(id) {
+        document.getElementById("arrow_right_danhmuc" + id).style.fontSize = "15px";
+    }
+    function hide_arrow_right_danhmuc(id) {
+        document.getElementById("arrow_right_danhmuc" + id).style.fontSize = "0px";
+    }
+</script>

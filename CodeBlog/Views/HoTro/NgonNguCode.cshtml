@@ -1,0 +1,24 @@
+﻿@using CodeBlog.Models;
+@model List<NgonNguTable>
+@{
+    var arrow = "arrow_right_ngonngu";
+}
+@foreach (var item in Model)
+{
+    if (Request.Url.Query.Contains("?mangonngu=" + item.MaNgonNgu))
+    {
+        <a href="@Url.Action("LocCodeTheoMaNgonNgu", "TimKiem", new { mangonngu = item.MaNgonNgu})" class="active"><li class="list-group-item">@item.NgonNgu <span id="@arrow@item.MaNgonNgu" style="float: right;"><i class="fa fa-arrow-alt-circle-right"></i></span></li></a>
+    }
+    else
+    {
+        <a href="@Url.Action("LocCodeTheoMaNgonNgu", "TimKiem", new { mangonngu = item.MaNgonNgu})" onmouseover="show_arrow_right_ngonngu(@item.MaNgonNgu)" onmouseout="hide_arrow_right_ngonngu(@item.MaNgonNgu)"><li class="list-group-item">@item.NgonNgu <span id="@arrow@item.MaNgonNgu" style="float: right; font-size: 0px"><i class="fa fa-arrow-alt-circle-right"></i></span></li></a>
+    }
+}
+<script>
+    function show_arrow_right_ngonngu(id) {
+        document.getElementById("arrow_right_ngonngu" + id).style.fontSize = "15px";
+    }
+    function hide_arrow_right_ngonngu(id) {
+        document.getElementById("arrow_right_ngonngu" + id).style.fontSize = "0px";
+    }
+</script>

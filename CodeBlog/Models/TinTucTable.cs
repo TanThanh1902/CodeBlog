@@ -20,6 +20,7 @@ namespace CodeBlog.Models
         public Nullable<System.DateTime> NgayDang { get; set; }
         public Nullable<int> MaAdmin { get; set; }
         public Nullable<int> MaChuDe { get; set; }
+        public string AnhMinhHoa { get; set; }
     
         public virtual AdminTable AdminTable { get; set; }
         public virtual ChuDeTable ChuDeTable { get; set; }

@@ -1,13 +1,27 @@
-﻿<!--
+﻿
+@{
+    Layout = null;
+    HttpCookie tenND = Request.Cookies["TenND"];
+}
+@if (ViewBag.mess == "load")
+{
+    <script>
+        $(document).ready(function () {
+            window.location.load();
+        })
+    </script>
+    ViewBag.mess = "";
+}
+<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+    License: Creative Commons Attribution 3.0 Unported
+    License URL: http://creativecommons.org/licenses/by/3.0/
+    -->
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Limelight website for high end mobiles,like samsung nokia mobile website templates for free | Home :: w3layouts</title>
+    <title>@ViewBag.Title</title>
     <link rel="shortcut icon" type="image/x-icon" href="images/fave-icon.png" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -31,115 +45,112 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </script>
 </head>
 <body>
+    <style>
+        .dr_taikhoan ul {
+            padding: 0;
+            width: 95%;
+        }
+
+            .dr_taikhoan ul li {
+                width: 100%;
+                padding: 0.5em 1em;
+            }
+
+                .dr_taikhoan ul li a {
+                    margin: 0;
+                    padding: 0;
+                    padding-left: 10px;
+                    width: 100%;
+                }
+
+                    .dr_taikhoan ul li a:hover {
+                        background: none;
+                    }
+
+        .panel-body {
+            padding: 0px;
+        }
+
+            .panel-body a {
+                text-decoration: none;
+                color: black;
+            }
+
+                .panel-body a:hover {
+                    color: #84c52c;
+                }
+
+        a.active {
+            color: #84c52c;
+        }
+    </style>
     <!---start-wrap---->
     <div class="wrap">
         <!---strat-header---->
         <div class="header">
             <div class="logo">
-                <a href="index.html"> </a>
+                <a href="/Home/Index"> </a>
             </div>
             <div class="top-nav">
                 <ul>
-                    <li class="active"><a href="index.html"> <span> </span></a></li>
-                    <li>
-                        <input type="search" class="form-control" placeholder="Nhập từ khóa..." name="searchText" />
-                    </li>
+                    <li class="active"><a href="/Home/Index"> <span> </span></a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="#">Fonts</a></li>
-                    <li><a href="#">Templates</a></li>
-                    <li><a href="icons.html">Icons</a></li>
-                    <li><a href="#">Wordpress</a></li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() != "TatCaCode" ? "active" : "")"><a class="" href="@Url.Action("TatCaCode", "TimKiem")">Code</a></li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() != "TatCaTinCongNghe" ? "active" : "")"><a href="@Url.Action("TatCaTinCongNghe", "TimKiem")">Tin công nghệ</a></li>
+                    <li><a href="icons.html">Nạp xu</a></li>
+                    @if (tenND != null)
+                    {
+                        <li style="text-align: center">
+                            <div class="dropdown dr_taikhoan">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@tenND.Value.ToString()<span class="caret"></span></a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#"><i class="fa fa-code">&nbsp;</i>Code của tôi</a></li>
+                                    <li><a href="#"><i class="fa fa-blog">&nbsp;</i>Blog của tôi</a></li>
+                                    <li><a href="#"><i class="fa fa-user-cog">&nbsp;</i>Trang cá nhân</a></li>
+                                    <li><a style="border-top: 1px solid black"></a></li>
+                                    <li><a href="@Url.Action("DangXuat", "TaiKhoan")"><i class="fa fa-sign-out-alt">&nbsp;</i>Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        if (ViewContext.RouteData.Values["Controller"].ToString() != "Home")
+                        {
+                            <li><a href="@Url.Action("DangNhap", "TaiKhoan")">Đăng nhập</a></li>
+                        }
+                    }
+                    <li><a data-toggle="collapse" data-target="#search"><i class="fa fa-search"></i></a></li>
                     <div class="clear"> </div>
                 </ul>
             </div>
             <div class="clear"> </div>
+            <div class="">
+                <div class="collapse" id="search">
+                    <div class="bg-dark p-4">
+                        <input type="search" class="form-control" placeholder="Nhập từ khóa..." name="searchText" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!---//End-header---->
     <!---start-slider---->
     @RenderBody();
     <!---//End-slider---->
-    <!---start-content---->
-    @Html.Action("CodeNoiBat", "Home")
-    <!---start-test-monial---->
     <div class="text-monials">
         <div class="wrap">
             <ul>
-                <li> </li>
-                <li><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> </li>
-                <li> </li>
+                <li><i class="fa fa-quote-left"></i></li>
+                <li><p>Cho người ta một phần mềm họ sẽ bực mình một ngày. Dạy người ta lập trình họ sẽ bực mình cả đời!</p> </li>
+                <li><i class="fa fa-quote-right"></i></li>
                 <div class="clear"> </div>
             </ul>
         </div>
     </div>
     <!---//End-test-monial---->
     <!---start-articls---->
-    <div class="blog-articlas">
-        <div class="wrap">
-            <div class="content-top-header">
-                <h3>Latest News</h3>
-                <p>Find out What's Going On</p>
-            </div>
-            <div class="clear"> </div>
-            <div class="blog-articla-grids">
-                <div class="blog-articla-grid">
-                    <div class="blog-articla-grid-pic">
-                        <a href="bsingle.html"><img src="images/artpic1.png" alt=" " /></a>
-                    </div>
-                    <div class="blog-articla-grid-info">
-                        <h3><a href="bsingle.html">Lorem ipsum dolor sit amet adipisicing elit?</a></h3>
-                        <ul>
-                            <li><p>post on <a href="bsingle.html">July 28,2013</a></p></li>
-                            <li><a href="bsingle.html"> James Reed</a></li>
-                            <li><a href="bsingle.html"> Technology</a></li>
-                            <p class="artical-para">
-                                consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                            <a class="artbtn" href="bsingle.html">Read More</a>
-                        </ul>
-                    </div>
-                    <div class="clear"> </div>
-                </div>
-                <div class="blog-articla-grid">
-                    <div class="blog-articla-grid-pic">
-                        <a href="bsingle.html"><img src="images/artpic2.png" alt=" " /></a>
-                    </div>
-                    <div class="blog-articla-grid-info">
-                        <h3><a href="#">sed do eiusmod tempor incididunt ut labo</a></h3>
-                        <ul>
-                            <li><p>post on <a href="bsingle.html">July 28,2013</a></p></li>
-                            <li><a href="bsingle.html"> James Reed</a></li>
-                            <li><a href="bsingle.html"> Technology</a></li>
-                            <p class="artical-para">
-                                consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                            <a class="artbtn" href="bsingle.html">Read More</a>
-                        </ul>
-                    </div>
-                    <div class="clear"> </div>
-                </div>
-                <div class="blog-articla-grid">
-                    <div class="blog-articla-grid-pic">
-                        <a href="bsingle.html"><img src="images/artpic3.png" alt=" " /></a>
-                    </div>
-                    <div class="blog-articla-grid-info">
-                        <h3><a href="bsingle.html">incididunt ut labore et dolore magna</a></h3>
-                        <ul>
-                            <li><p>post on <a href="#">July 28,2013</a></p></li>
-                            <li><a href="bsingle.html"> James Reed</a></li>
-                            <li><a href="bsingle.html"> Technology</a></li>
-                            <p class="artical-para">
-                                consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                            <a class="artbtn" href="bsingle.html">Read More</a>
-                        </ul>
-                    </div>
-                    <div class="clear"> </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+    @Html.Action("TinCongNghe", "Home")
     <!---//End-articls---->
     <div class="bottom-grids">
         <div class="wrap">
@@ -215,7 +226,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
     <!---//End-footer---->
     <!---//End-wrap---->
-    </div>
+    <script>
+        // search ajax keuy
+        $("#timkiem_tincongnghe").keyup(function () {
+            var searchText = $(this).val();
+            var newUrl = "TatCaTinCongNghe";
+            document.title = "Tât cả tin công nghệ";
+            if (searchText != "") {
+                newUrl = "TimKiemTuKhoaTinTuc?searchText=" + searchText;
+                document.title = "Tìm kiếm từ khóa: " + searchText;
+            }
+            title_tin_cong_nghe.innerText = document.title;
+            debugger
+            $.ajax({
+                type: "Post",
+                url: "/TimKiem/TimKiemTuKhoa_TinCongNghe?searchText=" + searchText,
+                contentType: "html",
+                success: function (response) {
+                    $("#search_newsTechnology").html(response);
+                    window.history.pushState("ShareCode", "Tin công nghệ", "/TimKiem/" + newUrl);
+                }
+            });
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/HoTro/demSoLuongKq_TinCongNghe?searchText=" + searchText,
+                success: function (data) {
+                    kq_tin_cong_nghe.innerText = "Kết quả tìm được: " + data;
+                }
+            });
+        })
+    </script>
     <script src="~/Content/js/jquery-ui.min.js"></script>
     <script src="~/Content/js/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
