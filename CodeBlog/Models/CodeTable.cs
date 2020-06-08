@@ -32,13 +32,12 @@ namespace CodeBlog.Models
         public Nullable<int> MaNguoiDung { get; set; }
         public Nullable<int> MaAdmin { get; set; }
         public Nullable<int> MaTheLoai { get; set; }
-        public Nullable<int> LuotTai { get; set; }
-        public string LinkTai { get; set; }
     
         public virtual AdminTable AdminTable { get; set; }
         public virtual NguoiDungTable NguoiDungTable { get; set; }
         public virtual TheLoaiTable TheLoaiTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NgonNgu_CodeTable> NgonNgu_CodeTable { get; set; }
+        public int LuotTai { get; internal set; }
     }
 }

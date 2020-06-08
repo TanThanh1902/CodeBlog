@@ -22,9 +22,9 @@ namespace CodeBlog.Models
     
         public int MaDanhMuc { get; set; }
         public string TenDanhMuc { get; set; }
-        public string AnhDanhMuc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhMuc_TheLoaiTable> DanhMuc_TheLoaiTable { get; set; }
+        public string AnhDanhMuc { get; internal set; }
     }
 }

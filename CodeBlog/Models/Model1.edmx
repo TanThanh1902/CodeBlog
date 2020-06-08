@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CodeBlogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CodeBlogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdminTable">
           <Key>
             <PropertyRef Name="MaAdmin" />
@@ -50,8 +50,6 @@
           <Property Name="MaNguoiDung" Type="int" />
           <Property Name="MaAdmin" Type="int" />
           <Property Name="MaTheLoai" Type="int" />
-          <Property Name="LuotTai" Type="int" />
-          <Property Name="LinkTai" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="DanhMuc_TheLoaiTable">
           <Key>
@@ -67,7 +65,6 @@
           </Key>
           <Property Name="MaDanhMuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenDanhMuc" Type="nvarchar" MaxLength="50" />
-          <Property Name="AnhDanhMuc" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="NgonNgu_BlogTable">
           <Key>
@@ -103,17 +100,6 @@
           <Property Name="AnhDaiDien" Type="nvarchar(max)" />
           <Property Name="NgayTao" Type="datetime" />
           <Property Name="Token" Type="nvarchar(max)" />
-          <Property Name="Email" Type="varchar" MaxLength="100" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TheLoaiTable">
           <Key>
@@ -132,7 +118,6 @@
           <Property Name="NgayDang" Type="datetime" />
           <Property Name="MaAdmin" Type="int" />
           <Property Name="MaChuDe" Type="int" />
-          <Property Name="AnhMinhHoa" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_BlogTable_NguoiDungTable">
           <End Role="NguoiDungTable" Type="Self.NguoiDungTable" Multiplicity="0..1" />
@@ -289,7 +274,6 @@
           <EntitySet Name="NgonNgu_CodeTable" EntityType="Self.NgonNgu_CodeTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NgonNguTable" EntityType="Self.NgonNguTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NguoiDungTable" EntityType="Self.NguoiDungTable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TheLoaiTable" EntityType="Self.TheLoaiTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TinTucTable" EntityType="Self.TinTucTable" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BlogTable_NguoiDungTable" Association="Self.FK_BlogTable_NguoiDungTable">
@@ -341,7 +325,8 @@
             <End Role="TinTucTable" EntitySet="TinTucTable" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CodeBlogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -399,8 +384,6 @@
           <NavigationProperty Name="NguoiDungTable" Relationship="Self.FK_CodeTable_NguoiDungTable" FromRole="CodeTable" ToRole="NguoiDungTable" />
           <NavigationProperty Name="TheLoaiTable" Relationship="Self.FK_CodeTable_TheLoaiTable" FromRole="CodeTable" ToRole="TheLoaiTable" />
           <NavigationProperty Name="NgonNgu_CodeTable" Relationship="Self.FK_NgonNgu_CodeTable_CodeTable" FromRole="CodeTable" ToRole="NgonNgu_CodeTable" />
-          <Property Name="LuotTai" Type="Int32" />
-          <Property Name="LinkTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DanhMuc_TheLoaiTable">
           <Key>
@@ -419,7 +402,6 @@
           <Property Name="MaDanhMuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenDanhMuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DanhMuc_TheLoaiTable" Relationship="Self.FK_DanhMuc_TheLoaiTable_DanhMucTable" FromRole="DanhMucTable" ToRole="DanhMuc_TheLoaiTable" />
-          <Property Name="AnhDanhMuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NgonNgu_BlogTable">
           <Key>
@@ -463,17 +445,6 @@
           <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BlogTables" Relationship="Self.FK_BlogTable_NguoiDungTable" FromRole="NguoiDungTable" ToRole="BlogTable" />
           <NavigationProperty Name="CodeTables" Relationship="Self.FK_CodeTable_NguoiDungTable" FromRole="NguoiDungTable" ToRole="CodeTable" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TheLoaiTable">
           <Key>
@@ -496,7 +467,6 @@
           <Property Name="MaChuDe" Type="Int32" />
           <NavigationProperty Name="AdminTable" Relationship="Self.FK_TinTucTable_AdminTable" FromRole="TinTucTable" ToRole="AdminTable" />
           <NavigationProperty Name="ChuDeTable" Relationship="Self.FK_TinTucTable_ChuDeTable" FromRole="TinTucTable" ToRole="ChuDeTable" />
-          <Property Name="AnhMinhHoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_CodeTable_AdminTable">
           <End Role="AdminTable" Type="Self.AdminTable" Multiplicity="0..1" />
@@ -653,7 +623,6 @@
           <EntitySet Name="NgonNgu_CodeTable" EntityType="Self.NgonNgu_CodeTable" />
           <EntitySet Name="NgonNguTables" EntityType="Self.NgonNguTable" />
           <EntitySet Name="NguoiDungTables" EntityType="Self.NguoiDungTable" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TheLoaiTables" EntityType="Self.TheLoaiTable" />
           <EntitySet Name="TinTucTables" EntityType="Self.TinTucTable" />
           <AssociationSet Name="FK_CodeTable_AdminTable" Association="Self.FK_CodeTable_AdminTable">
@@ -746,8 +715,6 @@
           <EntitySetMapping Name="CodeTables">
             <EntityTypeMapping TypeName="CodeBlogModel.CodeTable">
               <MappingFragment StoreEntitySet="CodeTable">
-                <ScalarProperty Name="LinkTai" ColumnName="LinkTai" />
-                <ScalarProperty Name="LuotTai" ColumnName="LuotTai" />
                 <ScalarProperty Name="MaCode" ColumnName="MaCode" />
                 <ScalarProperty Name="TenCode" ColumnName="TenCode" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
@@ -775,7 +742,6 @@
           <EntitySetMapping Name="DanhMucTables">
             <EntityTypeMapping TypeName="CodeBlogModel.DanhMucTable">
               <MappingFragment StoreEntitySet="DanhMucTable">
-                <ScalarProperty Name="AnhDanhMuc" ColumnName="AnhDanhMuc" />
                 <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
                 <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
               </MappingFragment>
@@ -810,7 +776,6 @@
           <EntitySetMapping Name="NguoiDungTables">
             <EntityTypeMapping TypeName="CodeBlogModel.NguoiDungTable">
               <MappingFragment StoreEntitySet="NguoiDungTable">
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
                 <ScalarProperty Name="TenHienThi" ColumnName="TenHienThi" />
                 <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
@@ -818,17 +783,6 @@
                 <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
                 <ScalarProperty Name="Token" ColumnName="Token" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="CodeBlogModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -843,7 +797,6 @@
           <EntitySetMapping Name="TinTucTables">
             <EntityTypeMapping TypeName="CodeBlogModel.TinTucTable">
               <MappingFragment StoreEntitySet="TinTucTable">
-                <ScalarProperty Name="AnhMinhHoa" ColumnName="AnhMinhHoa" />
                 <ScalarProperty Name="MaTinTuc" ColumnName="MaTinTuc" />
                 <ScalarProperty Name="TenTinTuc" ColumnName="TenTinTuc" />
                 <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
