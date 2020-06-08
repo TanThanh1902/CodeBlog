@@ -6,8 +6,6 @@
 }
 
 
-<style>
-</style>
 <div class="container">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -21,7 +19,7 @@
             <ul class="nav navbar-nav navbar-right" style="padding-right: 6%">
                 <li style="width: 133%">
                     <div style="margin-top: 8px;">
-                        <input type="search" class="form-control" placeholder="Nhập từ khóa..." id="timkiem_tincongnghe" value="@ViewBag.tukhoa"/>
+                        <input type="search" class="form-control" placeholder="Nhập từ khóa..." id="timkiem_tincongnghe" value="@ViewBag.tukhoa" />
                     </div>
                 </li>
             </ul>
@@ -65,6 +63,18 @@
         </div>
     </div>
 </div>
-<script>
-    
-</script>
+
+<!---//End-slider---->
+<div class="text-monials">
+    <div class="wrap">
+        <ul>
+            <li><i class="fa fa-quote-left"></i></li>
+            <li><p>Cho người ta một phần mềm họ sẽ bực mình một ngày. Dạy người ta lập trình họ sẽ bực mình cả đời!</p> </li>
+            <li><i class="fa fa-quote-right"></i></li>
+            <div class="clear"> </div>
+        </ul>
+    </div>
+</div>
+<!---//End-test-monial---->
+<!---start-articls---->
+@Html.Action("CodeXemNhieu", "HoTro")

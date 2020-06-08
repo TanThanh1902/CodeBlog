@@ -2076,6 +2076,8 @@
     <Content Include="Views\TimKiem\DanhSachKetQuaTinCongNghe.cshtml" />
     <Content Include="Views\HoTro\ChuDeTinCongNghe.cshtml" />
     <Content Include="Views\TimKiem\TimKiemTuKhoa_TinCongNghe.cshtml" />
+    <Content Include="Views\HoTro\CodeXemNhieu.cshtml" />
+    <Content Include="Views\TimKiem\DanhSachKetQuaBlog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
