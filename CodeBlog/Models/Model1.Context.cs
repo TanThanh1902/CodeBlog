@@ -35,6 +35,7 @@ namespace CodeBlog.Models
         public virtual DbSet<NgonNgu_CodeTable> NgonNgu_CodeTable { get; set; }
         public virtual DbSet<NgonNguTable> NgonNguTables { get; set; }
         public virtual DbSet<NguoiDungTable> NguoiDungTables { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TheLoaiTable> TheLoaiTables { get; set; }
         public virtual DbSet<TinTucTable> TinTucTables { get; set; }
     }

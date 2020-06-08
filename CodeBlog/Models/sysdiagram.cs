@@ -12,17 +12,12 @@ namespace CodeBlog.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TinTucTable
+    public partial class sysdiagram
     {
-        public int MaTinTuc { get; set; }
-        public string TenTinTuc { get; set; }
-        public string NoiDung { get; set; }
-        public Nullable<System.DateTime> NgayDang { get; set; }
-        public Nullable<int> MaAdmin { get; set; }
-        public Nullable<int> MaChuDe { get; set; }
-        public string AnhMinhHoa { get; set; }
-    
-        public virtual AdminTable AdminTable { get; set; }
-        public virtual ChuDeTable ChuDeTable { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
