@@ -1,24 +1,13 @@
 ﻿@using CodeBlog.Models;
-@using PagedList.Mvc;
-@model PagedList.IPagedList<CodeTable>
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@model List<CodeTable>
 
 
 <div class="container">
-    <div class="alert alert-info" style="margin-right: -1%">
-        <span>
-            <a href="/Home/Index">Trang chủ</a>
-            <i class="fa fa-chevron-right"></i>
-            <span>@ViewBag.Title</span>
-            <span>Kết quả tìm kiếm: @ViewBag.ketquatimkiem</span>
-        </span>
+    <div class="content-top-header">
+        <h3>Code quan tâm nhiều</h3>
+        <p>Code có nhiều lượt xem!</p>
     </div>
     <div class="row">
-        <div class="col-lg-3">
-            @Html.Action("ToolLeft_Code", "HoTro")
-        </div>
         <div class="col-lg-9">
             <div class="row list_code">
                 @foreach (var item in Model)
@@ -49,25 +38,12 @@
             </div>
             <div>
                 <center>
-                    @Html.PagedListPager(Model, page => "/TimKiem/" + ViewContext.RouteData.Values["Action"].ToString() + (page == 1 ? ViewBag.searchText : ViewBag.phantrang + page))
+                    <a href="@Url.Action("TatCaCode", "TimKiem")" class="btn btn-success" style="width: 20%">Xem thêm</a>
                 </center>
             </div>
         </div>
+        <div class="col-lg-3">
+            @Html.Action("CodeDanhGiaCao", "HoTro")
+        </div>
     </div>
 </div>
-
-
-<!---//End-slider---->
-<div class="text-monials">
-    <div class="wrap">
-        <ul>
-            <li><i class="fa fa-quote-left"></i></li>
-            <li><p>Cho người ta một phần mềm họ sẽ bực mình một ngày. Dạy người ta lập trình họ sẽ bực mình cả đời!</p> </li>
-            <li><i class="fa fa-quote-right"></i></li>
-            <div class="clear"> </div>
-        </ul>
-    </div>
-</div>
-<!---//End-test-monial---->
-<!---start-articls---->
-@Html.Action("TinCongNghe", "Home")

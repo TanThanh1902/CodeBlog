@@ -133,5 +133,12 @@ namespace CodeBlog.Controllers
             }
             return View("DanhSachKetQuaTinCongNghe", model);
         }
+        // Tìm kiếm Blog
+        public ActionResult TatCaBlog(int? page)
+        {
+            IPagedList<BlogTable> model = db.BlogTables.OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE_TIN);
+            ViewBag.ketquatimkiem = db.BlogTables.Count();
+            return View(model);
+        }       
     }
 }

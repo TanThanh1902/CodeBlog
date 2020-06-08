@@ -1,10 +1,9 @@
 ﻿@using CodeBlog.Models;
 @using PagedList.Mvc;
-@model PagedList.IPagedList<TinTucTable>
+@model PagedList.IPagedList<BlogTable>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <div class="container">
     <nav class="navbar navbar-default">
@@ -33,7 +32,7 @@
                     {
                         <div class="blog-articla-grid" style="margin-top: 0">
                             <div class="blog-articla-grid-pic">
-                                <a href="bsingle.html"><img src="~/Content/images/image_tintuc/@item.AnhMinhHoa" alt="@item.TenTinTuc" height="130" style="margin-top: 0" /></a>
+                                <a href="bsingle.html"><img src="~/Content/images/image_tintuc/@item." alt="@item.TenBlog" height="130" style="margin-top: 0" /></a>
                             </div>
                             <div class="blog-articla-grid-info" style="padding-top: 0px;padding-left: 30px;margin-top: -11px">
                                 <h3><a href="bsingle.html">@item.TenTinTuc</a></h3>

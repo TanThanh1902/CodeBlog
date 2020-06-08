@@ -47,6 +47,7 @@ namespace CodeBlog.Controllers
         }
         public PartialViewResult HotCode()
         {
+            ViewBag.Title_Code = "Code nổi bật";
             List<CodeTable> model = db.CodeTables.OrderByDescending(t => t.LuotTai).Take(20).OrderByDescending(t => t.NgayDang).Take(5).ToList();
             return PartialView(model);
         }
@@ -59,6 +60,17 @@ namespace CodeBlog.Controllers
         {
             int dem = db.TinTucTables.Where(t => t.TenTinTuc.Contains(searchText)).OrderByDescending(t => t.NgayDang).Count();
             return Json(dem, JsonRequestBehavior.AllowGet);
+        }
+        public PartialViewResult CodeDanhGiaCao()
+        {
+            ViewBag.Title_Code = "Code đánh giá cao";
+            List<CodeTable> model = db.CodeTables.OrderByDescending(t => t.DanhGia).Take(5).ToList();
+            return PartialView("HotCode", model);
+        }
+        public PartialViewResult CodeXemNhieu()
+        {
+            List<CodeTable> model = db.CodeTables.OrderByDescending(t => t.LuotXem).Take(12).ToList();
+            return PartialView(model);
         }
     }
 }
