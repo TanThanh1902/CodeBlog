@@ -31,7 +31,56 @@ Author URL: http://w3layouts.com
     <link href="//fonts.googleapis.com/css?family=Hind:400,500,600,700&display=swap" rel="stylesheet">
     <!-- Template CSS -->
     <link href="~/Content/fontawesome-free-5.13.0-web/css/all.min.css" rel="stylesheet" />
+    <style>
+        .container, .container-sm, .container-md, .container-lg, .container-xl {
+            max-width: 1500px;
+        }
 
+        body {
+            background-color: #f0f3f1;
+        }
+
+        .container {
+            padding-right: -33px;
+            padding-left: -58px;
+        }
+        /*==Reset CSS==*/
+        * {
+          margin: 0;
+          padding: 0;
+        }
+ 
+        /*==Style cơ bản cho website==*/
+        body {
+          font-family: sans-serif;
+          color: #333;
+        }
+ 
+        /*==Style cho menu===*/
+        #menu ul {
+          background: #1F568B;
+          border-radius: 5px 5px 0px 0px;
+          list-style-type: none;
+          text-align: center;
+        }
+        #menu li {
+          color: #f1f1f1;
+          display: inline-block;
+          width: 120px;
+          height: 40px;
+          line-height: 40px;
+          margin-left: -5px;
+        }
+        #menu a {
+          text-decoration: none;
+          color: #fff;
+          display: block;
+        }
+        #menu a:hover {
+          background: #F1F1F1;
+          color: #333;
+        }
+    </style>
 </head>
 
 <body>
@@ -49,7 +98,7 @@ Author URL: http://w3layouts.com
                         <span class="navbar-toggler-icon fa fa-bars"> </span>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02" style="font-size: 20px">
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02" style="font-size: 18px">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
                                 <a class="nav-link" href="index.html"><i class="fa fa-home"></i> <span class="sr-only">(current)</span></a>
@@ -82,14 +131,14 @@ Author URL: http://w3layouts.com
     </div>
     <!--//top-header-content-->
     <!--w3l-banner-slider-->
-    <section class="w3l-banner-main">
+    <section class="w3l-banner-main container">
 
         <!--/banner-content-->
-        <div class="bannerhny-content " style="padding: 10px 0;">
+        <div class="bannerhny-content" style="padding: 10px 0;">
             <h3 data-aos="fade-up">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="card">
+                        <div class="card" style="background-color: burlywood">
                             <div class="card-body">
                                 <div class="row">
                                     <!--Slider quảng cáo-->
@@ -118,7 +167,7 @@ Author URL: http://w3layouts.com
                                     </script>
                                     <!--//-->
                                     <div class="col-sm-6">
-                                        <h5 style="font-weight: bold; color: brown">Buôn bán + trao đổi code với nhau</h5>
+                                        <h5 style="font-weight: bold; color: red">Buôn bán + trao đổi code với nhau</h5>
                                         <h5>Hơn 0+ code đang chờ bạn khám phá</h5>
                                         <input type="search" class="form-control border border-success" placeholder="Nhập từ khóa, mã code,..." />
                                         <div class="row">
@@ -138,7 +187,7 @@ Author URL: http://w3layouts.com
                                                 </select>
                                             </div>
                                             <div class="col-sm-3">
-                                                <button class="btn btn-danger mt-3 w-100"><i class="fa fa-search">&nbsp;</i>Tìm kiếm</button>
+                                                <button class="btn btn-danger mt-3 w-100 font-weight-bold"><i class="fa fa-search">&nbsp;</i>Tìm kiếm</button>
                                             </div>
                                         </div>
                                     </div>
@@ -157,7 +206,7 @@ Author URL: http://w3layouts.com
                     <div class="col-sm-3">
                         <div class="card" style="font-size: 15px;">
                             <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action active" style="background-color: #f75940; font-weight: bold; font-size: 20px">
+                                <a href="#" class="list-group-item list-group-item-action active" style="background-color: forestgreen; font-weight: bold; font-size: 20px">
                                     <div class="float-left">Danh mục</div>
                                     <div class="float-right"><i class="fa fa-align-justify"></i></div>
                                 </a>
@@ -171,14 +220,26 @@ Author URL: http://w3layouts.com
                                 <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-code" style="color: green">&nbsp;</i>C#</a>
                                 <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-code" style="color: green">&nbsp;</i>C#</a>
                                 <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-code" style="color: green">&nbsp;</i>C#</a>
-                                <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-code" style="color: green">&nbsp;</i>C#</a>
-                                <a href="#" class="list-group-item list-group-item-action">Xem thêm</a>
+                                <a href="#" class="list-group-item btn btn-danger" style="background-color: #dc3545">Xem tất cả</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="card">
+                        <div class="card" style="height: 530px">
                             <div class="card-body">
+                                <div class="" style="font-size: 16px">
+                                    <div class="drop-down">
+                                        <div id="menu">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-code">&nbsp;</i>Code chất</a></li>
+                                                <li><a href="#"><i class="far fa-window-restore">&nbsp;</i>Website</a></li>
+                                                <li><a href="#"><i class="fab fa-android">&nbsp;</i>App Mobile</a></li>
+                                                <li><a href="#"><i class="fab fa-windows">&nbsp;</i>Ứng dụng</a></li>
+                                                <li><a href="#"><i class="fa fa-gamepad">&nbsp;</i>Game</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <ol class="carousel-indicators">
                                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -187,13 +248,13 @@ Author URL: http://w3layouts.com
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img class="d-block w-100" src="~/Content/Layout/images/2.jpg" alt="First slide">
+                                            <img class="d-block w-100" src="~/Content/Layout/images/2.jpg" alt="First slide" style="height: 400px">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="d-block w-100" src="~/Content/Layout/images/share-code-1.jpg" alt="Second slide">
+                                            <img class="d-block w-100" src="~/Content/Layout/images/share-code-1.jpg" alt="Second slide"  style="height: 400px">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="d-block w-100" src="~/Content/Layout/images/2.jpg" alt="Third slide">
+                                            <img class="d-block w-100" src="~/Content/Layout/images/2.jpg" alt="Third slide"  style="height: 400px">
                                         </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -209,7 +270,7 @@ Author URL: http://w3layouts.com
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="card">
+                        <div class="card" style="height: 530px">
                             <div class="card-body">
                                 <div class="row" style="font-size: 20px">
                                     <div class="col-sm-6">
@@ -231,6 +292,8 @@ Author URL: http://w3layouts.com
                                             <li><span style="color: green">Tấn huỳnh</span><p>Vừa đăng 1 file</p></li>
                                             <li><span style="color: green">Tấn huỳnh</span><p>Vừa nạp 10 xu</p></li>
                                             <li><span style="color: green">Tấn huỳnh</span><p>Vừa đăng bài "code game android hay nhất"</p></li>
+                                            <li><span style="color: green">Tấn huỳnh</span><p>Vừa đăng bài "code game android hay nhất"</p></li>
+                                            <li><span style="color: green">Tấn huỳnh</span><p>Vừa đăng bài "code game android hay nhất"</p></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -239,245 +302,969 @@ Author URL: http://w3layouts.com
                     </div>
                 </div>
             </h3>
-            <h6 data-aos="fade-up">Click to Join the Advance Workshop</h6>
+            <div class="row">
+                <div class="col-sm-6">
+                    <!--Slider quảng cáo-->
+                    <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="~/Content/Layout/images/2.jpg" alt="First slide" style="height: 200px">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="~/Content/Layout/images/share-code-1.jpg" alt="Second slide" style="height: 200px">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="~/Content/Layout/images/2.jpg" alt="Third slide" style="height: 200px">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <!--//-->
+                </div>
+                <div class="col-sm-6">
+                    <!--Slider quảng cáo-->
+                    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="~/Content/Layout/images/2.jpg" alt="First slide" style="height: 200px">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="~/Content/Layout/images/share-code-1.jpg" alt="Second slide" style="height: 200px">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="~/Content/Layout/images/2.jpg" alt="Third slide" style="height: 200px">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <!--//-->
+                </div>
+            </div>
+            <section class="w3l-content-6">
+                <!-- /content-6-section -->
+                <div class="content-6-mian py-5">
+                    <div class="container py-lg-3">
+                        <h3 class="hny-title text-center">
+                            Code phong phú + chất lượng + Thanh toán nhanh + Hỗ trợ 24/24
+                        </h3>
+                        <div class="content-info-in row mt-lg-5 mt-4">
+                            <div class="content-gd col-md-4 text-lg-right">
+                                <h4><span>0</span> Code đã giao dịch thành công</h4>
+                            </div>
+                            <div class="content-gd col-md-4" data-aos="zoom-in">
+                                <img src="/Content/Layout/images/1.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="content-gd col-md-4">
+                                <h4><span>0</span>Code đã được tải về</h4>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
             <div class="banner-button" data-aos="fade-down">
-               
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="card" style="height: 801px">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold">
+                                    Code chất
+                                    <img src="~/Content/Layout/images/ic_hot.gif" />
+                                </h5>
+                                <div class="row">
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold">Code mới nhất</h5>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="        border-radius: 5px 5px 0px 0px;
+" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-sm-9">
+                        <div class="card" style="height: 801px">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold">
+                                    Website
+                                </h5>
+                                <div class="row">
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 mt-3">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                                            <div class="font-weight-bold">
+                                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>0</div>
+                                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>0</div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title mt-2">Code gam bắn súng tọa đồ viết bằng c# (<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <p class="card-text font-weight-bold" style="color: green">
+                                            <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold">
+                                    Website chất lượng
+                                    <img src="~/Content/Layout/images/ic_hot.gif" />
+                                </h5>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold">
+                                    <i class="fab fa-android">&nbsp;</i>App mobile
+                                </h5>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold">
+                                    <i class="fab fa-windows">&nbsp;</i>Ứng dụng
+                                </h5>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold">
+                                    <i class="fa fa-gamepad">&nbsp;</i>Game
+                                </h5>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold">
+                                    <i class="fab fa-free-code-camp">&nbsp;</i>Code miễn phí khác
+                                </h5>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                        <b style="color: orangered"><i class="fa fa-star"></i></b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">Code gam bắn súng tọa đồ viết bằng c# <br />(<i class="fa fa-heart text-danger">&nbsp;</i>0)</h5>
+                                        <center>
+                                            <i class="fa fa-eye">&nbsp;</i>0
+                                            <i class="fa fa-download">&nbsp;</i>0
+                                            <i class="fa fa-heart">&nbsp;</i>0
+                                        </center>
+                                        <b>Miễn phí</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!--//banner-content-->
     </section>
     <!-- //w3l-banner-slider-->
 
-    <section class="w3l-content-12-main">
-        <!-- /content-6-section -->
-        <div class="content-12 text-left py-5">
-            <div class="container pt-lg-3">
-
-                <h3 class="hny-title text-center">
-                    How it Works
-                </h3>
-                <div class="content-info-tabs mt-4">
-                    <div class="tab-main mx-auto text-md-center">
-
-                        <input id="tab1" type="radio" name="tabs" checked>
-                        <label for="tab1"><span class="fa fa-lock" aria-hidden="true"></span> Create Account</label>
-
-                        <input id="tab2" type="radio" name="tabs">
-                        <label for="tab2">
-                            <span class="fa fa-credit-card" aria-hidden="true"></span> Make
-                            Payment
-                        </label>
-
-                        <input id="tab3" type="radio" name="tabs">
-                        <label for="tab3"><span class="fa fa-smile-o" aria-hidden="true"></span> Enjoy Yourself</label>
-                        <input id="tab4" type="radio" name="tabs">
-                        <label for="tab4"><span class="fa fa-trophy" aria-hidden="true"></span> Rewards</label>
-                        <section id="content1" data-aos="zoom-in">
-                            <img src="~/Content/Layout/images/screen-1.png" class="img-fluid" alt="mobile-image">
-                        </section>
-
-                        <section id="content2" data-aos="zoom-in">
-                            <img src="~/Content/Layout/images/screen-2.png" class="img-fluid" alt="mobile-image">
-                        </section>
-
-                        <section id="content3" data-aos="zoom-in">
-                            <img src="~/Content/Layout/images/screen-3.png" class="img-fluid" alt="mobile-image">
-                        </section>
-                        <section id="content4" data-aos="zoom-in">
-                            <img src="~/Content/Layout/images/screen-4.png" class="img-fluid" alt="mobile-image">
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- //content-6-section -->
-    <section class="w3l-content-6">
-        <!-- /content-6-section -->
-        <div class="content-6-mian py-5">
-            <div class="container py-lg-3">
-                <h3 class="hny-title text-center">
-                    Multi-platform support
-                </h3>
-                <div class="content-info-in row mt-lg-5 mt-4">
-                    <div class="content-gd col-md-4 text-lg-right">
-                        <h4><span>50%</span> more productive</h4>
-                    </div>
-                    <div class="content-gd col-md-4" data-aos="zoom-in">
-                        <img src="~/Content/Layout/images/1.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="content-gd col-md-4">
-                        <h4><span>50%</span> more time</h4>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- //content-6-section -->
-
-
-    <section class="w3l-content-w-photo-6">
-        <!-- /content-grids-->
-        <div class="content-photo-info py-5">
-            <div class="container py-lg-3">
-                <h3 class="hny-title text-center">
-                    Features
-                </h3>
-                <!-- /row-->
-                <div class="content-photo-grids row mt-lg-5 mt-4 px-lg-5">
-                    <div class="photo-6-inf-left col-lg-6 pr-lg-4" data-aos="fade-up">
-                        <img src="~/Content/Layout/images/2.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="photo-6-inf-right col-lg-6 text-left pl-lg-5" data-aos="fade-down">
-
-                        <h4>
-                            Easy to Manage Your All Data by This App!
-                        </h4>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur hic odio voluptatem
-                            tenetur
-                            consequatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur hic odio
-                            voluptatem tenetur
-                            consequatur adipisicing elit.
-                        </p>
-                    </div>
-                </div>
-                <!-- //row-->
-                <!-- /row-->
-                <div class="content-photo-grids row py-lg-5 py-4 mt-lg-5 mt-4 px-lg-5">
-
-                    <div class="photo-6-inf-right col-lg-6 text-left pr-lg-5" data-aos="fade-down">
-                        <h4>
-                            Easy to access and
-                            making purchases.
-                        </h4>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur hic odio voluptatem
-                            tenetur
-                            consequatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur hic odio
-                            voluptatem tenetur
-                            consequatur adipisicing elit.
-                        </p>
-                    </div>
-                    <div class="photo-6-inf-left col-lg-6 pr-lg-4" data-aos="fade-up">
-                        <img src="~/Content/Layout/images/3.png" class="img-fluid" alt="">
-                    </div>
-                </div>
-                <!-- //row-->
-
-            </div>
-        </div>
-    </section>
-    <!-- /macbook--->
-    <section class="w3l-macbook-content-6">
-        <div class="macbook-infohny">
-            <!-- /macbook-infohny-->
-            <div class="container-fuild">
-                <div class="row macbook-infohny-inn mx-lg-0">
-                    <div class="col-lg-6 macbook-left mt-lg-0 mt-5 px-lg-0" data-aos="fade-up">
-                        <img src="~/Content/Layout/images/macbook-1.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-6 macbook-right my-lg-5 py-lg-5 py-4" data-aos="fade-down">
-                        <h3 class="hny-title mb-lg-5">
-                            Provide even better customer service.
-                        </h3>
-                        <div class="row macbook-right-grids mb-lg-5 mb-4">
-                            <div class="col-md-2 macbook-right-icon">
-                                <div class="macbook-icon">
-                                    <span class="fa fa-clock-o"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-10 macbook-right-info">
-                                <h6><a href="blog-single.html">Get your own time</a></h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
-                                    consectetur
-                                    adipisicing elit.
-                                </p>
-                            </div>
-
-                        </div>
-                        <div class="row macbook-right-grids mb-5 mt-lg-0 mt-5">
-                            <div class="col-md-2 macbook-right-icon">
-                                <div class="macbook-icon">
-                                    <span class="fa fa-podcast"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-10 macbook-right-info">
-                                <h6><a href="blog-single.html">Easy User Interface</a></h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
-                                    consectetur
-                                    adipisicing elit.
-                                </p>
-                            </div>
-
-                        </div>
-                        <div class="row macbook-right-grids mb-lg-0 mb-4">
-                            <div class="col-md-2 macbook-right-icon">
-                                <div class="macbook-icon">
-                                    <span class="fa fa-database"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-10 macbook-right-info">
-                                <h6><a href="blog-single.html">Quick Access</a></h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
-                                    consectetur
-                                    adipisicing elit.
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- //macbook-infohny-->
-        </div>
-    </section>
+    
     <!-- //macbook--->
-    <section class="w3l-content-5">
-        <!-- /content-6-section -->
-        <div class="content-5-main">
-            <div class="container">
-                <div class="content-info-in pt-5">
-                    <div class="content-gd pt-lg-5">
-                        <h3 class="hny-title" data-aos="fade-up">
-                            We exist to create
-                            things <br>people love
-                        </h3>
-                        <p data-aos="fade-up">
-                            Ea consequuntur illum facere aperiam sequi optio consectetur adipisicing elitFuga, suscipit
-                            totam
-                            animi consequatur saepe blanditiis.
-                        </p>
-                        <img src="~/Content/Layout/images/macbook-2.png" class="img-fluid" alt="">
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- //content-6-section -->
-    <!--/w3l-download-main-->
-    <section class="w3l-download-main">
-        <!--/download-->
-        <div class="download-content text-center py-5">
-            <div class="container py-lg-3">
-                <h3 data-aos="fade-up">Usance is free for <span>evaluation</span>.<br> Try today!</h3>
-                <h6 data-aos="fade-up">Click to Download Usance Application</h6>
-                <div class="banner-button" data-aos="fade-up">
-                    <a href="#" class="btn">Download Now</a><small>No <a href="#">signup</a> required.</small>
-                </div>
-            </div>
-        </div>
-        </div>
-        <!--//download-->
-    </section>
     <!--//w3l-download-main-->
     <!-- footer -->
     <footer class="w3l-footer-16">
