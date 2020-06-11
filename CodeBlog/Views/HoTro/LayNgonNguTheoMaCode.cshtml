@@ -1,0 +1,17 @@
+﻿@using CodeBlog.Models;
+@model List<NgonNguTable>
+@{
+    int lastItem = 1;
+}
+@foreach (var item in Model)
+{
+    if (lastItem == Model.Count)
+    {
+        <a href="#">@item.NgonNgu</a>
+    }
+    else
+    {
+        <a href="#">@item.NgonNgu | </a>
+    }
+    lastItem++;
+}

@@ -16,43 +16,64 @@ namespace CodeBlog.Controllers
             return View();
         }
 
-        public PartialViewResult CodeNoiBat()
+        public PartialViewResult CodeChatLuong()
         {
-            List<CodeNoiBat> model = new List<CodeNoiBat>();
-            foreach(var item in db.DanhMucTables)
-            {
-                int demCode = 0, demTai = 0, demQuanTam = 0;
-                float demNoiBat = 0;
-                foreach (var jtem in item.DanhMuc_TheLoaiTable)
-                {
-                    List<CodeTable> tmp = db.CodeTables.Where(t => t.MaTheLoai == jtem.MaTheLoai).ToList();
-                    demCode += tmp.Count();
-                    demTai += (int)tmp.Sum(t => t.LuotTai);
-                    demQuanTam += (int)tmp.Sum(t => t.LuotYeuThich);
-                }
-                if(demCode == 0)
-                {
-                    demNoiBat = 0;
-                }
-                else
-                {
-                    demNoiBat = (demQuanTam + demTai) / demCode;
-                }
-                CodeNoiBat addItem = new CodeNoiBat()
-                {
-                    MaDanhMuc = item.MaDanhMuc,
-                    TenDanhMuc = item.TenDanhMuc,
-                    AnhDanhMuc = item.AnhDanhMuc,
-                    Dem = demNoiBat
-                };
-                model.Add(addItem);
-            }
-            return PartialView(model.OrderByDescending(t => t.Dem).Take(6).ToList());
+            ViewBag.TenTheLoai = "Code chất";
+            List<CodeTable> model = db.CodeTables.Where(t => t.DonGia > 100).OrderByDescending(t => t.NgayDang).Take(8).ToList();
+            return PartialView("DanhSachCode", model);
         }
 
+        public PartialViewResult CodeWebsite()
+        {
+            ViewBag.TenTheLoai = "Code Website";
+            List<TheLoaiTable> theloai = db.DanhMuc_TheLoaiTable.Where(t => t.MaDanhMuc == 1).Select(t => t.TheLoaiTable).ToList();
+            List<CodeTable> model = new List<CodeTable>(); 
+            foreach(var item in theloai)
+            {
+                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaTheLoai == item.MaTheLoai).ToList();
+                model = (List<CodeTable>)model.Union(tmp).ToList();
+            }
+            return PartialView("DanhSachCode", model.OrderByDescending(t => t.NgayDang).Take(8).ToList());
+        }
+        public PartialViewResult CodeApp()
+        {
+            ViewBag.TenTheLoai = "App mobile";
+            List<TheLoaiTable> theloai = db.DanhMuc_TheLoaiTable.Where(t => t.MaDanhMuc == 6).Select(t => t.TheLoaiTable).ToList();
+            List<CodeTable> model = new List<CodeTable>();
+            foreach (var item in theloai)
+            {
+                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaTheLoai == item.MaTheLoai).ToList();
+                model = (List<CodeTable>)model.Union(tmp).ToList();
+            }
+            return PartialView("DanhSachCodeAppChung", model.OrderByDescending(t => t.NgayDang).Take(5).ToList());
+        }
+        public PartialViewResult CodeUngDung()
+        {
+            ViewBag.TenTheLoai = "ứng dụng";
+            List<TheLoaiTable> theloai = db.DanhMuc_TheLoaiTable.Where(t => t.MaDanhMuc == 2).Select(t => t.TheLoaiTable).ToList();
+            List<CodeTable> model = new List<CodeTable>();
+            foreach (var item in theloai)
+            {
+                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaTheLoai == item.MaTheLoai).ToList();
+                model = (List<CodeTable>)model.Union(tmp).ToList();
+            }
+            return PartialView("DanhSachCodeAppChung", model.OrderByDescending(t => t.NgayDang).Take(4).ToList());
+        }
+        public PartialViewResult CodeGame()
+        {
+            ViewBag.TenTheLoai = "Game";
+            List<TheLoaiTable> theloai = db.DanhMuc_TheLoaiTable.Where(t => t.MaDanhMuc == 4).Select(t => t.TheLoaiTable).ToList();
+            List<CodeTable> model = new List<CodeTable>();
+            foreach (var item in theloai)
+            {
+                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaTheLoai == item.MaTheLoai).ToList();
+                model = (List<CodeTable>)model.Union(tmp).ToList();
+            }
+            return PartialView("DanhSachCodeAppChung", model.OrderByDescending(t => t.NgayDang).Take(4).ToList());
+        }
         public PartialViewResult TinCongNghe()
         {
-            List<TinTucTable> model = db.TinTucTables.OrderByDescending(t => t.NgayDang).Take(5).ToList();
+            List<TinTucTable> model = db.TinTucTables.OrderByDescending(t => t.NgayDang).Take(4).ToList();
             return PartialView(model);
         }
     }

@@ -13,9 +13,14 @@ namespace CodeBlog.Controllers
     {
         CodeBlogEntities db = new CodeBlogEntities();
         // GET: HoTro
-        public ActionResult Index()
+        public ActionResult LayNgonNguTheoMaCode(int? maCode)
         {
-            return View();
+            if(maCode == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<NgonNguTable> model = db.NgonNgu_CodeTable.Where(t => t.MaCode == maCode).Select(t => t.NgonNguTable).ToList();
+            return PartialView(model);
         }
         public ActionResult LayTheLoaiTheoMaDanhMuc(int? maDM)
         {
@@ -41,16 +46,6 @@ namespace CodeBlog.Controllers
             List<NgonNguTable> model = db.NgonNguTables.ToList();
             return PartialView(model);
         }
-        public PartialViewResult ToolLeft_Code()
-        {
-            return PartialView();
-        }
-        public PartialViewResult HotCode()
-        {
-            ViewBag.Title_Code = "Code nổi bật";
-            List<CodeTable> model = db.CodeTables.OrderByDescending(t => t.LuotTai).Take(20).OrderByDescending(t => t.NgayDang).Take(5).ToList();
-            return PartialView(model);
-        }
         public PartialViewResult ChuDeTinCongNghe()
         {
             List<ChuDeTable> model = db.ChuDeTables.ToList();
@@ -60,17 +55,6 @@ namespace CodeBlog.Controllers
         {
             int dem = db.TinTucTables.Where(t => t.TenTinTuc.Contains(searchText)).OrderByDescending(t => t.NgayDang).Count();
             return Json(dem, JsonRequestBehavior.AllowGet);
-        }
-        public PartialViewResult CodeDanhGiaCao()
-        {
-            ViewBag.Title_Code = "Code đánh giá cao";
-            List<CodeTable> model = db.CodeTables.OrderByDescending(t => t.DanhGia).Take(5).ToList();
-            return PartialView("HotCode", model);
-        }
-        public PartialViewResult CodeXemNhieu()
-        {
-            List<CodeTable> model = db.CodeTables.OrderByDescending(t => t.LuotXem).Take(12).ToList();
-            return PartialView(model);
         }
     }
 }

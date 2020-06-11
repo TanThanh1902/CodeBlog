@@ -34,6 +34,7 @@ namespace CodeBlog.Models
         public Nullable<int> MaTheLoai { get; set; }
         public Nullable<int> LuotTai { get; set; }
         public string LinkTai { get; set; }
+        public Nullable<decimal> DonGia { get; set; }
     
         public virtual AdminTable AdminTable { get; set; }
         public virtual NguoiDungTable NguoiDungTable { get; set; }

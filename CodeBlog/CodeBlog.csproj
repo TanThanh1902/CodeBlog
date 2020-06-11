@@ -140,6 +140,7 @@
     <Compile Include="Controllers\HoTroController.cs" />
     <Compile Include="Controllers\NgonNguTablesController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Controllers\TimKiemCodeController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="DAO\CodeNoiBat.cs" />
     <Compile Include="Global.asax.cs">
@@ -2197,7 +2198,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -2211,25 +2211,28 @@
     <Content Include="Views\TaiKhoan\DangNhap.cshtml" />
     <Content Include="Views\Shared\_TaiKhoan.cshtml" />
     <Content Include="Views\TaiKhoan\Dangky.cshtml" />
-    <Content Include="Views\Home\CodeNoiBat.cshtml" />
     <Content Include="Views\NgonNguTables\Create.cshtml" />
     <Content Include="Views\NgonNguTables\Delete.cshtml" />
     <Content Include="Views\NgonNguTables\Details.cshtml" />
     <Content Include="Views\NgonNguTables\Edit.cshtml" />
     <Content Include="Views\NgonNguTables\Index.cshtml" />
     <Content Include="Views\HoTro\LayTheLoaiTheoMaDanhMuc.cshtml" />
-    <Content Include="Views\HoTro\ToolLeft_Code.cshtml" />
     <Content Include="Views\HoTro\NgonNguCode.cshtml" />
     <Content Include="Views\HoTro\TheLoaiCode.cshtml" />
     <Content Include="Views\HoTro\DanhMucCode.cshtml" />
     <Content Include="Views\HoTro\HotCode.cshtml" />
     <Content Include="Views\TimKiem\DanhSachKetQuaCode.cshtml" />
-    <Content Include="Views\Home\TinCongNghe.cshtml" />
     <Content Include="Views\TimKiem\DanhSachKetQuaTinCongNghe.cshtml" />
     <Content Include="Views\HoTro\ChuDeTinCongNghe.cshtml" />
     <Content Include="Views\TimKiem\TimKiemTuKhoa_TinCongNghe.cshtml" />
     <Content Include="Views\HoTro\CodeXemNhieu.cshtml" />
     <Content Include="Views\TimKiem\DanhSachKetQuaBlog.cshtml" />
+    <Content Include="Views\Home\DanhSachCode.cshtml" />
+    <Content Include="Views\Home\DanhSachCodeAppChung.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\TinCongNghe.cshtml" />
+    <Content Include="Views\TimKiemCode\KetQuaCode.cshtml" />
+    <Content Include="Views\HoTro\LayNgonNguTheoMaCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

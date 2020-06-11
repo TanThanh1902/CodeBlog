@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CodeBlogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CodeBlogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdminTable">
           <Key>
             <PropertyRef Name="MaAdmin" />
@@ -53,6 +53,7 @@
           <Property Name="MaTheLoai" Type="int" />
           <Property Name="LuotTai" Type="int" />
           <Property Name="LinkTai" Type="nvarchar(max)" />
+          <Property Name="DonGia" Type="money" />
         </EntityType>
         <EntityType Name="DanhMuc_TheLoaiTable">
           <Key>
@@ -342,8 +343,7 @@
             <End Role="TinTucTable" EntitySet="TinTucTable" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CodeBlogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -404,6 +404,7 @@
           <NavigationProperty Name="NguoiDungTable" Relationship="Self.FK_CodeTable_NguoiDungTable" FromRole="CodeTable" ToRole="NguoiDungTable" />
           <NavigationProperty Name="TheLoaiTable" Relationship="Self.FK_CodeTable_TheLoaiTable" FromRole="CodeTable" ToRole="TheLoaiTable" />
           <NavigationProperty Name="NgonNgu_CodeTable" Relationship="Self.FK_NgonNgu_CodeTable_CodeTable" FromRole="CodeTable" ToRole="NgonNgu_CodeTable" />
+          <Property Name="DonGia" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="DanhMuc_TheLoaiTable">
           <Key>
@@ -750,6 +751,7 @@
           <EntitySetMapping Name="CodeTables">
             <EntityTypeMapping TypeName="CodeBlogModel.CodeTable">
               <MappingFragment StoreEntitySet="CodeTable">
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
                 <ScalarProperty Name="MaCode" ColumnName="MaCode" />
                 <ScalarProperty Name="TenCode" ColumnName="TenCode" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />

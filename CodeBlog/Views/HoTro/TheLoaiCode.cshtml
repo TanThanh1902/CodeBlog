@@ -5,14 +5,7 @@
 }
 @foreach (var item in Model)
 {
-    if (Request.Url.Query.Contains("?matheloai=" + item.MaTheLoai))
-    {
-        <a href="@Url.Action("LocCodeTheoMaTheLoai", "TimKiem", new { matheloai = item.MaTheLoai})" class="active"><li class="list-group-item">@item.TheLoai <span id="@arrow@item.MaTheLoai" style="float: right;"><i class="fa fa-arrow-alt-circle-right"></i></span></li></a>
-    }
-    else
-    {
-        <a href="@Url.Action("LocCodeTheoMaTheLoai", "TimKiem", new { matheloai = item.MaTheLoai})" onmouseover="show_arrow_right_theloai(@item.MaTheLoai)" onmouseout="hide_arow_right_theloai(@item.MaTheLoai)"><li class="list-group-item">@item.TheLoai <span id="@arrow@item.MaTheLoai" style="float: right; font-size: 0px"><i class="fa fa-arrow-alt-circle-right"></i></span></li></a>
-    }
+    <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-code" style="color: green">&nbsp;</i>@item.TheLoai</a>
 }
 
 <script>
