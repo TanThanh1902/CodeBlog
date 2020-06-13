@@ -141,6 +141,7 @@
     <Compile Include="Controllers\HoTroController.cs" />
     <Compile Include="Controllers\NgonNguTablesController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Controllers\TimKiemBlogController.cs" />
     <Compile Include="Controllers\TimKiemCodeController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="DAO\TimKiemGoiY.cs" />
@@ -2240,6 +2241,7 @@
     <Content Include="Views\TimKiemCode\NgonNguCodeSelect.cshtml" />
     <Content Include="Views\TimKiemCode\TheLoaiCodeSelect.cshtml" />
     <Content Include="Views\ChiTietCode\ChiTietCode.cshtml" />
+    <Content Include="Views\TimKiemBlog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
