@@ -22,7 +22,7 @@
                             </div>
                             <h5 class="card-title mt-2">@item.TenCode [@item.MaCode]</h5>
                             <p class="card-text font-weight-bold" style="color: green">
-                                <i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML<br />
+                                <i class="fas fa-bookmark">&nbsp;</i>@Html.Action("LayNgonNguTheoMaCode", "HoTro", new { maCode = item.MaCode })<br />
                                 <b style="color: orangered"><i class="fa fa-star"></i></b>
                                 <b style="color: orangered"><i class="fa fa-star"></i></b>
                                 <b style="color: orangered"><i class="fa fa-star"></i></b>

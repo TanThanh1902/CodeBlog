@@ -27,10 +27,13 @@ Author URL: http://w3layouts.com
     <title>Usance a Corporate Category Bootstrap Responsive Website Template | Home :: W3layouts</title>
     <!-- Template CSS -->
     <link rel="stylesheet" href="~/Content/Layout/css/style-starter.css">
+    <link href="~/Content/css/jquery-ui.min.css" rel="stylesheet" />
     <!-- Template CSS -->
     <link href="//fonts.googleapis.com/css?family=Hind:400,500,600,700&display=swap" rel="stylesheet">
     <!-- Template CSS -->
     <link href="~/Content/fontawesome-free-5.13.0-web/css/all.min.css" rel="stylesheet" />
+
+    <script src="~/Content/Layout/js/jquery-3.3.1.min.js"></script>
     <style>
         .container, .container-sm, .container-md, .container-lg, .container-xl {
             max-width: 1500px;
@@ -177,31 +180,58 @@ Author URL: http://w3layouts.com
                                     }
                                 </script>
                                 <!--//-->
-                                <div class="col-sm-6">
+                                <form action="@Url.Action("TimKiemTuKhoa", "TimKiemCode")" class="col-sm-6">
                                     <h5 style="font-weight: bold; color: red">Buôn bán + trao đổi code với nhau</h5>
                                     <h5>Hơn 0+ code đang chờ bạn khám phá</h5>
-                                    <input type="search" class="form-control border border-success" placeholder="Nhập từ khóa, mã code,..." />
+                                    <input type="search" class="form-control border border-success" placeholder="Nhập từ khóa, mã code,..." name="searchText" id="searchCode" />
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <select class="form-control mt-3 border border-success">
-                                                <option value="">Chọn ngôn ngữ</option>
+                                            <select class="form-control mt-3 border border-success" name="madanhmuc">
+                                                @Html.Action("DanhMucCodeSelect", "TimKiemCode")
                                             </select>
                                         </div>
                                         <div class="col-sm-3">
-                                            <select class="form-control mt-3 border border-success">
-                                                <option value="">Chọn thể loại</option>
+                                            <select class="form-control mt-3 border border-success" name="matheloai">
+                                                @Html.Action("TheLoaiCodeSelect", "TimKiemCode")
                                             </select>
                                         </div>
                                         <div class="col-sm-3">
-                                            <select class="form-control mt-3 border border-success">
-                                                <option value="">Phiên bản</option>
+                                            <select class="form-control mt-3 border border-success" name="mangonngu">
+                                                @Html.Action("NgonNguCodeSelect", "TimKiemCode")
                                             </select>
                                         </div>
                                         <div class="col-sm-3">
-                                            <button class="btn btn-danger mt-3 w-100 font-weight-bold"><i class="fa fa-search">&nbsp;</i>Tìm kiếm</button>
+                                            <button type="submit" class="btn btn-danger mt-3 w-100 font-weight-bold"><i class="fa fa-search">&nbsp;</i>Tìm kiếm</button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#searchCode").autocomplete({
+                                            select: function (event, ui) {
+                                                $(this).val(ui.item.codeName);
+                                                return false;
+                                            },
+                                            source: function (request, response) {
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "/TimKiemCode/TimKiemGoiY",
+                                                    data: { searchText: request.term },
+                                                    success: function (data) {
+                                                        response(data);
+                                                    }
+                                                });
+                                            }
+                                        })
+                                            .autocomplete('instance')._renderItem = function (ul, item) {
+                                                return $('<li>')
+                                                    .append('<div class="row"><a href="/Details/Details_CodeByID/' + item.maCode + '"><div class="col-lg-3"><img style="width: 100%" src="/Content/images/image_code/'
+                                                        + item.anhMinhHoa + '" alt=' + item.tenCode + '/></div><div class="col-lg-9"><span>'
+                                                        + item.tenCode + '</span></div></a></div>')
+                                                    .appendTo(ul);
+                                            }
+                                    });
+                                </script>
                                 <div class="col-sm-3">
                                     <center class="mt-5">
                                         @if (tenND != null)
@@ -222,7 +252,7 @@ Author URL: http://w3layouts.com
                 </div>
             </div>
             @RenderBody()
-            
+
             <div class="banner-button" data-aos="fade-down">
                 <div class="row" id="CodeChat">
                     @Html.Action("CodeChatLuong", "Home")
@@ -570,310 +600,55 @@ Author URL: http://w3layouts.com
         </script>
     </footer>
     <!-- //footer -->
+    <!-- disable body scroll which navbar is in active -->
+    <!--//-->
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+    <!--/MENU-JS-->
+    <script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+    </script>
+    <!--//MENU-JS-->
+    <!-- /aos -->
+    <script src="~/Content/Layout/js/aos.js"></script>
+    <script src="~/Content/Layout/js/aosindex.js"></script>
+    <!-- //aos -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Content/Layout/js/bootstrap.min.js"></script>
 </body>
 
 </html>
 
-<script src="~/Content/Layout/js/jquery-3.3.1.min.js"></script>
-<!-- disable body scroll which navbar is in active -->
-<!--//-->
-<script>
-    $(function () {
-        $('.navbar-toggler').click(function () {
-            $('body').toggleClass('noscroll');
-        })
-    });
-</script>
-<!--/MENU-JS-->
-<script>
-    $(window).on("scroll", function () {
-        var scroll = $(window).scrollTop();
 
-        if (scroll >= 80) {
-            $("#site-header").addClass("nav-fixed");
-        } else {
-            $("#site-header").removeClass("nav-fixed");
-        }
-    });
 
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-        $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-        if ($(window).width() > 991) {
-            $("header").removeClass("active");
-        }
-        $(window).on("resize", function () {
-            if ($(window).width() > 991) {
-                $("header").removeClass("active");
-            }
-        });
-    });
-</script>
-<!--//MENU-JS-->
-<!-- /aos -->
-<script src="~/Content/Layout/js/aos.js"></script>
-<script src="~/Content/Layout/js/aosindex.js"></script>
-<!-- //aos -->
-
-<script src="~/Content/Layout/js/bootstrap.min.js"></script>
-@*Author: W3layouts
-    Author URL: http://w3layouts.com
-        License: Creative Commons Attribution 3.0 Unported
-        License URL: http://creativecommons.org/licenses/by/3.0/
-
-    <!DOCTYPE HTML>
-    <html>
-    <head>
-        <title>@ViewBag.Title</title>
-        <link rel="shortcut icon" type="image/x-icon" href="images/fave-icon.png" />
-        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-        <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <link href="~/Content/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet" />
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="~/Scripts/jquery-3.5.1.min.js"></script>
-        <script type="text/javascript">
-            $(window).load(function () {
-                $('div.description').each(function () {
-                    $(this).css('display', 'block');
-                });
-
-                $('div.content-top-grid').hover(function () {
-                    $(this).children('.description').stop().fadeTo(500, 1);
-                }, function () {
-                    $(this).children('.description').stop().fadeTo(500, 0);
-                });
-
-            });
-        </script>
-    </head>
-    <body>
-        <style>
-            .dr_taikhoan ul {
-                padding: 0;
-                width: 95%;
-            }
-
-                .dr_taikhoan ul li {
-                    width: 100%;
-                    padding: 0.5em 1em;
-                }
-
-                    .dr_taikhoan ul li a {
-                        margin: 0;
-                        padding: 0;
-                        padding-left: 10px;
-                        width: 100%;
-                    }
-
-                        .dr_taikhoan ul li a:hover {
-                            background: none;
-                        }
-
-            .panel-body {
-                padding: 0px;
-            }
-
-                .panel-body a {
-                    text-decoration: none;
-                    color: black;
-                }
-
-                    .panel-body a:hover {
-                        color: #84c52c;
-                    }
-
-            a.active {
-                color: #84c52c;
-            }
-
-            .list_code a {
-                color: #7e592a;
-                text-decoration: none;
-                font-weight: 700;
-            }
-
-                .list_code a:hover {
-                    color: #84c52c;
-                }
-
-            .list_code p {
-                font-size: 14px;
-            }
-
-            .list_code .col-sm-3 {
-                padding-bottom: 22px;
-            }
-
-            .chi_tiet_list_code_footer {
-                font-size: 13px;
-                color: orange;
-            }
-        </style>
-        -start-wrap--
-        <div class="wrap">
-            -strat-header--
-            <div class="header">
-                <div class="logo">
-                    <a href="/Home/Index"> </a>
-                </div>
-                <div class="top-nav">
-                    <ul>
-                        <li class="active"><a href="/Home/Index"> <span> </span></a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() != "TatCaCode" ? "active" : "")"><a class="" href="@Url.Action("TatCaCode", "TimKiem")">Code</a></li>
-                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() != "TatCaTinCongNghe" ? "active" : "")"><a href="@Url.Action("TatCaTinCongNghe", "TimKiem")">Tin công nghệ</a></li>
-                        <li><a href="icons.html">Nạp xu</a></li>
-                        @if (tenND != null)
-                        {
-                            <li style="text-align: center">
-                                <div class="dropdown dr_taikhoan">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@tenND.Value.ToString()<span class="caret"></span></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#"><i class="fa fa-code">&nbsp;</i>Code của tôi</a></li>
-                                        <li><a href="#"><i class="fa fa-blog">&nbsp;</i>Blog của tôi</a></li>
-                                        <li><a href="#"><i class="fa fa-user-cog">&nbsp;</i>Trang cá nhân</a></li>
-                                        <li><a style="border-top: 1px solid black"></a></li>
-                                        <li><a href="@Url.Action("DangXuat", "TaiKhoan")"><i class="fa fa-sign-out-alt">&nbsp;</i>Đăng xuất</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        }
-                        else
-                        {
-                            if (ViewContext.RouteData.Values["Controller"].ToString() != "Home")
-                            {
-                                <li><a href="@Url.Action("DangNhap", "TaiKhoan")">Đăng nhập</a></li>
-                            }
-                        }
-                        <li><a data-toggle="collapse" data-target="#search"><i class="fa fa-search"></i></a></li>
-                        <div class="clear"> </div>
-                    </ul>
-                </div>
-                <div class="clear"> </div>
-                <div class="">
-                    <div class="collapse" id="search">
-                        <div class="bg-dark p-4">
-                            <input type="search" class="form-control" placeholder="Nhập từ khóa..." name="searchText" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -//End-header--
-        -start-slider--
-        @RenderBody();
-        -//End-articls--
-        <div class="bottom-grids">
-            <div class="wrap">
-                <div class="bottom-grid-left">
-                    <h3>Visit Our Shop</h3>
-                    <div class="bottom-grid-left-grid">
-                        <div class="bottom-grid-left-grid-left">
-                            <a href="#"><img src="images/bottom-pic.png" alt="" /></a>
-                        </div>
-                        <div class="bottom-grid-left-grid-right">
-                            <p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam et dolore magna aliqua.</p>
-                            <a class="letbtn" href="#">Lets shop</a>
-                        </div>
-                        <div class="clear"> </div>
-                    </div>
-                </div>
-                <div class="bottom-grid-right">
-                    <h3>Latest tweets</h3>
-                    <div class="bottom-grid-right-grid">
-                        <div class="bottom-grid-right-grid-left">
-
-                        </div>
-                        <div class="bottom-grid-right-grid-right">
-                            <p><span>Eiusmod:</span>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                            <span><a href="#">#incididunt</a></span>
-                            <label><a href="#">8 mins ago</a></label>
-                        </div>
-                        <div class="clear"> </div>
-                    </div>
-                    <div class="clear"> </div>
-                    <div class="bottom-grid-right-grid">
-                        <div class="bottom-grid-right-grid-left">
-
-                        </div>
-                        <div class="bottom-grid-right-grid-right">
-                            <p><span>Eiusmod:</span>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                            <span><a href="#">#incididunt</a></span>
-                            <label><a href="#">2 days ago</a></label>
-                        </div>
-                        <div class="clear"> </div>
-                    </div>
-                </div>
-                <div class="clear"> </div>
-            </div>
-        </div>
-        -//End-content--
-        -start-footer--
-        <div class="footer">
-            <div class="wrap">
-                <div class="footer-left">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="blog.html">Archive</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <div class="clear"> </div>
-                    </ul>
-                </div>
-                <div class="footer-center">
-                    <ul>
-                        <li><a href="#"><span> </span></a></li>
-                        <li><a href="#"><span> </span></a></li>
-                        <li><a href="#"><span> </span></a></li>
-                        <li><a href="#"><span> </span></a></li>
-                        <div class="clear"> </div>
-                    </ul>
-                </div>
-                <div class="footer-right">
-                    <p>Copyright &#169; 2013 Designer First. All Rights Reserved. Template By  <a href="http://w3layouts.com/">W3Layouts</a></p>
-                </div>
-                <div class="clear"> </div>
-            </div>
-        </div>
-        -//End-footer--
-        -//End-wrap--
-        <script>
-            // search ajax keuy
-            $("#timkiem_tincongnghe").keyup(function () {
-                var searchText = $(this).val();
-                var newUrl = "TatCaTinCongNghe";
-                document.title = "Tât cả tin công nghệ";
-                if (searchText != "") {
-                    newUrl = "TimKiemTuKhoaTinTuc?searchText=" + searchText;
-                    document.title = "Tìm kiếm từ khóa: " + searchText;
-                }
-                title_tin_cong_nghe.innerText = document.title;
-                debugger
-                $.ajax({
-                    type: "Post",
-                    url: "/TimKiem/TimKiemTuKhoa_TinCongNghe?searchText=" + searchText,
-                    contentType: "html",
-                    success: function (response) {
-                        $("#search_newsTechnology").html(response);
-                        window.history.pushState("ShareCode", "Tin công nghệ", "/TimKiem/" + newUrl);
-                    }
-                });
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: "/HoTro/demSoLuongKq_TinCongNghe?searchText=" + searchText,
-                    success: function (data) {
-                        kq_tin_cong_nghe.innerText = "Kết quả tìm được: " + data;
-                    }
-                });
-            })
-        </script>
-        <script src="~/Content/js/jquery-ui.min.js"></script>
-        <script src="~/Content/js/jquery.unobtrusive-ajax.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
-    </body>
-    </html>*@
 

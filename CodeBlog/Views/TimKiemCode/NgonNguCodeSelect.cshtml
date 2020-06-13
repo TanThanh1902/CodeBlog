@@ -1,0 +1,15 @@
+﻿@using CodeBlog.Models;
+@model List<NgonNguTable>
+@{
+    var mangonngu = Request.QueryString["mangonngu"];
+    if (mangonngu == null)
+    {
+        mangonngu = "0";
+    }
+}
+<option value="" disabled @(mangonngu == "0" ? "selected" : "") hidden>Chọn ngôn ngữ</option>
+<option value="-1" @(mangonngu == "-1" ? "selected" : "")>Tất cả</option>
+@foreach (var item in Model)
+{
+    <option value="@item.MaNgonNgu" @(int.Parse(mangonngu) == item.MaNgonNgu ? "selected" : "")>@item.NgonNgu</option>
+}

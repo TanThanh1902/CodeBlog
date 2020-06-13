@@ -1,0 +1,14 @@
+﻿@using CodeBlog.Models;
+@model List<TheLoaiTable>
+@{ 
+    var matheloai = Request.QueryString["matheloai"];
+    if(matheloai == null)
+    {
+        matheloai = "0";
+    }
+}
+<option value="" disabled @(matheloai == "0" ? "selected" : "") hidden>Chọn thể loại</option>
+@foreach(var item in Model)
+{
+    <option value="@item.MaTheLoai" @(int.Parse(matheloai) == item.MaTheLoai ? "selected" : "")>@item.TheLoai</option>
+}

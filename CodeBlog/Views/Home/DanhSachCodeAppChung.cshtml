@@ -5,14 +5,14 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title font-weight-bold">
-                    <i class="fab fa-android">&nbsp;</i>ViewBag.TenTheLoai
+                    <i class="fab fa-android">&nbsp;</i>@ViewBag.TenTheLoai
                 </h5>
                 @foreach (var item in Model)
                 {
                     <div class="row">
                         <div class="col-sm-6">
-                            <img src="~/Content/images/image_code/@item.AnhMinhHoa" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
-                            <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
+                            <a href="@Url.Action("ChiTietCode", "ChiTietCode", new { maCode = item.MaCode})"><img src="~/Content/images/image_code/@item.AnhMinhHoa" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" /></a>
+                            <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>@Html.Action("LayNgonNguTheoMaCode", "HoTro", new { maCode = item.MaCode })</div>
                             <b style="color: orangered"><i class="fa fa-star"></i></b>
                             <b style="color: orangered"><i class="fa fa-star"></i></b>
                             <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -20,7 +20,7 @@
                             <b style="color: orangered"><i class="fa fa-star"></i></b>
                         </div>
                         <div class="col-sm-6">
-                            <h5 class="card-title">@item.TenCode <br />[@item.MaCode]</h5>
+                            <a href="@Url.Action("ChiTietCode", "ChiTietCode", new { maCode = item.MaCode})"><h5 class="card-title">@item.TenCode <br />[@item.MaCode]</h5></a>                
                             <center>
                                 <i class="fa fa-eye">&nbsp;</i>0
                                 <i class="fa fa-download">&nbsp;</i>0

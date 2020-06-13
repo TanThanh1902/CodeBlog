@@ -1,0 +1,14 @@
+﻿@using CodeBlog.Models
+@model List<DanhMucTable>
+@{
+    var madanhmuc = Request.QueryString["madanhmuc"];
+    if (madanhmuc == null)
+    {
+        madanhmuc = "0";
+    }
+}
+<option value="" disabled @(madanhmuc == "0" ? "selected" : "") hidden>Chọn danh mục</option>
+@foreach (var item in Model)
+{
+    <option value="@item.MaDanhMuc" @(int.Parse(madanhmuc) == item.MaDanhMuc ? "selected" : "")>@item.TenDanhMuc</option>
+}

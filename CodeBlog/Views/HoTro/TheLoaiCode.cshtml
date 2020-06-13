@@ -5,7 +5,7 @@
 }
 @foreach (var item in Model)
 {
-    <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-code" style="color: green">&nbsp;</i>@item.TheLoai</a>
+    <a href="@Url.Action("TimKiemCodeTheoTheLoai", "TimKiemCode", new { matheloai = item.MaTheLoai})" class="list-group-item list-group-item-action"><i class="fa fa-code" style="color: green">&nbsp;</i>@item.TheLoai</a>
 }
 
 <script>

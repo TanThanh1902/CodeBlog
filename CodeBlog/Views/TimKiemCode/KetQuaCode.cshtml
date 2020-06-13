@@ -6,42 +6,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="col-sm-9">
-        <div class="card" style="height: 801px">
-            <div class="card-body">
-                <h5 class="card-title font-weight-bold">
-                    @ViewBag.TenTheLoai
-                    <img src="~/Content/Layout/images/ic_hot.gif" />
-                </h5>
-                <div class="row">
-                    @foreach (var item in Model)
-                    {
-                        <div class="col-sm-3 mt-3">
-                            <img src="~/Content/images/image_code/@item.AnhMinhHoa" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
-                            <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
-                                <div class="font-weight-bold">
-                                    <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>@item.LuotXem</div>
-                                    <div class="text-white float-md-left ml-4 mt-1" style="padding-left: 7%"><i class="fa fa-heart">&nbsp;</i>@item.LuotYeuThich</div>
-                                    <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>@item.LuotTai</div>
-                                </div>
+<div class="col-sm-9">
+    <div class="card" style="height: 801px">
+        <div class="card-body">
+            <h5 class="card-title font-weight-bold">
+                Kết quả tìm kiếm: @ViewBag.ketqua
+                <img src="~/Content/Layout/images/ic_hot.gif" />
+            </h5>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-3 mt-3">
+                        <a href="@Url.Action("ChiTietCode", "ChiTietCode", new { maCode = item.MaCode})"><img src="~/Content/images/image_code/@item.AnhMinhHoa" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" /></a>
+
+                        <div style="background-color: #f75940; height: 30px; width: 100%; border-radius: 0px 0px 5px 5px;">
+                            <div class="font-weight-bold">
+                                <div class="text-white float-left ml-4 mt-1"><i class="fa fa-eye">&nbsp;</i>@item.LuotXem</div>
+                                <div class="text-white float-md-left ml-4 mt-1" style="padding-left: 7%"><i class="fa fa-heart">&nbsp;</i>@item.LuotYeuThich</div>
+                                <div class="text-white float-right mr-4 mt-1"><i class="fa fa-download">&nbsp;</i>@item.LuotTai</div>
                             </div>
-                            <h5 class="card-title mt-2">@item.TenCode [@item.MaCode]</h5>
-                            <p class="card-text font-weight-bold" style="color: green">
-                                <i class="fas fa-bookmark">&nbsp;</i>@Html.Action("LayNgonNguTheoMaCode", "HoTro", new { maCode = item.MaCode})<br />
-                                <b style="color: orangered"><i class="fa fa-star"></i></b>
-                                <b style="color: orangered"><i class="fa fa-star"></i></b>
-                                <b style="color: orangered"><i class="fa fa-star"></i></b>
-                                <b style="color: orangered"><i class="fa fa-star"></i></b>
-                                <b style="color: orangered"><i class="fa fa-star"></i></b>
-                            </p>
                         </div>
-                    }
-                </div>
+                        <a href="@Url.Action("ChiTietCode", "ChiTietCode", new { maCode = item.MaCode})">
+                            <h5 class="card-title mt-2">@item.TenCode [@item.MaCode]</h5>
+                        </a>
+                        <p class="card-text font-weight-bold" style="color: green">
+                            <i class="fas fa-bookmark">&nbsp;</i>@Html.Action("LayNgonNguTheoMaCode", "HoTro", new { maCode = item.MaCode })<br />
+                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                            <b style="color: orangered"><i class="fa fa-star"></i></b>
+                        </p>
+                    </div>
+                }
             </div>
         </div>
-        <div>
-            <center>
-                @Html.PagedListPager(Model, page => Url.Action(ViewContext.RouteData.Values["Action"].ToString(), new { page }))
-            </center>
-        </div>
     </div>
+    <div>
+        <center>
+            @Html.PagedListPager(Model, page => Url.Action(ViewContext.RouteData.Values["Action"].ToString(), new { page }))
+        </center>
+    </div>
+</div>

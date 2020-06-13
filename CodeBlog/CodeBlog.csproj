@@ -136,13 +136,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChiTietCodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HoTroController.cs" />
     <Compile Include="Controllers\NgonNguTablesController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\TimKiemCodeController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
-    <Compile Include="DAO\CodeNoiBat.cs" />
+    <Compile Include="DAO\TimKiemGoiY.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -208,6 +209,8 @@
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\css\jquery-ui.min.css" />
     <Content Include="Content\images\default_background\desktop_background.jpg" />
     <Content Include="Content\images\default_background\game_background.png" />
     <Content Include="Content\images\default_background\IoT_background.jpg" />
@@ -368,8 +371,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\css\jquery-3.4.1.js" />
-    <Content Include="Content\css\jquery-3.4.1.min.js" />
+    <Content Include="Content\js\jquery-3.4.1.js" />
+    <Content Include="Content\js\jquery-3.4.1.min.js" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\fontawesome-free-5.13.0-web\css\all.css" />
     <Content Include="Content\fontawesome-free-5.13.0-web\css\all.min.css" />
@@ -2220,7 +2223,7 @@
     <Content Include="Views\HoTro\NgonNguCode.cshtml" />
     <Content Include="Views\HoTro\TheLoaiCode.cshtml" />
     <Content Include="Views\HoTro\DanhMucCode.cshtml" />
-    <Content Include="Views\HoTro\HotCode.cshtml" />
+    <Content Include="Views\TimKiemCode\HotCode.cshtml" />
     <Content Include="Views\TimKiem\DanhSachKetQuaCode.cshtml" />
     <Content Include="Views\TimKiem\DanhSachKetQuaTinCongNghe.cshtml" />
     <Content Include="Views\HoTro\ChuDeTinCongNghe.cshtml" />
@@ -2233,6 +2236,10 @@
     <Content Include="Views\Home\TinCongNghe.cshtml" />
     <Content Include="Views\TimKiemCode\KetQuaCode.cshtml" />
     <Content Include="Views\HoTro\LayNgonNguTheoMaCode.cshtml" />
+    <Content Include="Views\TimKiemCode\DanhMucCodeSelect.cshtml" />
+    <Content Include="Views\TimKiemCode\NgonNguCodeSelect.cshtml" />
+    <Content Include="Views\TimKiemCode\TheLoaiCodeSelect.cshtml" />
+    <Content Include="Views\ChiTietCode\ChiTietCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
