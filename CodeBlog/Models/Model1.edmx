@@ -41,19 +41,20 @@
           </Key>
           <Property Name="MaCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenCode" Type="nvarchar" MaxLength="70" />
-          <Property Name="MoTa" Type="nvarchar(max)" />
           <Property Name="AnhMinhHoa" Type="nvarchar(max)" />
           <Property Name="NgayDang" Type="datetime" />
           <Property Name="LuotXem" Type="int" />
           <Property Name="LuotYeuThich" Type="int" />
-          <Property Name="DanhGia" Type="float" />
-          <Property Name="LuotDanhGia" Type="int" />
           <Property Name="MaNguoiDung" Type="int" />
           <Property Name="MaAdmin" Type="int" />
           <Property Name="MaTheLoai" Type="int" />
           <Property Name="LuotTai" Type="int" />
           <Property Name="LinkTai" Type="nvarchar(max)" />
           <Property Name="DonGia" Type="money" />
+          <Property Name="MoTaNgan" Type="nvarchar" MaxLength="200" />
+          <Property Name="MoTaChiTiet" Type="nvarchar(max)" />
+          <Property Name="HuongDanCaiDat" Type="nvarchar(max)" />
+          <Property Name="AnhXemThem" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="DanhMuc_TheLoaiTable">
           <Key>
@@ -388,13 +389,10 @@
           </Key>
           <Property Name="MaCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenCode" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AnhMinhHoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NgayDang" Type="DateTime" Precision="3" />
           <Property Name="LuotXem" Type="Int32" />
           <Property Name="LuotYeuThich" Type="Int32" />
-          <Property Name="DanhGia" Type="Double" />
-          <Property Name="LuotDanhGia" Type="Int32" />
           <Property Name="MaNguoiDung" Type="Int32" />
           <Property Name="MaAdmin" Type="Int32" />
           <Property Name="MaTheLoai" Type="Int32" />
@@ -405,6 +403,10 @@
           <NavigationProperty Name="TheLoaiTable" Relationship="Self.FK_CodeTable_TheLoaiTable" FromRole="CodeTable" ToRole="TheLoaiTable" />
           <NavigationProperty Name="NgonNgu_CodeTable" Relationship="Self.FK_NgonNgu_CodeTable_CodeTable" FromRole="CodeTable" ToRole="NgonNgu_CodeTable" />
           <Property Name="DonGia" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MoTaNgan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MoTaChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HuongDanCaiDat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnhXemThem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DanhMuc_TheLoaiTable">
           <Key>
@@ -751,16 +753,17 @@
           <EntitySetMapping Name="CodeTables">
             <EntityTypeMapping TypeName="CodeBlogModel.CodeTable">
               <MappingFragment StoreEntitySet="CodeTable">
+                <ScalarProperty Name="AnhXemThem" ColumnName="AnhXemThem" />
+                <ScalarProperty Name="HuongDanCaiDat" ColumnName="HuongDanCaiDat" />
+                <ScalarProperty Name="MoTaChiTiet" ColumnName="MoTaChiTiet" />
+                <ScalarProperty Name="MoTaNgan" ColumnName="MoTaNgan" />
                 <ScalarProperty Name="DonGia" ColumnName="DonGia" />
                 <ScalarProperty Name="MaCode" ColumnName="MaCode" />
                 <ScalarProperty Name="TenCode" ColumnName="TenCode" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="AnhMinhHoa" ColumnName="AnhMinhHoa" />
                 <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
                 <ScalarProperty Name="LuotXem" ColumnName="LuotXem" />
                 <ScalarProperty Name="LuotYeuThich" ColumnName="LuotYeuThich" />
-                <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
-                <ScalarProperty Name="LuotDanhGia" ColumnName="LuotDanhGia" />
                 <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
                 <ScalarProperty Name="MaAdmin" ColumnName="MaAdmin" />
                 <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />

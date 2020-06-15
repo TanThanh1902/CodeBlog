@@ -17,17 +17,17 @@ namespace CodeBlog.Controllers
         // GET: TimKiemCode
         public ActionResult TatCaCode(int? page)
         {
-            IPagedList<CodeTable> model = db.CodeTables.OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE);
+            IPagedList<CodeTable> model = db.CodeTables.Where(t => t.MaAdmin != null).OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE);
             return View("KetQuaCode", model);
         }
         public ActionResult CodeChatLuong(int? page)
         {
-            IPagedList<CodeTable> model = db.CodeTables.Where(t => t.DonGia >= 100).OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE);
+            IPagedList<CodeTable> model = db.CodeTables.Where(t => t.MaAdmin != null && t.DonGia >= 100).OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE);
             return View("KetQuaCode", model);
         }
         public ActionResult CodeMienPhi(int? page)
         {
-            IPagedList<CodeTable> model = db.CodeTables.Where(t => t.DonGia == 0).OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE);
+            IPagedList<CodeTable> model = db.CodeTables.Where(t => t.MaAdmin != null && t.DonGia == 0).OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE);
             return View("KetQuaCode", model);
         }
         public ActionResult TimKiemCodeTheDanhMuc(int? madanhmuc, int? page)
@@ -98,12 +98,12 @@ namespace CodeBlog.Controllers
                 model = model.Where(t => t.TenCode.Contains(searchText) || t.MaCode.ToString().Contains(searchText)).ToList();
             }
             ViewBag.ketqua = model.Count;
-            return View("KetQuaCode", model.OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE));
+            return View("KetQuaCode", model.Where(t => t.MaAdmin != null).OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE));
         }
         public JsonResult TimKiemGoiY(string searchText)
         {
             List<TimKiemGoiY> codeGoiY = new List<TimKiemGoiY>();
-            List<CodeTable> model = db.CodeTables.Where(t => t.TenCode.Contains(searchText) || t.MaCode.ToString().Contains(searchText)).ToList();
+            List<CodeTable> model = db.CodeTables.Where(t => t.MaAdmin != null && t.TenCode.Contains(searchText) || t.MaCode.ToString().Contains(searchText)).ToList();
             foreach(var item in model)
             {
                 codeGoiY.Add(new TimKiemGoiY { 
@@ -121,20 +121,20 @@ namespace CodeBlog.Controllers
             List<TheLoaiTable> theloai = db.DanhMuc_TheLoaiTable.Where(t => t.MaDanhMuc == madanhmuc).Select(t => t.TheLoaiTable).ToList();
             foreach (var item in theloai)
             {
-                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaTheLoai == item.MaTheLoai).ToList();
+                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaAdmin != null && t.MaTheLoai == item.MaTheLoai).ToList();
                 model = model.Union(tmp).ToList();
             }
             return model;
         }
         public List<CodeTable> CodeTheoTheLoai(int? matheloai)
         {
-            List<CodeTable> model = db.CodeTables.Where(t => t.MaTheLoai == matheloai).ToList();
+            List<CodeTable> model = db.CodeTables.Where(t => t.MaAdmin != null && t.MaTheLoai == matheloai).ToList();
             return model;
         }
         public List<CodeTable> CodeTheoNgonNgu(int? mangonngu)
         {
             List<CodeTable> model = db.NgonNgu_CodeTable.Where(t => t.MaNgonNgu == mangonngu).Select(t => t.CodeTable).ToList();
-            return model;
+            return model.Where(t => t.MaAdmin != null).ToList();
         }
         #endregion
     }

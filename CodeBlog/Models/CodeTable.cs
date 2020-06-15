@@ -22,19 +22,20 @@ namespace CodeBlog.Models
     
         public int MaCode { get; set; }
         public string TenCode { get; set; }
-        public string MoTa { get; set; }
         public string AnhMinhHoa { get; set; }
         public Nullable<System.DateTime> NgayDang { get; set; }
         public Nullable<int> LuotXem { get; set; }
         public Nullable<int> LuotYeuThich { get; set; }
-        public Nullable<double> DanhGia { get; set; }
-        public Nullable<int> LuotDanhGia { get; set; }
         public Nullable<int> MaNguoiDung { get; set; }
         public Nullable<int> MaAdmin { get; set; }
         public Nullable<int> MaTheLoai { get; set; }
         public Nullable<int> LuotTai { get; set; }
         public string LinkTai { get; set; }
         public Nullable<decimal> DonGia { get; set; }
+        public string MoTaNgan { get; set; }
+        public string MoTaChiTiet { get; set; }
+        public string HuongDanCaiDat { get; set; }
+        public string AnhXemThem { get; set; }
     
         public virtual AdminTable AdminTable { get; set; }
         public virtual NguoiDungTable NguoiDungTable { get; set; }

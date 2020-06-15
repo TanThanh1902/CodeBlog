@@ -34,6 +34,8 @@ Author URL: http://w3layouts.com
     <link href="~/Content/fontawesome-free-5.13.0-web/css/all.min.css" rel="stylesheet" />
 
     <script src="~/Content/Layout/js/jquery-3.3.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <style>
         .container, .container-sm, .container-md, .container-lg, .container-xl {
             max-width: 1500px;
@@ -237,7 +239,7 @@ Author URL: http://w3layouts.com
                                         @if (tenND != null)
                                         {
                                             <a href="#" class="btn btn-danger w-50 font-weight-bold"><i class="fas fa-dollar-sign">&nbsp;</i>Nạp xu</a>
-                                            <a href="#" class="btn btn-success w-50 font-weight-bold mt-2"><i class="fa fa-file-upload">&nbsp;</i>Tải lên</a>
+                                            <a href="@Url.Action("Create" ,"CodeTables")" class="btn btn-success w-50 font-weight-bold mt-2"><i class="fa fa-file-upload">&nbsp;</i>Tải lên</a>
                                         }
                                         else
                                         {
@@ -262,7 +264,7 @@ Author URL: http://w3layouts.com
                                 <h5 class="card-title font-weight-bold">Code mới nhất</h5>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <img src="~/Content/images/image_code/anhdaidien/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
                                         <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -283,7 +285,7 @@ Author URL: http://w3layouts.com
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <img src="~/Content/images/image_code/anhdaidien/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
                                         <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -326,7 +328,7 @@ Author URL: http://w3layouts.com
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <img src="~/Content/images/image_code/anhdaidien/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
                                         <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -359,7 +361,7 @@ Author URL: http://w3layouts.com
                                 </h5>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <img src="~/Content/images/image_code/anhdaidien/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
                                         <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -380,7 +382,7 @@ Author URL: http://w3layouts.com
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <img src="~/Content/images/image_code/anhdaidien/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
                                         <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -401,7 +403,7 @@ Author URL: http://w3layouts.com
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <img src="~/Content/images/image_code/anhdaidien/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
                                         <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -422,7 +424,7 @@ Author URL: http://w3layouts.com
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <img src="~/Content/images/image_code/anhdaidien/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
                                         <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -456,7 +458,7 @@ Author URL: http://w3layouts.com
                                 </h5>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <img src="~/Content/images/image_code/anhdaidien/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
                                         <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -477,7 +479,7 @@ Author URL: http://w3layouts.com
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <img src="~/Content/images/image_code/anhdaidien/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
                                         <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -498,7 +500,7 @@ Author URL: http://w3layouts.com
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <img src="~/Content/images/image_code/anhdaidien/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
                                         <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -519,7 +521,7 @@ Author URL: http://w3layouts.com
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Content/images/image_code/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+                                        <img src="~/Content/images/image_code/anhdaidien/demo_code.jpg" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
                                         <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>C# | C++ | HTML</div>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
                                         <b style="color: orangered"><i class="fa fa-star"></i></b>
@@ -641,6 +643,8 @@ Author URL: http://w3layouts.com
     <script src="~/Content/Layout/js/aos.js"></script>
     <script src="~/Content/Layout/js/aosindex.js"></script>
     <!-- //aos -->
+    <script src="~/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="~/Content/js/jquery-ui.min.js"></script>
     <script src="~/Content/js/jquery.unobtrusive-ajax.min.js"></script>

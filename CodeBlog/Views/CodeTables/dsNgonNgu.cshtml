@@ -1,0 +1,7 @@
+﻿@using CodeBlog.Models;
+@model List<NgonNguTable>
+
+@foreach(var item in Model)
+{
+    <option value="@item.MaNgonNgu">@item.NgonNgu</option>
+}

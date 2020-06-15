@@ -19,7 +19,7 @@ namespace CodeBlog.Controllers
         public PartialViewResult CodeChatLuong()
         {
             ViewBag.TenTheLoai = "Code chất";
-            List<CodeTable> model = db.CodeTables.Where(t => t.DonGia > 100).OrderByDescending(t => t.NgayDang).Take(8).ToList();
+            List<CodeTable> model = db.CodeTables.Where(t => t.MaAdmin != null && t.DonGia > 100).OrderByDescending(t => t.NgayDang).Take(8).ToList();
             return PartialView("DanhSachCode", model);
         }
 
@@ -30,7 +30,7 @@ namespace CodeBlog.Controllers
             List<CodeTable> model = new List<CodeTable>(); 
             foreach(var item in theloai)
             {
-                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaTheLoai == item.MaTheLoai).ToList();
+                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaAdmin != null && t.MaTheLoai == item.MaTheLoai).ToList();
                 model = (List<CodeTable>)model.Union(tmp).ToList();
             }
             return PartialView("DanhSachCode", model.OrderByDescending(t => t.NgayDang).Take(8).ToList());
@@ -42,7 +42,7 @@ namespace CodeBlog.Controllers
             List<CodeTable> model = new List<CodeTable>();
             foreach (var item in theloai)
             {
-                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaTheLoai == item.MaTheLoai).ToList();
+                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaAdmin != null && t.MaTheLoai == item.MaTheLoai).ToList();
                 model = (List<CodeTable>)model.Union(tmp).ToList();
             }
             return PartialView("DanhSachCodeAppChung", model.OrderByDescending(t => t.NgayDang).Take(5).ToList());
@@ -54,7 +54,7 @@ namespace CodeBlog.Controllers
             List<CodeTable> model = new List<CodeTable>();
             foreach (var item in theloai)
             {
-                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaTheLoai == item.MaTheLoai).ToList();
+                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaAdmin != null && t.MaTheLoai == item.MaTheLoai).ToList();
                 model = (List<CodeTable>)model.Union(tmp).ToList();
             }
             return PartialView("DanhSachCodeAppChung", model.OrderByDescending(t => t.NgayDang).Take(4).ToList());
@@ -66,7 +66,7 @@ namespace CodeBlog.Controllers
             List<CodeTable> model = new List<CodeTable>();
             foreach (var item in theloai)
             {
-                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaTheLoai == item.MaTheLoai).ToList();
+                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaAdmin != null && t.MaTheLoai == item.MaTheLoai).ToList();
                 model = (List<CodeTable>)model.Union(tmp).ToList();
             }
             return PartialView("DanhSachCodeAppChung", model.OrderByDescending(t => t.NgayDang).Take(4).ToList());
