@@ -2677,6 +2677,7 @@
     <Content Include="Views\CodeTables\Edit.cshtml" />
     <Content Include="Views\CodeTables\Index.cshtml" />
     <Content Include="Views\CodeTables\dsNgonNgu.cshtml" />
+    <Content Include="Views\Home\DanhSachTop4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

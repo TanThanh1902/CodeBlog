@@ -1,0 +1,28 @@
+﻿@using CodeBlog.Models;
+@model List<CodeTable>
+
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="~/Content/images/image_code/anhdaidien/@item.AnhMinhHoa" class="card-img-top" style="border-radius: 5px 5px 0px 0px;" />
+            <div style="color: green"><i class="fas fa-bookmark">&nbsp;</i>@Html.Action("LayNgonNguTheoMaCode", "HoTro", new { maCode = item.MaCode })</div>
+            <b style="color: orangered"><i class="fa fa-star"></i></b>
+            <b style="color: orangered"><i class="fa fa-star"></i></b>
+            <b style="color: orangered"><i class="fa fa-star"></i></b>
+            <b style="color: orangered"><i class="fa fa-star"></i></b>
+            <b style="color: orangered"><i class="fa fa-star"></i></b>
+        </div>
+        <div class="col-sm-6">
+            <h5 class="card-title">@item.TenCode [@item.MaCode] <br /></h5>
+            <center>
+                <i class="fa fa-eye">&nbsp;</i>@item.LuotXem
+                <i class="fa fa-download">&nbsp;</i>@item.LuotTai
+                <i class="fa fa-heart">&nbsp;</i>@item.LuotYeuThich
+            </center>
+            <b>@ViewBag.TinhTrangCode</b>
+        </div>
+    </div>
+    <hr />
+}

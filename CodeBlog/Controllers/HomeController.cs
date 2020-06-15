@@ -76,5 +76,29 @@ namespace CodeBlog.Controllers
             List<TinTucTable> model = db.TinTucTables.OrderByDescending(t => t.NgayDang).Take(4).ToList();
             return PartialView(model);
         }
+        public PartialViewResult dscodeMoiNhat()
+        {
+            ViewBag.TinhTrangCode = "Mới nhất";
+            List<CodeTable> model = db.CodeTables.OrderByDescending(t => t.NgayDang).Take(4).ToList();
+            return PartialView("DanhSachTop4", model);
+        }
+        public PartialViewResult dsWebsiteChatLuong()
+        {
+            ViewBag.TinhTrangCode = "Website chất lượng";
+            List<TheLoaiTable> theloai = db.DanhMuc_TheLoaiTable.Where(t => t.MaDanhMuc == 1).Select(t => t.TheLoaiTable).ToList();
+            List<CodeTable> model = new List<CodeTable>();
+            foreach (var item in theloai)
+            {
+                List<CodeTable> tmp = db.CodeTables.Where(t => t.MaAdmin != null && t.MaTheLoai == item.MaTheLoai).ToList();
+                model = (List<CodeTable>)model.Union(tmp).ToList();
+            }
+            return PartialView("DanhSachTop4", model.OrderByDescending(t => t.NgayDang).Take(4).ToList());
+        }
+        public PartialViewResult dsCodeMienPhi()
+        {
+            ViewBag.TinhTrangCode = "Miễn phí";
+            List<CodeTable> model = db.CodeTables.Where(t => t.DonGia == 0).OrderByDescending(t => t.NgayDang).ToList();
+            return PartialView("DanhSachTop4", model);
+        }
     }
 }
