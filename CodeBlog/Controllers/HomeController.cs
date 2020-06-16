@@ -71,15 +71,10 @@ namespace CodeBlog.Controllers
             }
             return PartialView("DanhSachCodeAppChung", model.OrderByDescending(t => t.NgayDang).Take(4).ToList());
         }
-        public PartialViewResult TinCongNghe()
-        {
-            List<TinTucTable> model = db.TinTucTables.OrderByDescending(t => t.NgayDang).Take(4).ToList();
-            return PartialView(model);
-        }
         public PartialViewResult dscodeMoiNhat()
         {
             ViewBag.TinhTrangCode = "Mới nhất";
-            List<CodeTable> model = db.CodeTables.OrderByDescending(t => t.NgayDang).Take(4).ToList();
+            List<CodeTable> model = db.CodeTables.Where(t => t.MaAdmin != null).OrderByDescending(t => t.NgayDang).Take(4).ToList();
             return PartialView("DanhSachTop4", model);
         }
         public PartialViewResult dsWebsiteChatLuong()
@@ -97,7 +92,7 @@ namespace CodeBlog.Controllers
         public PartialViewResult dsCodeMienPhi()
         {
             ViewBag.TinhTrangCode = "Miễn phí";
-            List<CodeTable> model = db.CodeTables.Where(t => t.DonGia == 0).OrderByDescending(t => t.NgayDang).ToList();
+            List<CodeTable> model = db.CodeTables.Where(t => t.MaAdmin != null && t.DonGia == 0).OrderByDescending(t => t.NgayDang).ToList();
             return PartialView("DanhSachTop4", model);
         }
     }

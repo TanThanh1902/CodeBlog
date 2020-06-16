@@ -8,109 +8,81 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CodeBlog.Models;
-using System.IO;
+using PagedList;
 
-namespace CodeBlog.Controllers
+namespace CodeBlog.Controllers.Admin
 {
-    public class CodeTablesController : Controller
+    public class Admin_CodeTablesController : Controller
     {
         private CodeBlogEntities db = new CodeBlogEntities();
-        // GET: CodeTables
-        public ActionResult Index()
+        const int PAGE_SIZE = 20;
+        // GET: Admin_CodeTables
+        public async Task<ActionResult> Index()
         {
-            string maND = Request.Cookies["MaND"].Value.ToString();
-            if(maND == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadGateway);
-            }
-            int id = Int32.Parse(maND.ToString());
-            List<CodeTable> codeTables = db.CodeTables.Where(t => t.MaNguoiDung == id).ToList();
-            return View(codeTables);
+            var codeTables = db.CodeTables.Include(c => c.AdminTable).Include(c => c.NguoiDungTable).Include(c => c.TheLoaiTable);
+            return View(await codeTables.ToListAsync());
         }
-
-        // GET: CodeTables/Details/5
+        public ActionResult dsChoDuyetBai(int? page)
+        {
+            IPagedList<CodeTable> model = db.CodeTables.Where(t => t.MaAdmin == null).OrderBy(t => t.NgayDang).ToPagedList(page?? 1, PAGE_SIZE);
+            return View("dsCode", model);
+        }
+        public ActionResult DuyetBai(int? maCode)
+        {
+            HttpCookie maAdmin = Request.Cookies["MaAd"];
+            if(maCode == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            db.CodeTables.Find(maCode).MaAdmin = int.Parse(maAdmin.Value.ToString());
+            db.SaveChanges();
+            return RedirectToAction("dsChoDuyetBai");
+        }
+        // GET: Admin_CodeTables/Details/5
         public async Task<ActionResult> Details(int? id)
         {
-            HttpCookie maND = Request.Cookies["MaND"];
-            if (id == null || maND == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             CodeTable codeTable = await db.CodeTables.FindAsync(id);
-            if (codeTable == null || codeTable.MaNguoiDung == Int32.Parse(maND.Value.ToString()))
+            if (codeTable == null)
             {
                 return HttpNotFound();
             }
             return View(codeTable);
         }
 
-        public PartialViewResult dsNgonNgu()
-        {
-            List<NgonNguTable> model = db.NgonNguTables.ToList();
-            return PartialView(model);
-        }
-        // GET: CodeTables/Create
+        // GET: Admin_CodeTables/Create
         public ActionResult Create()
         {
-            HttpCookie maND = Request.Cookies["MaND"]; 
-            if (maND == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            ViewBag.MaAdmin = new SelectList(db.AdminTables, "MaAdmin", "TenHienThi");
+            ViewBag.MaNguoiDung = new SelectList(db.NguoiDungTables, "MaNguoiDung", "TenHienThi");
             ViewBag.MaTheLoai = new SelectList(db.TheLoaiTables, "MaTheLoai", "TheLoai");
             return View();
         }
 
-        // POST: CodeTables/Create
+        // POST: Admin_CodeTables/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        public class ImageFile
-        {
-            public List<HttpPostedFileBase> files { get; set; }
-        }
         [HttpPost]
-        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "MaCode,TenCode,AnhMinhHoa,NgayDang,LuotXem,LuotYeuThich,MaNguoiDung,MaAdmin,MaTheLoai,LuotTai,LinkTai,DonGia,MoTaNgan,MoTaChiTiet,HuongDanCaiDat")] CodeTable codeTable, int[] MaNgonNgu, HttpPostedFileBase fileimg_anhminhhoa, List<HttpPostedFileBase> fileimg_anhxemthem)
+        public async Task<ActionResult> Create([Bind(Include = "MaCode,TenCode,AnhMinhHoa,NgayDang,LuotXem,LuotYeuThich,MaNguoiDung,MaAdmin,MaTheLoai,LuotTai,LinkTai,DonGia,MoTaNgan,MoTaChiTiet,HuongDanCaiDat,AnhXemThem")] CodeTable codeTable)
         {
-            HttpCookie maND = Request.Cookies["MaND"];
             if (ModelState.IsValid)
             {
-                codeTable.NgayDang = DateTime.Now;
-                codeTable.LuotXem = 0;
-                codeTable.LuotTai = 0;
-                codeTable.LuotYeuThich = 0;
-                codeTable.MaNguoiDung = Int32.Parse(maND.Value.ToString());
-                var img = Path.GetFileName(fileimg_anhminhhoa.FileName);
-                var pathimg = Path.Combine(Server.MapPath("~/Content/images/image_code/anhdaidien"), img);
-                if (fileimg_anhminhhoa == null)
-                {
-                    ViewBag.Img = "Chọn ảnh";
-                    return View(codeTable);
-                }
-                else if (System.IO.File.Exists(pathimg))
-                    ViewBag.Img = "Ảnh đã tồn tại";
-                else
-                    fileimg_anhminhhoa.SaveAs(pathimg);
-                codeTable.AnhMinhHoa = fileimg_anhminhhoa.FileName;
-                string anhxemthem = "";
-                foreach(var item in fileimg_anhxemthem)
-                {
-                    var imgAnhxemThem = Path.GetFileName(item.FileName);
-                    var pathimgAnhXemThem = Path.Combine(Server.MapPath("~/Content/images/image_code/anhxemthem"), imgAnhxemThem);
-                    item.SaveAs(pathimgAnhXemThem);
-                    anhxemthem += item.FileName + ";";
-                }
-                codeTable.AnhXemThem = anhxemthem;
                 db.CodeTables.Add(codeTable);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.MaAdmin = new SelectList(db.AdminTables, "MaAdmin", "TenHienThi", codeTable.MaAdmin);
+            ViewBag.MaNguoiDung = new SelectList(db.NguoiDungTables, "MaNguoiDung", "TenHienThi", codeTable.MaNguoiDung);
             ViewBag.MaTheLoai = new SelectList(db.TheLoaiTables, "MaTheLoai", "TheLoai", codeTable.MaTheLoai);
             return View(codeTable);
         }
 
-        // GET: CodeTables/Edit/5
+        // GET: Admin_CodeTables/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -128,12 +100,12 @@ namespace CodeBlog.Controllers
             return View(codeTable);
         }
 
-        // POST: CodeTables/Edit/5
+        // POST: Admin_CodeTables/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "MaCode,TenCode,AnhMinhHoa,NgayDang,LuotXem,LuotYeuThich,DanhGia,LuotDanhGia,MaNguoiDung,MaAdmin,MaTheLoai,LuotTai,LinkTai,DonGia,MoTaNgan,MoTaChiTiet,HinhAnhCode,HuongDanCaiDat")] CodeTable codeTable)
+        public async Task<ActionResult> Edit([Bind(Include = "MaCode,TenCode,AnhMinhHoa,NgayDang,LuotXem,LuotYeuThich,MaNguoiDung,MaAdmin,MaTheLoai,LuotTai,LinkTai,DonGia,MoTaNgan,MoTaChiTiet,HuongDanCaiDat,AnhXemThem")] CodeTable codeTable)
         {
             if (ModelState.IsValid)
             {
@@ -147,7 +119,7 @@ namespace CodeBlog.Controllers
             return View(codeTable);
         }
 
-        // GET: CodeTables/Delete/5
+        // GET: Admin_CodeTables/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -162,7 +134,7 @@ namespace CodeBlog.Controllers
             return View(codeTable);
         }
 
-        // POST: CodeTables/Delete/5
+        // POST: Admin_CodeTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)

@@ -1,0 +1,30 @@
+﻿@using CodeBlog.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<CodeTable>
+
+<table>
+    <thead>
+        <tr>
+            <th>Ma Code</th>
+            <th>Ten Code</th>
+            <th>Nguoi Dang</th>
+            <th>Tinh Trang</th>
+            <th>Cong cu</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.MaCode</td>
+                <td>@item.TenCode</td>
+                <td>@item.NguoiDungTable.TenHienThi</td>
+                <td>Dang doi duyet</td>
+                <td>
+                    <a href="@Url.Action("DuyetBai" ,"Admin_CodeTables", new { maCode = item.MaCode})"><i class="fa fa-check">Duyet</i></a>
+                    <i class="fa fa-close">Xoa</i>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

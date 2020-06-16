@@ -136,6 +136,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin_CodeTablesController.cs" />
+    <Compile Include="Controllers\Admin_HomeController.cs" />
     <Compile Include="Controllers\ChiTietCodeController.cs" />
     <Compile Include="Controllers\CodeTablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -634,6 +636,9 @@
     <Content Include="Content\css\jquery-ui.css" />
     <Content Include="Content\css\jquery-ui.min.css" />
     <Content Include="Content\images\image_code\anhdaidien\demo_code.jpg" />
+    <Content Include="Content\images\image_code\anhxemthem\demo1.jpg" />
+    <Content Include="Content\images\image_code\anhxemthem\demo2.jpg" />
+    <Content Include="Content\images\image_code\anhxemthem\demo3.jpg" />
     <Content Include="Content\images\image_tintuc\game_technology_news.jpg" />
     <Content Include="Content\images\QuangCao\prudential-tuyen-dung-tu-van-tai-chinh-telemarketing.jpg" />
     <Content Include="Content\Layout\css\style-starter.css" />
@@ -2671,17 +2676,20 @@
     <Content Include="Views\TimKiemCode\TheLoaiCodeSelect.cshtml" />
     <Content Include="Views\ChiTietCode\ChiTietCode.cshtml" />
     <Content Include="Views\TimKiemBlog\Index.cshtml" />
-    <Content Include="Views\CodeTables\Create.cshtml" />
-    <Content Include="Views\CodeTables\Delete.cshtml" />
-    <Content Include="Views\CodeTables\Details.cshtml" />
-    <Content Include="Views\CodeTables\Edit.cshtml" />
-    <Content Include="Views\CodeTables\Index.cshtml" />
     <Content Include="Views\CodeTables\dsNgonNgu.cshtml" />
     <Content Include="Views\Home\DanhSachTop4.cshtml" />
+    <Content Include="Views\Admin_CodeTables\Create.cshtml" />
+    <Content Include="Views\Admin_CodeTables\Delete.cshtml" />
+    <Content Include="Views\Admin_CodeTables\Details.cshtml" />
+    <Content Include="Views\Admin_CodeTables\Edit.cshtml" />
+    <Content Include="Views\Admin_Home\Index.cshtml" />
+    <Content Include="Views\Admin_CodeTables\dsCode.cshtml" />
+    <Content Include="Views\Admin_Home\Admin_DangNhap.cshtml" />
+    <Content Include="Views\CodeTables\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\images\image_code\anhxemthem\" />
+    <Folder Include="Content\images\image_nguoidung\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

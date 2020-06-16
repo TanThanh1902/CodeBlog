@@ -227,7 +227,7 @@ Author URL: http://w3layouts.com
                                         })
                                             .autocomplete('instance')._renderItem = function (ul, item) {
                                                 return $('<li>')
-                                                    .append('<div class="row"><a href="/Details/Details_CodeByID/' + item.maCode + '"><div class="col-lg-3"><img style="width: 100%" src="/Content/images/image_code/'
+                                                    .append('<div class="row"><a href="/ChiTietCode/ChiTietCode?maCode=' + item.maCode + '"><div class="col-lg-3"><img style="width: 100%" src="/Content/images/image_code/anhdaidien/'
                                                         + item.anhMinhHoa + '" alt=' + item.tenCode + '/></div><div class="col-lg-9"><span>'
                                                         + item.tenCode + '</span></div></a></div>')
                                                     .appendTo(ul);

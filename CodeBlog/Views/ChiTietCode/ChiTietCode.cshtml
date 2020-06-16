@@ -7,125 +7,38 @@
 
 <h2>ChiTietCode</h2>
 
-<div>
-    <h4>CodeTable</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TenCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnhMinhHoa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnhMinhHoa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayDang)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayDang)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LuotXem)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LuotXem)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LuotYeuThich)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LuotYeuThich)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DanhGia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DanhGia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LuotDanhGia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LuotDanhGia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LuotTai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LuotTai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LinkTai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LinkTai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DonGia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DonGia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AdminTable.TenHienThi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AdminTable.TenHienThi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NguoiDungTable.TenHienThi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NguoiDungTable.TenHienThi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TheLoaiTable.TheLoai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TheLoaiTable.TheLoai)
-        </dd>
-
-    </dl>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <img src="~/Content/images/image_code/anhdaidien/@Model.AnhMinhHoa" />
+            <!--- tao button bam vao show anh ra-->
+            @{ 
+                String[] anhxemthem = Model.AnhXemThem.Split(';');
+                foreach(var item in anhxemthem)
+                {
+                    <img src="~/Content/images/image_code/anhxemthem/@item" />
+                }
+            }
+        </div>
+        <div class="col-lg-6">
+            <h2>@Model.TenCode</h2>
+            <span>@Model.LuotTai</span>
+            <span>@Model.LuotXem</span>
+            <span>@Model.LuotYeuThich</span>
+            <span>@Html.Action("LayNgonNguTheoMaCode", "HoTro", new { maCode = Model.MaCode })</span>
+        </div>
+        <div class="col-lg-3">
+            <img src="~/Content/images/image_nguoidung/@Model.NguoiDungTable.AnhDaiDien" />
+            <h3>@Model.NguoiDungTable.TenHienThi</h3>
+        </div>
+        <div>
+            <span>@Model.MoTaNgan</span>
+        </div>
+        <div>
+            @Html.Raw(Model.MoTaChiTiet)
+        </div>
+        <div>
+            @Html.Raw(Model.HuongDanCaiDat)
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaCode }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
