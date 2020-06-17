@@ -1,0 +1,10 @@
+﻿@using CodeBlog.Models;
+@model List<TheLoaiTable>
+
+<select class="form-control" name="matheloai">
+    <option value="">Tat ca</option>
+    @foreach(var item in Model)
+    {
+        <option value="@item.MaTheLoai">@item.TheLoai</option>
+    }
+</select>

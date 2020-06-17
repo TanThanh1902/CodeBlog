@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CodeBlogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CodeBlogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdminTable">
           <Key>
             <PropertyRef Name="MaAdmin" />
@@ -27,13 +27,7 @@
           <Property Name="NgayDang" Type="datetime" />
           <Property Name="MaNguoiDung" Type="int" />
           <Property Name="AnhMinhHoa" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="ChuDeTable">
-          <Key>
-            <PropertyRef Name="MaChuDe" />
-          </Key>
-          <Property Name="MaChuDe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ChuDe" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaTheLoai" Type="int" />
         </EntityType>
         <EntityType Name="CodeTable">
           <Key>
@@ -125,18 +119,6 @@
           <Property Name="MaTheLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TheLoai" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="TinTucTable">
-          <Key>
-            <PropertyRef Name="MaTinTuc" />
-          </Key>
-          <Property Name="MaTinTuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenTinTuc" Type="nvarchar" MaxLength="100" />
-          <Property Name="NoiDung" Type="nvarchar(max)" />
-          <Property Name="NgayDang" Type="datetime" />
-          <Property Name="MaAdmin" Type="int" />
-          <Property Name="MaChuDe" Type="int" />
-          <Property Name="AnhMinhHoa" Type="nvarchar(max)" />
-        </EntityType>
         <Association Name="FK_BlogTable_NguoiDungTable">
           <End Role="NguoiDungTable" Type="Self.NguoiDungTable" Multiplicity="0..1" />
           <End Role="BlogTable" Type="Self.BlogTable" Multiplicity="*" />
@@ -146,6 +128,18 @@
             </Principal>
             <Dependent Role="BlogTable">
               <PropertyRef Name="MaNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogTable_TheLoaiTable">
+          <End Role="TheLoaiTable" Type="Self.TheLoaiTable" Multiplicity="0..1" />
+          <End Role="BlogTable" Type="Self.BlogTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheLoaiTable">
+              <PropertyRef Name="MaTheLoai" />
+            </Principal>
+            <Dependent Role="BlogTable">
+              <PropertyRef Name="MaTheLoai" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -257,34 +251,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TinTucTable_AdminTable">
-          <End Role="AdminTable" Type="Self.AdminTable" Multiplicity="0..1" />
-          <End Role="TinTucTable" Type="Self.TinTucTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AdminTable">
-              <PropertyRef Name="MaAdmin" />
-            </Principal>
-            <Dependent Role="TinTucTable">
-              <PropertyRef Name="MaAdmin" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TinTucTable_ChuDeTable">
-          <End Role="ChuDeTable" Type="Self.ChuDeTable" Multiplicity="0..1" />
-          <End Role="TinTucTable" Type="Self.TinTucTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ChuDeTable">
-              <PropertyRef Name="MaChuDe" />
-            </Principal>
-            <Dependent Role="TinTucTable">
-              <PropertyRef Name="MaChuDe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="CodeBlogModelStoreContainer">
           <EntitySet Name="AdminTable" EntityType="Self.AdminTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BlogTable" EntityType="Self.BlogTable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ChuDeTable" EntityType="Self.ChuDeTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CodeTable" EntityType="Self.CodeTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DanhMuc_TheLoaiTable" EntityType="Self.DanhMuc_TheLoaiTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DanhMucTable" EntityType="Self.DanhMucTable" Schema="dbo" store:Type="Tables" />
@@ -294,9 +263,12 @@
           <EntitySet Name="NguoiDungTable" EntityType="Self.NguoiDungTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TheLoaiTable" EntityType="Self.TheLoaiTable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TinTucTable" EntityType="Self.TinTucTable" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BlogTable_NguoiDungTable" Association="Self.FK_BlogTable_NguoiDungTable">
             <End Role="NguoiDungTable" EntitySet="NguoiDungTable" />
+            <End Role="BlogTable" EntitySet="BlogTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogTable_TheLoaiTable" Association="Self.FK_BlogTable_TheLoaiTable">
+            <End Role="TheLoaiTable" EntitySet="TheLoaiTable" />
             <End Role="BlogTable" EntitySet="BlogTable" />
           </AssociationSet>
           <AssociationSet Name="FK_CodeTable_AdminTable" Association="Self.FK_CodeTable_AdminTable">
@@ -335,16 +307,9 @@
             <End Role="NgonNguTable" EntitySet="NgonNguTable" />
             <End Role="NgonNgu_CodeTable" EntitySet="NgonNgu_CodeTable" />
           </AssociationSet>
-          <AssociationSet Name="FK_TinTucTable_AdminTable" Association="Self.FK_TinTucTable_AdminTable">
-            <End Role="AdminTable" EntitySet="AdminTable" />
-            <End Role="TinTucTable" EntitySet="TinTucTable" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TinTucTable_ChuDeTable" Association="Self.FK_TinTucTable_ChuDeTable">
-            <End Role="ChuDeTable" EntitySet="ChuDeTable" />
-            <End Role="TinTucTable" EntitySet="TinTucTable" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CodeBlogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -360,7 +325,6 @@
           <Property Name="NgayTao" Type="DateTime" Precision="3" />
           <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CodeTables" Relationship="Self.FK_CodeTable_AdminTable" FromRole="AdminTable" ToRole="CodeTable" />
-          <NavigationProperty Name="TinTucTables" Relationship="Self.FK_TinTucTable_AdminTable" FromRole="AdminTable" ToRole="TinTucTable" />
         </EntityType>
         <EntityType Name="BlogTable">
           <Key>
@@ -372,16 +336,10 @@
           <Property Name="NgayDang" Type="DateTime" Precision="3" />
           <Property Name="MaNguoiDung" Type="Int32" />
           <Property Name="AnhMinhHoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaTheLoai" Type="Int32" />
           <NavigationProperty Name="NguoiDungTable" Relationship="Self.FK_BlogTable_NguoiDungTable" FromRole="BlogTable" ToRole="NguoiDungTable" />
+          <NavigationProperty Name="TheLoaiTable" Relationship="Self.FK_BlogTable_TheLoaiTable" FromRole="BlogTable" ToRole="TheLoaiTable" />
           <NavigationProperty Name="NgonNgu_BlogTable" Relationship="Self.FK_NgonNgu_BlogTable_BlogTable" FromRole="BlogTable" ToRole="NgonNgu_BlogTable" />
-        </EntityType>
-        <EntityType Name="ChuDeTable">
-          <Key>
-            <PropertyRef Name="MaChuDe" />
-          </Key>
-          <Property Name="MaChuDe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ChuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TinTucTables" Relationship="Self.FK_TinTucTable_ChuDeTable" FromRole="ChuDeTable" ToRole="TinTucTable" />
         </EntityType>
         <EntityType Name="CodeTable">
           <Key>
@@ -398,15 +356,15 @@
           <Property Name="MaTheLoai" Type="Int32" />
           <Property Name="LuotTai" Type="Int32" />
           <Property Name="LinkTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AdminTable" Relationship="Self.FK_CodeTable_AdminTable" FromRole="CodeTable" ToRole="AdminTable" />
-          <NavigationProperty Name="NguoiDungTable" Relationship="Self.FK_CodeTable_NguoiDungTable" FromRole="CodeTable" ToRole="NguoiDungTable" />
-          <NavigationProperty Name="TheLoaiTable" Relationship="Self.FK_CodeTable_TheLoaiTable" FromRole="CodeTable" ToRole="TheLoaiTable" />
-          <NavigationProperty Name="NgonNgu_CodeTable" Relationship="Self.FK_NgonNgu_CodeTable_CodeTable" FromRole="CodeTable" ToRole="NgonNgu_CodeTable" />
           <Property Name="DonGia" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="MoTaNgan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="MoTaChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HuongDanCaiDat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AnhXemThem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminTable" Relationship="Self.FK_CodeTable_AdminTable" FromRole="CodeTable" ToRole="AdminTable" />
+          <NavigationProperty Name="NguoiDungTable" Relationship="Self.FK_CodeTable_NguoiDungTable" FromRole="CodeTable" ToRole="NguoiDungTable" />
+          <NavigationProperty Name="TheLoaiTable" Relationship="Self.FK_CodeTable_TheLoaiTable" FromRole="CodeTable" ToRole="TheLoaiTable" />
+          <NavigationProperty Name="NgonNgu_CodeTable" Relationship="Self.FK_NgonNgu_CodeTable_CodeTable" FromRole="CodeTable" ToRole="NgonNgu_CodeTable" />
         </EntityType>
         <EntityType Name="DanhMuc_TheLoaiTable">
           <Key>
@@ -487,22 +445,9 @@
           </Key>
           <Property Name="MaTheLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TheLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BlogTables" Relationship="Self.FK_BlogTable_TheLoaiTable" FromRole="TheLoaiTable" ToRole="BlogTable" />
           <NavigationProperty Name="CodeTables" Relationship="Self.FK_CodeTable_TheLoaiTable" FromRole="TheLoaiTable" ToRole="CodeTable" />
           <NavigationProperty Name="DanhMuc_TheLoaiTable" Relationship="Self.FK_DanhMuc_TheLoaiTable_TheLoaiTable" FromRole="TheLoaiTable" ToRole="DanhMuc_TheLoaiTable" />
-        </EntityType>
-        <EntityType Name="TinTucTable">
-          <Key>
-            <PropertyRef Name="MaTinTuc" />
-          </Key>
-          <Property Name="MaTinTuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenTinTuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NgayDang" Type="DateTime" Precision="3" />
-          <Property Name="MaAdmin" Type="Int32" />
-          <Property Name="MaChuDe" Type="Int32" />
-          <Property Name="AnhMinhHoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AdminTable" Relationship="Self.FK_TinTucTable_AdminTable" FromRole="TinTucTable" ToRole="AdminTable" />
-          <NavigationProperty Name="ChuDeTable" Relationship="Self.FK_TinTucTable_ChuDeTable" FromRole="TinTucTable" ToRole="ChuDeTable" />
         </EntityType>
         <Association Name="FK_CodeTable_AdminTable">
           <End Role="AdminTable" Type="Self.AdminTable" Multiplicity="0..1" />
@@ -512,18 +457,6 @@
               <PropertyRef Name="MaAdmin" />
             </Principal>
             <Dependent Role="CodeTable">
-              <PropertyRef Name="MaAdmin" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TinTucTable_AdminTable">
-          <End Role="AdminTable" Type="Self.AdminTable" Multiplicity="0..1" />
-          <End Role="TinTucTable" Type="Self.TinTucTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AdminTable">
-              <PropertyRef Name="MaAdmin" />
-            </Principal>
-            <Dependent Role="TinTucTable">
               <PropertyRef Name="MaAdmin" />
             </Dependent>
           </ReferentialConstraint>
@@ -540,6 +473,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_BlogTable_TheLoaiTable">
+          <End Role="TheLoaiTable" Type="Self.TheLoaiTable" Multiplicity="0..1" />
+          <End Role="BlogTable" Type="Self.BlogTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheLoaiTable">
+              <PropertyRef Name="MaTheLoai" />
+            </Principal>
+            <Dependent Role="BlogTable">
+              <PropertyRef Name="MaTheLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NgonNgu_BlogTable_BlogTable">
           <End Role="BlogTable" Type="Self.BlogTable" Multiplicity="0..1" />
           <End Role="NgonNgu_BlogTable" Type="Self.NgonNgu_BlogTable" Multiplicity="*" />
@@ -549,18 +494,6 @@
             </Principal>
             <Dependent Role="NgonNgu_BlogTable">
               <PropertyRef Name="MaBlog" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TinTucTable_ChuDeTable">
-          <End Role="ChuDeTable" Type="Self.ChuDeTable" Multiplicity="0..1" />
-          <End Role="TinTucTable" Type="Self.TinTucTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ChuDeTable">
-              <PropertyRef Name="MaChuDe" />
-            </Principal>
-            <Dependent Role="TinTucTable">
-              <PropertyRef Name="MaChuDe" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -651,7 +584,6 @@
         <EntityContainer Name="CodeBlogEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminTables" EntityType="Self.AdminTable" />
           <EntitySet Name="BlogTables" EntityType="Self.BlogTable" />
-          <EntitySet Name="ChuDeTables" EntityType="Self.ChuDeTable" />
           <EntitySet Name="CodeTables" EntityType="Self.CodeTable" />
           <EntitySet Name="DanhMuc_TheLoaiTable" EntityType="Self.DanhMuc_TheLoaiTable" />
           <EntitySet Name="DanhMucTables" EntityType="Self.DanhMucTable" />
@@ -661,26 +593,21 @@
           <EntitySet Name="NguoiDungTables" EntityType="Self.NguoiDungTable" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TheLoaiTables" EntityType="Self.TheLoaiTable" />
-          <EntitySet Name="TinTucTables" EntityType="Self.TinTucTable" />
           <AssociationSet Name="FK_CodeTable_AdminTable" Association="Self.FK_CodeTable_AdminTable">
             <End Role="AdminTable" EntitySet="AdminTables" />
             <End Role="CodeTable" EntitySet="CodeTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TinTucTable_AdminTable" Association="Self.FK_TinTucTable_AdminTable">
-            <End Role="AdminTable" EntitySet="AdminTables" />
-            <End Role="TinTucTable" EntitySet="TinTucTables" />
           </AssociationSet>
           <AssociationSet Name="FK_BlogTable_NguoiDungTable" Association="Self.FK_BlogTable_NguoiDungTable">
             <End Role="NguoiDungTable" EntitySet="NguoiDungTables" />
             <End Role="BlogTable" EntitySet="BlogTables" />
           </AssociationSet>
+          <AssociationSet Name="FK_BlogTable_TheLoaiTable" Association="Self.FK_BlogTable_TheLoaiTable">
+            <End Role="TheLoaiTable" EntitySet="TheLoaiTables" />
+            <End Role="BlogTable" EntitySet="BlogTables" />
+          </AssociationSet>
           <AssociationSet Name="FK_NgonNgu_BlogTable_BlogTable" Association="Self.FK_NgonNgu_BlogTable_BlogTable">
             <End Role="BlogTable" EntitySet="BlogTables" />
             <End Role="NgonNgu_BlogTable" EntitySet="NgonNgu_BlogTable" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TinTucTable_ChuDeTable" Association="Self.FK_TinTucTable_ChuDeTable">
-            <End Role="ChuDeTable" EntitySet="ChuDeTables" />
-            <End Role="TinTucTable" EntitySet="TinTucTables" />
           </AssociationSet>
           <AssociationSet Name="FK_CodeTable_NguoiDungTable" Association="Self.FK_CodeTable_NguoiDungTable">
             <End Role="NguoiDungTable" EntitySet="NguoiDungTables" />
@@ -739,25 +666,13 @@
                 <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
                 <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
                 <ScalarProperty Name="AnhMinhHoa" ColumnName="AnhMinhHoa" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ChuDeTables">
-            <EntityTypeMapping TypeName="CodeBlogModel.ChuDeTable">
-              <MappingFragment StoreEntitySet="ChuDeTable">
-                <ScalarProperty Name="MaChuDe" ColumnName="MaChuDe" />
-                <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
+                <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CodeTables">
             <EntityTypeMapping TypeName="CodeBlogModel.CodeTable">
               <MappingFragment StoreEntitySet="CodeTable">
-                <ScalarProperty Name="AnhXemThem" ColumnName="AnhXemThem" />
-                <ScalarProperty Name="HuongDanCaiDat" ColumnName="HuongDanCaiDat" />
-                <ScalarProperty Name="MoTaChiTiet" ColumnName="MoTaChiTiet" />
-                <ScalarProperty Name="MoTaNgan" ColumnName="MoTaNgan" />
-                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
                 <ScalarProperty Name="MaCode" ColumnName="MaCode" />
                 <ScalarProperty Name="TenCode" ColumnName="TenCode" />
                 <ScalarProperty Name="AnhMinhHoa" ColumnName="AnhMinhHoa" />
@@ -769,6 +684,11 @@
                 <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
                 <ScalarProperty Name="LuotTai" ColumnName="LuotTai" />
                 <ScalarProperty Name="LinkTai" ColumnName="LinkTai" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="MoTaNgan" ColumnName="MoTaNgan" />
+                <ScalarProperty Name="MoTaChiTiet" ColumnName="MoTaChiTiet" />
+                <ScalarProperty Name="HuongDanCaiDat" ColumnName="HuongDanCaiDat" />
+                <ScalarProperty Name="AnhXemThem" ColumnName="AnhXemThem" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -846,19 +766,6 @@
               <MappingFragment StoreEntitySet="TheLoaiTable">
                 <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
                 <ScalarProperty Name="TheLoai" ColumnName="TheLoai" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TinTucTables">
-            <EntityTypeMapping TypeName="CodeBlogModel.TinTucTable">
-              <MappingFragment StoreEntitySet="TinTucTable">
-                <ScalarProperty Name="MaTinTuc" ColumnName="MaTinTuc" />
-                <ScalarProperty Name="TenTinTuc" ColumnName="TenTinTuc" />
-                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
-                <ScalarProperty Name="MaAdmin" ColumnName="MaAdmin" />
-                <ScalarProperty Name="MaChuDe" ColumnName="MaChuDe" />
-                <ScalarProperty Name="AnhMinhHoa" ColumnName="AnhMinhHoa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

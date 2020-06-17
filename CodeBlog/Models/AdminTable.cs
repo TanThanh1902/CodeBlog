@@ -18,7 +18,6 @@ namespace CodeBlog.Models
         public AdminTable()
         {
             this.CodeTables = new HashSet<CodeTable>();
-            this.TinTucTables = new HashSet<TinTucTable>();
         }
     
         public int MaAdmin { get; set; }
@@ -31,7 +30,5 @@ namespace CodeBlog.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CodeTable> CodeTables { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TinTucTable> TinTucTables { get; set; }
     }
 }

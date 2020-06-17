@@ -46,15 +46,5 @@ namespace CodeBlog.Controllers
             List<NgonNguTable> model = db.NgonNguTables.ToList();
             return PartialView(model);
         }
-        public PartialViewResult ChuDeTinCongNghe()
-        {
-            List<ChuDeTable> model = db.ChuDeTables.ToList();
-            return PartialView(model);
-        }
-        public JsonResult demSoLuongKq_TinCongNghe(string searchText)
-        {
-            int dem = db.TinTucTables.Where(t => t.TenTinTuc.Contains(searchText)).OrderByDescending(t => t.NgayDang).Count();
-            return Json(dem, JsonRequestBehavior.AllowGet);
-        }
     }
 }

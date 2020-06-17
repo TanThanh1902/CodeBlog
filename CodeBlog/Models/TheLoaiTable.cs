@@ -17,6 +17,7 @@ namespace CodeBlog.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TheLoaiTable()
         {
+            this.BlogTables = new HashSet<BlogTable>();
             this.CodeTables = new HashSet<CodeTable>();
             this.DanhMuc_TheLoaiTable = new HashSet<DanhMuc_TheLoaiTable>();
         }
@@ -24,6 +25,8 @@ namespace CodeBlog.Models
         public int MaTheLoai { get; set; }
         public string TheLoai { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BlogTable> BlogTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CodeTable> CodeTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

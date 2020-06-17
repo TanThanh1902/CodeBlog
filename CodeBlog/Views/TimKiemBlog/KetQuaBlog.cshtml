@@ -1,0 +1,49 @@
+﻿@using CodeBlog.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<BlogTable>
+@{
+    ViewBag.Title = "KetQuaBlog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>KetQuaBlog</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-3">
+                        @item.TenBlog
+                    </div>
+                }
+            </div>
+        </div>
+        <form class="col-lg-3" action="@Url.Action("TimKiemBlog", "TimKiemBlog")" method="post">
+            <ul class="list-group">
+                <li class="list-group list-group-item active">
+                    <a>Tim kiem tu khoa</a>
+                </li>
+                <li class="list-group-item">
+                    <input type="search" name="searchText" autocomplete="off" class="form-control"/>
+                </li>
+                <li class="list-group list-group-item active">
+                    <a>Tim kiem danh muc</a>
+                </li>
+                <li class="list-group-item">
+                    @Html.Action("dsTheLoai", "TimKiemBlog")
+                </li>
+                <li class="list-group list-group-item active">
+                    <a>Tim kiem ngon ngu</a>
+                </li>
+                <li class="list-group-item">
+                    @Html.Action("dsNgonNgu", "TimKiemBlog")
+                </li>
+                <li class="list-group-item">
+                    <a href="#" type="button" class="btn btn-danger">Ap dung</a>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
