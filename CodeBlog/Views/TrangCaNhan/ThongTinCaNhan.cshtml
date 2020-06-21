@@ -1,0 +1,29 @@
+﻿@model CodeBlog.Models.NguoiDungTable
+
+<h2>TrangCaNhan</h2>
+
+<div class="container">
+    <div class="col-lg-9">
+        <div class="col-md-2">
+            <img src="~/Content/images/default_background/@Model.AnhDaiDien" style="width: 100%"/>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <span>@Model.TenHienThi</span>
+            </div>
+            <div>
+                <a href="@Url.Action("Index", "CodeTables")">Code đã đăng: @ViewBag.demCodeDaDang</a>
+            </div>
+            <div>
+                <span>Tham gia: @Model.NgayTao</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <span>Code miễn phí: @ViewBag.demCodeMienPhi</span>
+            <span>Code có phí: @ViewBag.demCodeCoPhi</span>
+        </div>
+    </div>
+    <div class="col-lg-3">
+
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿@using CodeBlog.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<CodeTable>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <input type="search" class="form-control" autocomplete="off" id="searchText_inCode" value="@Request.QueryString["searchText"]" />
+            <br />
+            <div>
+                <a href="@Url.Action(ViewContext.RouteData.Values["Action"].ToString(), "CodeTables")" class="btn btn-default">Tất cả</a>
+                <a href="@Url.Action(ViewContext.RouteData.Values["Action"].ToString(), "CodeTables", new { status = 1})" class="btn btn-default">Có phí</a>
+                <a href="@Url.Action(ViewContext.RouteData.Values["Action"].ToString(), "CodeTables", new { status = 2})" class="btn btn-default">Miễn phí</a>
+                <a href="@Url.Action(ViewContext.RouteData.Values["Action"].ToString(), "CodeTables", new { status = 3})" class="btn btn-default">Code chất lượng</a>
+                @if (ViewContext.RouteData.Values["Action"].ToString() == "CodeTaiLen")
+                {
+                    <a href="@Url.Action(ViewContext.RouteData.Values["Action"].ToString(), "CodeTables", new { status = 4})" class="btn btn-default">Code đang chờ duyệt</a>
+                    <a href="#" class="btn btn-default">Từ chối</a>
+                }
+            </div>
+            <br />
+            <div id="mycode">
+                <div class="row">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Mã code</th>
+                                <th>Hình ảnh</th>
+                                <th>Tên code</th>
+                                <th>Công cụ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.MaCode</td>
+                                    <td><img src="~/Content/images/image_code/anhdaidien/@item.AnhMinhHoa" style="max-width: 100%" /></td>
+                                    <td>@item.TenCode</td>
+                                    <td>Xóa | Sửa</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <center>
+                        @Html.PagedListPager(Model, page => "/CodeTables/" + ViewContext.RouteData.Values["Action"].ToString() + (Request.QueryString["searchText"] != null ? "?searchText=" + Request.QueryString["searchText"] : "") + (Request.QueryString["searchText"] != null ? (page != 1 ? "&page=" + page : "") : (page != 1 ? "?page=" + page : "")))
+                    </center>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-3">
+            @Html.Action("ThongTinCaNhan", "CodeTables")
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#searchText_inCode").keyup(function () {
+        var searchText = $(this).val();
+        var history = "TatCaCode";
+        if (searchText != "") {
+            history = "TimKiemCode?searchText=" + searchText;
+        }
+        $.ajax({
+            type: "Post",
+            url: "/CodeTables/TimKiemCodeTheoTuKhoa?searchText=" + searchText,
+            contentType: "html",
+            success: function (response) {
+                $("#mycode").html(response);
+                window.history.pushState("Tìm kiếm code", "Tìm kiếm code", "/CodeTables/" + history);
+            }
+        })
+    })
+</script>

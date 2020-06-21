@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using CodeBlog.Models;
 using PagedList;
+using Microsoft.Ajax.Utilities;
 
 namespace CodeBlog.Controllers.Admin
 {
@@ -17,13 +18,15 @@ namespace CodeBlog.Controllers.Admin
         private CodeBlogEntities db = new CodeBlogEntities();
         const int PAGE_SIZE = 20;
         // GET: Admin_CodeTables
-        public async Task<ActionResult> Index()
+        public ActionResult dsCodeDaDuyet(int? page)
         {
-            var codeTables = db.CodeTables.Include(c => c.AdminTable).Include(c => c.NguoiDungTable).Include(c => c.TheLoaiTable);
-            return View(await codeTables.ToListAsync());
+            ViewBag.Title = "Danh sách code";
+            IPagedList<CodeTable> codeTables = db.CodeTables.OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE);
+            return View("dsCode", codeTables);
         }
         public ActionResult dsChoDuyetBai(int? page)
         {
+            ViewBag.Title = "Danh sách chờ duyệt bài";
             IPagedList<CodeTable> model = db.CodeTables.Where(t => t.MaAdmin == null).OrderBy(t => t.NgayDang).ToPagedList(page?? 1, PAGE_SIZE);
             return View("dsCode", model);
         }
@@ -37,6 +40,18 @@ namespace CodeBlog.Controllers.Admin
             db.CodeTables.Find(maCode).MaAdmin = int.Parse(maAdmin.Value.ToString());
             db.SaveChanges();
             return RedirectToAction("dsChoDuyetBai");
+        }
+        public ActionResult dsCodeMoiHomNay(int? page)
+        {
+            ViewBag.Title = "Danh sách code mới hôm nay";
+            IPagedList<CodeTable> codeTables = db.CodeTables.Where(t => DbFunctions.DiffDays(t.NgayDang, DateTime.Now) == 0).ToPagedList(page ?? 1, PAGE_SIZE);
+            return View("dsCode", codeTables);
+        }
+        public ActionResult dsCodeDaBan(int? page)
+        {
+            ViewBag.Title = "Danh sách code đã bán";
+            IPagedList<CodeTable> codeTables = db.ThanhToanTables.DistinctBy(t => t.MaCode).ToList().Select(t => t.CodeTable).ToPagedList(page ?? 1, PAGE_SIZE);
+            return View("dsCode", codeTables);
         }
         // GET: Admin_CodeTables/Details/5
         public async Task<ActionResult> Details(int? id)

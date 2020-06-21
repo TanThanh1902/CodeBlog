@@ -24,13 +24,15 @@ namespace CodeBlog.Models
         public string TenBlog { get; set; }
         public string NoiDung { get; set; }
         public Nullable<System.DateTime> NgayDang { get; set; }
-        public Nullable<int> MaNguoiDung { get; set; }
         public string AnhMinhHoa { get; set; }
         public Nullable<int> MaTheLoai { get; set; }
+        public Nullable<int> MaNguoiDang { get; set; }
+        public Nullable<bool> PhanQuyen { get; set; }
     
-        public virtual NguoiDungTable NguoiDungTable { get; set; }
         public virtual TheLoaiTable TheLoaiTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NgonNgu_BlogTable> NgonNgu_BlogTable { get; set; }
+        public virtual AdminTable AdminTable { get; set; }
+        public virtual NguoiDungTable NguoiDungTable { get; set; }
     }
 }

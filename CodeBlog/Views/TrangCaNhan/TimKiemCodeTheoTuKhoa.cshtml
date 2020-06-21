@@ -1,0 +1,19 @@
+﻿@using CodeBlog.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<CodeTable>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <span>
+                @item.TenCode [@item.MaCode]
+            </span>
+        </div>
+    }
+</div>
+<div>
+    <center>
+        @Html.PagedListPager(Model, page => "/TrangCaNhan/TimKiemCode" + Request.Url.Query + "&page=" + page))
+    </center>
+</div>

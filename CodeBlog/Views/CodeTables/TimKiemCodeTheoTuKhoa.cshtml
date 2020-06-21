@@ -1,0 +1,32 @@
+﻿@using CodeBlog.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<CodeTable>
+
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mã code</th>
+                <th>Hình ảnh</th>
+                <th>Tên code</th>
+                <th>Công cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaCode</td>
+                    <td><img src="~/Content/images/image_code/anhdaidien/@item.AnhMinhHoa" style="max-width: 100%" /></td>
+                    <td>@item.TenCode</td>
+                    <td>Xóa | Sửa</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <center>
+        @Html.PagedListPager(Model, page => "/CodeTables/TimKiemCode" + (Request.QueryString["searchText"] != null ? "?searchText=" + Request.QueryString["searchText"] : "") + (Request.QueryString["searchText"] != null ? (page != 1 ? "&page=" + page : "") : (page != 1 ? "?page=" + page : "")))
+    </center>
+</div>

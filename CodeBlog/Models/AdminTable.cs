@@ -17,18 +17,25 @@ namespace CodeBlog.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AdminTable()
         {
-            this.CodeTables = new HashSet<CodeTable>();
+            this.BinhLuanCodeTables = new HashSet<BinhLuanCodeTable>();
+            this.TraLoiCodeTables = new HashSet<TraLoiCodeTable>();
+            this.BlogTables = new HashSet<BlogTable>();
         }
     
         public int MaAdmin { get; set; }
         public string TenHienThi { get; set; }
         public string TaiKhoan { get; set; }
         public string MatKhau { get; set; }
+        public Nullable<bool> Role { get; set; }
+        public string Email { get; set; }
         public string AnhDaiDien { get; set; }
         public Nullable<System.DateTime> NgayTao { get; set; }
-        public string Token { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CodeTable> CodeTables { get; set; }
+        public virtual ICollection<BinhLuanCodeTable> BinhLuanCodeTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TraLoiCodeTable> TraLoiCodeTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BlogTable> BlogTables { get; set; }
     }
 }

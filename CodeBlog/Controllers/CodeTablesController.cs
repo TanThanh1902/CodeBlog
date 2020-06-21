@@ -9,14 +9,17 @@ using System.Web;
 using System.Web.Mvc;
 using CodeBlog.Models;
 using System.IO;
+using PagedList;
+using PagedList.Mvc;
 
 namespace CodeBlog.Controllers
 {
     public class CodeTablesController : Controller
     {
         private CodeBlogEntities db = new CodeBlogEntities();
+        const int PAGE_SIZE = 12;
         // GET: CodeTables
-        public ActionResult Index()
+        public ActionResult CodeTaiLen(int? status, int? page)
         {
             string maND = Request.Cookies["MaND"].Value.ToString();
             if(maND == null)
@@ -25,9 +28,87 @@ namespace CodeBlog.Controllers
             }
             int id = Int32.Parse(maND.ToString());
             List<CodeTable> codeTables = db.CodeTables.Where(t => t.MaNguoiDung == id).ToList();
+            switch (status)
+            {
+                case null:
+                    break;
+                case 1:
+                    codeTables = codeTables.Where(t => t.DonGia > 0).ToList();
+                    break;
+                case 2:
+                    codeTables = codeTables.Where(t => t.DonGia == 0).ToList();
+                    break;
+                case 3:
+                    codeTables = codeTables.Where(t => t.DonGia >= 100).ToList();
+                    break;
+                case 4:
+                    codeTables = codeTables.Where(t => t.MaAdmin == null).ToList();
+                    break;
+                default:
+                    return new HttpStatusCodeResult(HttpStatusCode.BadGateway);
+            }
+            return View("dsCode", codeTables.OrderBy(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE));
+        }
+        public ActionResult TimKiemCodeTheoTuKhoa(int? page, string searchText)
+        {
+            string maND = Request.Cookies["MaND"].Value.ToString();
+            if (maND == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadGateway);
+            }
+            int id = Int32.Parse(maND.ToString());
+            PagedList.IPagedList<CodeTable> codeTables = db.CodeTables.Where(t => t.TenCode.Contains(searchText) || t.MaCode.ToString().Contains(searchText)).OrderBy(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE);
             return View(codeTables);
         }
-
+        public ActionResult TimKiemCode(int? page, string searchText)
+        {
+            string maND = Request.Cookies["MaND"].Value.ToString();
+            if (maND == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadGateway);
+            }
+            int id = Int32.Parse(maND.ToString());
+            PagedList.IPagedList<CodeTable> codeTables = db.CodeTables.Where(t => t.TenCode.Contains(searchText) || t.MaCode.ToString().Contains(searchText)).OrderBy(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE);
+            return View("dsCode", codeTables);
+        }
+        public ActionResult CodeDaTai(int? status, int? page)
+        {
+            string maND = Request.Cookies["MaND"].Value.ToString();
+            if (maND == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadGateway);
+            }
+            int id = Int32.Parse(maND.ToString());
+            List<CodeTable> codeTables = db.ThanhToanTables.Where(t => t.MaNguoiMua == id).ToList().Select(t => t.CodeTable).ToList();
+            switch (status)
+            {
+                case null:
+                    break;
+                case 1:
+                    codeTables = codeTables.Where(t => t.DonGia > 0).ToList();
+                    break;
+                case 2:
+                    codeTables = codeTables.Where(t => t.DonGia == 0).ToList();
+                    break;
+                case 3:
+                    codeTables = codeTables.Where(t => t.DonGia >= 100).ToList();
+                    break;
+                default:
+                    return new HttpStatusCodeResult(HttpStatusCode.BadGateway);
+            }
+            return View("dsCode", codeTables.OrderBy(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE));
+        }
+        public ActionResult ThongTinCaNhan()
+        {
+            string maND = Request.Cookies["MaND"].Value.ToString();
+            if (maND == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadGateway);
+            }
+            int id = Int32.Parse(maND.ToString());
+            NguoiDungTable nguoiDung = db.NguoiDungTables.Find(id);
+            return PartialView(nguoiDung);
+        }
         // GET: CodeTables/Details/5
         public async Task<ActionResult> Details(int? id)
         {

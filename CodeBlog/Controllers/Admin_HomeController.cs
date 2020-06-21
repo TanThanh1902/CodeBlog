@@ -1,6 +1,8 @@
 ﻿using CodeBlog.Models;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +15,11 @@ namespace CodeBlog.Controllers.Admin
         // GET: Admin_Home
         public ActionResult Index()
         {
+            ViewBag.demCodeTrongNgay = db.CodeTables.Where(t => DbFunctions.DiffDays(t.NgayDang, DateTime.Now) == 0).Count();
+            ViewBag.demThanhVien = db.NguoiDungTables.Count();
+            ViewBag.demTongCode = db.CodeTables.Where(t => t.MaAdmin != null).Count();
+            ViewBag.demCodeChoDuyet = db.CodeTables.Where(t => t.MaAdmin == null).Count();
+            ViewBag.demCodeDaBan = db.ThanhToanTables.DistinctBy(t => t.MaCode).Count();
             return View();
         }
         public ActionResult Admin_DangNhap()
@@ -35,7 +42,7 @@ namespace CodeBlog.Controllers.Admin
                 Response.Cookies.Set(tenAD);
                 return RedirectToAction("Index");
             }
-            ViewBag.ThongBao = "Sai tai khoan hoac mat khau!";
+            ViewBag.ThongBao = "Sai tài khoản hoặc mật khẩu!";
             return View();
         }
     }

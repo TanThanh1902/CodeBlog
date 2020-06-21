@@ -18,6 +18,7 @@ namespace CodeBlog.Models
         public CodeTable()
         {
             this.NgonNgu_CodeTable = new HashSet<NgonNgu_CodeTable>();
+            this.ThanhToanTables = new HashSet<ThanhToanTable>();
         }
     
         public int MaCode { get; set; }
@@ -27,7 +28,6 @@ namespace CodeBlog.Models
         public Nullable<int> LuotXem { get; set; }
         public Nullable<int> LuotYeuThich { get; set; }
         public Nullable<int> MaNguoiDung { get; set; }
-        public Nullable<int> MaAdmin { get; set; }
         public Nullable<int> MaTheLoai { get; set; }
         public Nullable<int> LuotTai { get; set; }
         public string LinkTai { get; set; }
@@ -36,11 +36,14 @@ namespace CodeBlog.Models
         public string MoTaChiTiet { get; set; }
         public string HuongDanCaiDat { get; set; }
         public string AnhXemThem { get; set; }
+        public Nullable<bool> Status { get; set; }
+        public Nullable<int> MaAdmin { get; set; }
     
-        public virtual AdminTable AdminTable { get; set; }
         public virtual NguoiDungTable NguoiDungTable { get; set; }
         public virtual TheLoaiTable TheLoaiTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NgonNgu_CodeTable> NgonNgu_CodeTable { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThanhToanTable> ThanhToanTables { get; set; }
     }
 }

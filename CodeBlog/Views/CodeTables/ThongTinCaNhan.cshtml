@@ -1,0 +1,38 @@
+﻿@model CodeBlog.Models.NguoiDungTable
+
+    <ul class="list-group">
+        <li class="list-group list-group-item-success active">
+            Thông tin cá nhân
+        </li>
+        <li class="list-group list-group-item">
+            <div class="row">
+                <div class="col-lg-5">
+                    <img src="~/Content/images/default_background/@Model.AnhDaiDien" />
+                </div>
+                <div class="col-lg-7">
+                    <span>@Model.TenHienThi</span>
+                    <span>Số dư: @Model.SoDu</span>
+                </div>
+                <a><i class="fa fa-cog">&nbsp;</i><span>Cài đặt thông tin cá nhân</span></a>
+                <a href="@Url.Action("Index", "TrangCaNhan")"><i class="fa fa-user-alt">&nbsp;</i><span>Trang cá nhân</span></a>
+            </div>
+        </li>
+        <li class="list-group list-group-item">
+            <a href="@Url.Action("CodeTaiLen", "CodeTables")">Code tải lên</a>
+        </li>
+        <li class="list-group list-group-item">
+            <a href="@Url.Action("CodeDaTai", "CodeTables")">Code đã tải</a>
+        </li>
+        <li class="list-group list-group-item">
+            <a href="#">Code quan tâm</a>
+        </li>
+        <li class="list-group list-group-item">
+            <a href="#">Lịch sử nạp tiền</a>
+        </li>
+        <li class="list-group list-group-item">
+            <a href="#">Doanh thu bán code</a>
+        </li>
+        <li class="list-group list-group-item">
+            <a href="#">Rút tiền</a>
+        </li>
+    </ul>

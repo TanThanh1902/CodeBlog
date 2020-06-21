@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_TaiKhoan.cshtml";
 }
 
-    <form action="#" method="post">
+    <form action="@Url.Action("DangKy", "TaiKhoan")" method="post">
         <input type="text" class="form-control" name="TaiKhoan" placeholder="Nhập tài khoản..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập tài khoản!')" oninput="this.setCustomValidity('')"/>
         <br />
         <input type="password" class="form-control" name="MatKhau" placeholder="Nhập mật khẩu..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="this.setCustomValidity('')"/>

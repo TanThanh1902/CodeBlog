@@ -26,6 +26,7 @@ namespace CodeBlog.Models
         }
     
         public virtual DbSet<AdminTable> AdminTables { get; set; }
+        public virtual DbSet<BinhLuanCodeTable> BinhLuanCodeTables { get; set; }
         public virtual DbSet<BlogTable> BlogTables { get; set; }
         public virtual DbSet<CodeTable> CodeTables { get; set; }
         public virtual DbSet<DanhMuc_TheLoaiTable> DanhMuc_TheLoaiTable { get; set; }
@@ -35,6 +36,8 @@ namespace CodeBlog.Models
         public virtual DbSet<NgonNguTable> NgonNguTables { get; set; }
         public virtual DbSet<NguoiDungTable> NguoiDungTables { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<ThanhToanTable> ThanhToanTables { get; set; }
         public virtual DbSet<TheLoaiTable> TheLoaiTables { get; set; }
+        public virtual DbSet<TraLoiCodeTable> TraLoiCodeTables { get; set; }
     }
 }

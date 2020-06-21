@@ -1,0 +1,58 @@
+﻿@using CodeBlog.Models;
+@using PagedList.Mvc; 
+@model PagedList.IPagedList<CodeTable>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("ThongTinCaNhan", "TrangCaNhan")
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <input type="search" class="form-control" autocomplete="off" id="searchTextCode" value="@Request.QueryString["searchText"]"/>
+            <div id="mycode">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3">
+                            <span>
+                                @item.TenCode [@item.MaCode]
+                            </span>
+                        </div>
+                    }
+                </div>
+                <div>
+                    <center>
+                        @Html.PagedListPager(Model, page => "/TrangCaNhan/" + ViewContext.RouteData.Values["Action"].ToString() + (Request.QueryString["searchText"] != null ? "?searchText=" + Request.QueryString["searchText"] : "") + (Request.QueryString["searchText"] != null ? (page != 1 ? "&page=" + page : "") : (page != 1 ? "?page=" + page : "")))
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#searchTextCode").keyup(function () {
+        debugger
+        var searchText = $(this).val();
+        var history = "Index";
+        if (searchText != "") {
+            history = "TimKiemCode?searchText=" + searchText;
+        }
+        $.ajax({
+            type: "Post",
+            url: "/TrangCaNhan/TimKiemCodeTheoTuKhoa?searchText=" + searchText,
+            contentType: "html",
+            success: function (response) {
+                $("#mycode").html(response);
+                window.history.pushState("Tìm kiếm code", "Tìm kiếm Code", "/TrangCaNhan/" + history);
+            }
+        })
+    })
+</script>

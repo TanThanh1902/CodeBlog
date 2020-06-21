@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CodeBlog.Models;
@@ -69,7 +70,7 @@ namespace CodeBlog.Controllers
 
                 Response.Cookies.Set(maNguoiDung);
                 Response.Cookies.Set(tenNguoiDung);
-                return Redirect("/Home/Index");
+                return Redirect("/TrangCaNhan/Index");
             }
             ViewBag.ThongBao = "Sai thông tin tài khoản!";
             return View();

@@ -138,6 +138,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin_CodeTablesController.cs" />
     <Compile Include="Controllers\Admin_HomeController.cs" />
+    <Compile Include="Controllers\Admin_NguoiDungTablesController.cs" />
+    <Compile Include="Controllers\BlogTablesController.cs" />
     <Compile Include="Controllers\ChiTietCodeController.cs" />
     <Compile Include="Controllers\CodeTablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -146,11 +148,15 @@
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\TimKiemBlogController.cs" />
     <Compile Include="Controllers\TimKiemCodeController.cs" />
+    <Compile Include="Controllers\TrangCaNhanController.cs" />
     <Compile Include="DAO\TimKiemGoiY.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminTable.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BinhLuanCodeTable.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BlogTable.cs">
@@ -195,12 +201,73 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ThanhToanTable.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TheLoaiTable.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TraLoiCodeTable.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin\css\basictable.css" />
+    <Content Include="Content\Admin\css\bootstrap.css" />
+    <Content Include="Content\Admin\css\circles.css" />
+    <Content Include="Content\Admin\css\component.css" />
+    <Content Include="Content\Admin\css\export.css" />
+    <Content Include="Content\Admin\css\flipclock.css" />
+    <Content Include="Content\Admin\css\font-awesome.css" />
+    <Content Include="Content\Admin\css\jQuery-plugin-progressbar1.css" />
+    <Content Include="Content\Admin\css\monthly.css" />
+    <Content Include="Content\Admin\css\style.css" />
+    <Content Include="Content\Admin\css\style_grid.css" />
+    <Content Include="Content\Admin\css\table-style.css" />
+    <Content Include="Content\Admin\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Admin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Admin\images\a1.jpg" />
+    <Content Include="Content\Admin\images\a2.jpg" />
+    <Content Include="Content\Admin\images\a3.jpg" />
+    <Content Include="Content\Admin\images\a4.jpg" />
+    <Content Include="Content\Admin\images\admin.jpg" />
+    <Content Include="Content\Admin\images\bottom.jpg" />
+    <Content Include="Content\Admin\images\overlay.png" />
+    <Content Include="Content\Admin\images\pic.jpg" />
+    <Content Include="Content\Admin\images\pic1.jpg" />
+    <Content Include="Content\Admin\images\profile.jpg" />
+    <Content Include="Content\Admin\images\profile_bg.jpg" />
+    <Content Include="Content\Admin\images\progress.jpg" />
+    <Content Include="Content\Admin\js\amcharts.js" />
+    <Content Include="Content\Admin\js\bars.js" />
+    <Content Include="Content\Admin\js\bootstrap-3.1.1.min.js" />
+    <Content Include="Content\Admin\js\Chart.min.js" />
+    <Content Include="Content\Admin\js\circles.js" />
+    <Content Include="Content\Admin\js\classie.js" />
+    <Content Include="Content\Admin\js\contact_me.js" />
+    <Content Include="Content\Admin\js\export.js" />
+    <Content Include="Content\Admin\js\flipclock.js" />
+    <Content Include="Content\Admin\js\gauge.js" />
+    <Content Include="Content\Admin\js\gnmenu.js" />
+    <Content Include="Content\Admin\js\jqBootstrapValidation.js" />
+    <Content Include="Content\Admin\js\jquery-2.1.4.min.js" />
+    <Content Include="Content\Admin\js\jQuery-plugin-progressbar.js" />
+    <Content Include="Content\Admin\js\jquery.basictable.min.js" />
+    <Content Include="Content\Admin\js\jquery.nicescroll.js" />
+    <Content Include="Content\Admin\js\light.js" />
+    <Content Include="Content\Admin\js\modernizr.custom.js" />
+    <Content Include="Content\Admin\js\monthly.js" />
+    <Content Include="Content\Admin\js\pie.js" />
+    <Content Include="Content\Admin\js\prettymaps.js" />
+    <Content Include="Content\Admin\js\radar.js" />
+    <Content Include="Content\Admin\js\screenfull.js" />
+    <Content Include="Content\Admin\js\scripts.js" />
+    <Content Include="Content\Admin\js\serial.js" />
+    <Content Include="Content\Admin\js\skycons.js" />
+    <Content Include="Content\Admin\js\valida.2.1.6.min.js" />
+    <Content Include="Content\Admin\js\validator.min.js" />
+    <Content Include="Content\Admin\js\xy.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -679,6 +746,7 @@
     <Content Include="Content\Layout\js\popper.min.js" />
     <Content Include="Content\Layout\js\script.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\SQL\script-DESKTOP-USAKSOT.sql" />
     <Content Include="Content\UI\css\bootstrap.css" />
     <Content Include="Content\UI\css\calendar.css" />
     <Content Include="Content\UI\css\clndr.css" />
@@ -2422,7 +2490,6 @@
     <Content Include="Content\js\jquery.mixitup.min.js" />
     <Content Include="Content\js\jquery.unobtrusive-ajax.js" />
     <Content Include="Content\js\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Content\SQL\script.sql" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2530,6 +2597,17 @@
     <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Content\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Content\Admin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Admin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Admin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Admin\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Admin\fonts\FontAwesome.otf" />
+    <Content Include="Content\Admin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Admin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Admin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Admin\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Admin\images\Thumbs.db" />
+    <Content Include="Content\Admin\js\js" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -2677,6 +2755,23 @@
     <Content Include="Views\TimKiemBlog\KetQuaBlog.cshtml" />
     <Content Include="Views\TimKiemBlog\dsTheLoai.cshtml" />
     <Content Include="Views\TimKiemBlog\dsNgonNgu.cshtml" />
+    <Content Include="Views\Shared\_Admin_Layout.cshtml" />
+    <Content Include="Views\Admin_NguoiDungTables\Create.cshtml" />
+    <Content Include="Views\Admin_NguoiDungTables\Delete.cshtml" />
+    <Content Include="Views\Admin_NguoiDungTables\Details.cshtml" />
+    <Content Include="Views\Admin_NguoiDungTables\Edit.cshtml" />
+    <Content Include="Views\Admin_NguoiDungTables\Index.cshtml" />
+    <Content Include="Views\TrangCaNhan\ThongTinCaNhan.cshtml" />
+    <Content Include="Views\CodeTables\dsCode.cshtml" />
+    <Content Include="Views\BlogTables\Create.cshtml" />
+    <Content Include="Views\BlogTables\Delete.cshtml" />
+    <Content Include="Views\BlogTables\Details.cshtml" />
+    <Content Include="Views\BlogTables\Edit.cshtml" />
+    <Content Include="Views\BlogTables\Index.cshtml" />
+    <Content Include="Views\TrangCaNhan\Index.cshtml" />
+    <Content Include="Views\TrangCaNhan\TimKiemCodeTheoTuKhoa.cshtml" />
+    <Content Include="Views\CodeTables\TimKiemCodeTheoTuKhoa.cshtml" />
+    <Content Include="Views\CodeTables\ThongTinCaNhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
