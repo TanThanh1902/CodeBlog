@@ -747,7 +747,7 @@
     <Content Include="Content\Layout\js\popper.min.js" />
     <Content Include="Content\Layout\js\script.js" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="Content\SQL\script-DESKTOP-USAKSOT.sql" />
+    <Content Include="Content\SQL\script.sql" />
     <Content Include="Content\UI\css\bootstrap.css" />
     <Content Include="Content\UI\css\calendar.css" />
     <Content Include="Content\UI\css\clndr.css" />
