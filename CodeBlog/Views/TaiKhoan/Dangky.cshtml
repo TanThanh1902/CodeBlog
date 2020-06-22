@@ -1,31 +1,44 @@
 ﻿
 @{
     ViewBag.Title = "Đăng ký";
-    Layout = "~/Views/Shared/_TaiKhoan.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-    <form action="@Url.Action("DangKy", "TaiKhoan")" method="post">
-        <input type="text" class="form-control" name="TaiKhoan" placeholder="Nhập tài khoản..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập tài khoản!')" oninput="this.setCustomValidity('')"/>
-        <br />
-        <input type="password" class="form-control" name="MatKhau" placeholder="Nhập mật khẩu..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="this.setCustomValidity('')"/>
-        <br />
-        <input type="password" class="form-control" name="NhapLaiMatKhau" placeholder="Nhập lại mật khẩu..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập xác nhận mật khẩu!')" oninput="this.setCustomValidity('')"/>
-        <br />
-        <input type="checkbox" style="float: left;margin-top: 6px" id="ck_dk"/>&nbsp;<a href="#">Tôi đồng ý với các điều khoản của CodeBlog</a>
-        <br /><br />
-        <div class="form_footer">
-            <input type="submit" value="Đăng ký" style="width: 99%" class="btn btn-success" id="btnSM" disabled/>
-            <br /><br />
-            <p>Hoặc đăng nhập nhanh với</p>
-            <a href="#" class="btn btn-danger">Đăng nhập với Google</a>
-            <a href="#" class="btn btn-primary">Đăng nhập với Facebook</a>
-            <br /><br />
-            <a href="#">Quên tài khoản?</a>&nbsp;<a href="#">Quên mật khẩu?</a>
-            <br />
-            <a href="@Url.Action("DangNhap", "TaiKhoan")">Tôi có tài khoản!</a>
+    
+<div class="row" style="border-top: 4px solid green">
+    <div class="col-sm-12 ">
+        <div class="container mt-4" style="width: 60%">
+            <center>
+                <a class="navbar-brand" href="/Home/Index" style="font-weight: bold; font-size: 40px">
+                    <span class="fa fa-share-alt"></span> CodeBlog<span style="font-size: 20px;">Đăng ký</span>
+                </a>
+            </center>
+            <form action="@Url.Action("DangKy", "TaiKhoan")" method="post">
+                <b><i class="fa fa-user"></i>Tài khoản</b>
+                <input type="text" class="form-control" name="TaiKhoan" placeholder="Nhập tài khoản..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập tài khoản!')" oninput="this.setCustomValidity('')" />
+                <br />
+                <b><i class="fa fa-key"></i>Mật khẩu</b>
+                <input type="password" class="form-control" name="MatKhau" placeholder="Nhập mật khẩu..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="this.setCustomValidity('')" />
+                <br />
+                <b><i class="fa fa-key"></i>Nhập lại mật khẩu</b>
+                <input type="password" class="form-control" name="NhapLaiMatKhau" placeholder="Nhập lại mật khẩu..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập xác nhận mật khẩu!')" oninput="this.setCustomValidity('')" />
+                <br />
+                <input type="checkbox" style="float: left;margin-top: 6px" id="ck_dk" />&nbsp;<a href="#">Tôi đồng ý với các điều khoản của CodeBlog</a>
+                <br /><br />
+                      <div class="form_footer">
+                          <input type="submit" value="Đăng ký" style="width: 99%" class="btn btn-success" id="btnSM" disabled />
+                          <br /><br />
+                          <p>Hoặc đăng nhập nhanh với</p>
+                          <a href="#" class="btn btn-danger"><i class="fab fa-google-plus-square"></i>&nbsp;Đăng nhập với Google</a>
+                          <a href="#" class="btn btn-primary"><i class="fab fa-facebook"></i>&nbsp;Đăng nhập với Facebook</a>
+                          <br /><br />
+                          <a href="#">Quên tài khoản?</a>&nbsp;<a href="#">Quên mật khẩu?</a>
+                          <br />
+                          <a href="@Url.Action("DangNhap", "TaiKhoan")">Tôi có tài khoản!</a>
+                      </div>
+            </form>
         </div>
-    </form>
-
+    </div>
+</div>
 <script>
     $(document).ready(function () {
         $("#ck_dk").click(function () {

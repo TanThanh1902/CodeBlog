@@ -3,7 +3,8 @@
     ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
     HttpCookie tenND = Request.Cookies["TenND"];
-}<div class="row" style="border-top: 4px solid green">
+}
+<div class="row" style="border-top: 4px solid green">
     <div class="col-sm-12 ">
         <div class="container mt-4" style="width: 60%">
             <form action="@Url.Action("DangNhap", "TaiKhoan")" method="post">
