@@ -1,25 +1,37 @@
 ﻿
 @{
-    ViewBag.Title = "Đăng nhập";
-    Layout = "~/Views/Shared/_TaiKhoan.cshtml";
-}
-
-
-
-    <form action="@Url.Action("DangNhap", "TaiKhoan")" method="post">
-        <input type="text" class="form-control" name="txtTaiKhoan" placeholder="Nhập tài khoản..." autocomplete="off" required />
-        <br />
-        <input type="password" class="form-control" name="txtMatKhau" placeholder="Nhập mật khẩu..." autocomplete="off" required />
-        <br />
-        <div class="form_footer">
-            <input type="submit" value="Đăng nhập" style="width: 99%" class="btn btn-success"/>
-            <br /><br />
-            <p>Hoặc đăng nhập nhanh với</p>
-            <a href="#" class="btn btn-danger">Đăng nhập với Google</a>
-            <a href="#" class="btn btn-primary">Đăng nhập với Facebook</a>
-            <br /><br />
-            <a href="#">Quên tài khoản?</a>&nbsp;<a href="#">Quên mật khẩu?</a>
-            <br />
-            <span>Bạn chưa có tài khoản, hãy đăng kí tại đây <a href="@Url.Action("Dangky", "TaiKhoan")">đây</a></span>
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    HttpCookie tenND = Request.Cookies["TenND"];
+}<div class="row" style="border-top: 4px solid green">
+    <div class="col-sm-12 ">
+        <div class="container mt-4" style="width: 60%">
+            <form action="@Url.Action("DangNhap", "TaiKhoan")" method="post">
+                <center>
+                    <a class="navbar-brand" href="/Home/Index" style="font-weight: bold; font-size: 40px">
+                        <span class="fa fa-share-alt"></span> CodeBlog<span style="font-size: 20px;">Đăng nhập</span>
+                    </a>
+                </center>
+                <br />
+                <b><i class="fa fa-user"></i>Tài khoản</b>
+                <input type="text" class="form-control" name="txtTaiKhoan" placeholder="Nhập tài khoản..." autocomplete="off" required style="height: 50px" />
+                <b><i class="fa fa-key mt-2"></i>Mật khẩu</b>
+                <input type="password" class="form-control" name="txtMatKhau" placeholder="Nhập mật khẩu..." autocomplete="off" required style="height: 50px" />
+                <br />
+                <div class="form_footer">
+                    <button type="submit" class="w-100 btn btn-success font-weight-bold">Đăng nhập</button>
+                    <br /><br />
+                    <hr />
+                    <p>Hoặc đăng nhập nhanh với</p>
+                    <a href="#" class="btn btn-danger"><i class="fab fa-google-plus-square"></i>&nbsp;Đăng nhập với Google</a>
+                    <a href="#" class="btn btn-primary"><i class="fab fa-facebook"></i>&nbsp;Đăng nhập với Facebook</a>
+                    <br /><br />
+                    <a href="#">Quên tài khoản?</a>&nbsp;<a href="#">Quên mật khẩu?</a>
+                    <br />
+                    <span>Bạn chưa có tài khoản, hãy đăng kí tại đây <a href="@Url.Action("Dangky", "TaiKhoan")">đây</a></span>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
+</div>
+    

@@ -4,6 +4,136 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     HttpCookie tenND = Request.Cookies["TenND"];
 }
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="full-navigation6">
+                        <div class="container">
+                            <div class="full-nav-top-top">
+
+
+                                <div class="full-navigation-nav1">
+
+                                    <span class="nav-full">
+                                        <i class="fa fa-bars"></i>
+                                    </span>
+                                    <script>
+                                                $("span.nav-full").click(function () {
+                                                    $("ul.top-nav2").slideToggle("slow", function () {
+                                                        // Animation complete.
+                                                    });
+                                                });
+                                    </script>
+
+                                    <ul class="top-nav2 mr-5" style="font-size: 17px">
+                                        <li><a class="open" href="#CodeChat"><i class="fa fa-code">&nbsp;</i>CODE CHẤT LƯỢNG<span>10</span></a></li>
+                                        <li><a class="open" href="#Website"><i class="far fa-window-restore">&nbsp;</i>CODE WEBSITE<span>10</span></a></li>
+                                        <li><a class="open" href="#AppChung"><i class="fab fa-android">&nbsp;</i>APP MOBILE<span>10</span></a></li>
+                                        <li><a class="open" href="#AppChung"><i class="fab fa-windows">&nbsp;</i>ỨNG DỤNG<span>10</span></a></li>
+                                        <li><a class="open" href="#AppChung"><i class="fa fa-gamepad">&nbsp;</i>GAME<span>10</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="background-color: #212f3f">
+                <div class="card-body">
+                    <div class="row">
+                        <script>
+                                    var myIndex = 0;
+                                    carousel();
+
+                                    function carousel() {
+                                        var i;
+                                        var x = document.getElementsByClassName("mySlidesqc");
+                                        for (i = 0; i < x.length; i++) {
+                                            x[i].style.display = "none";
+                                        }
+                                        myIndex++;
+                                        if (myIndex > x.length) { myIndex = 1 }
+                                        x[myIndex - 1].style.display = "block";
+                                        setTimeout(carousel, 2500); // Change image every 2 seconds
+                                    }
+                        </script>
+                        <!--//-->
+                        <form action="@Url.Action("TimKiemTuKhoa", "TimKiemCode")" class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <input type="search" class="form-control border border-dark" style="height: 50px" placeholder="Nhập từ khóa, mã code,..." name="searchText" id="searchCode" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <select class="form-control border border-dark" style="height: 50px" name="madanhmuc">
+                                        @Html.Action("DanhMucCodeSelect", "TimKiemCode")
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <select class="form-control border border-dark" style="height: 50px;" name="matheloai">
+                                        @Html.Action("TheLoaiCodeSelect", "TimKiemCode")
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <select class="form-control border border-dark" style="height: 50px" name="mangonngu">
+                                        @Html.Action("NgonNguCodeSelect", "TimKiemCode")
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="submit" class="btn btn-danger w-100 font-weight-bold border border-white" style="height: 50px"><i class="fa fa-search">&nbsp;</i>Tìm kiếm</button>
+                                </div>
+                                <div class="col-sm-12 mt-2">
+                                    <span class="text-white">Chia sẻ - trao đổi - buôn bán code chất lượng uy tín.</span>
+                                </div>
+                            </div>
+                        </form>
+                        <script>
+                                    $(document).ready(function () {
+                                        $("#searchCode").autocomplete({
+                                            select: function (event, ui) {
+                                                $(this).val(ui.item.codeName);
+                                                return false;
+                                            },
+                                            source: function (request, response) {
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "/TimKiemCode/TimKiemGoiY",
+                                                    data: { searchText: request.term },
+                                                    success: function (data) {
+                                                        response(data);
+                                                    }
+                                                });
+                                            }
+                                        })
+                                            .autocomplete('instance')._renderItem = function (ul, item) {
+                                                return $('<li>')
+                                                    .append('<div class="row"><a href="/ChiTietCode/ChiTietCode?maCode=' + item.maCode + '"><div class="col-lg-3"><img style="width: 100%" src="/Content/images/image_code/anhdaidien/'
+                                                        + item.anhMinhHoa + '" alt=' + item.tenCode + '/></div><div class="col-lg-9"><span>'
+                                                        + item.tenCode + '</span></div></a></div>')
+                                                    .appendTo(ul);
+                                            }
+                                    });
+                        </script>
+                        @*<div class="col-sm-3">
+                            <center class="mt-5">
+                                @if (tenND != null)
+                                {
+                                    <a href="#" class="btn btn-danger w-50 font-weight-bold"><i class="fas fa-dollar-sign">&nbsp;</i>Nạp xu</a>
+                                    <a href="@Url.Action("Create" ,"CodeTables")" class="btn btn-success w-50 font-weight-bold mt-2"><i class="fa fa-file-upload">&nbsp;</i>Tải lên</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("DangNhap" ,"TaiKhoan")" class="btn btn-danger w-50 font-weight-bold"><i class="fas fa-dollar-sign">&nbsp;</i>Nạp xu</a>
+                                    <a href="@Url.Action("DangNhap" ,"TaiKhoan")" class="btn btn-success w-50 font-weight-bold mt-2"><i class="fa fa-file-upload">&nbsp;</i>Tải lên</a>
+                                }
+                            </center>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <center>
     <div class="row container" style="max-width:1300px">
         <div class="col-sm-12 mt-4">
