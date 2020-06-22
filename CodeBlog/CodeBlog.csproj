@@ -701,6 +701,7 @@
     <Content Include="Content\images\image_code\anhxemthem\demo3.jpg" />
     <Content Include="Content\images\image_tintuc\game_technology_news.jpg" />
     <Content Include="Content\images\QuangCao\prudential-tuyen-dung-tu-van-tai-chinh-telemarketing.jpg" />
+    <Content Include="Content\images\QuangCao\viec-lam-tu-xa.jpg" />
     <Content Include="Content\Layout\css\style-starter.css" />
     <Content Include="Content\Layout\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Layout\images\1.png" />
@@ -2615,6 +2616,7 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\images\QuangCao\qc1.jpg" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
