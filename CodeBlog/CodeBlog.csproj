@@ -141,6 +141,7 @@
     <Compile Include="Controllers\Admin_NguoiDungTablesController.cs" />
     <Compile Include="Controllers\BlogTablesController.cs" />
     <Compile Include="Controllers\ChiTietCodeController.cs" />
+    <Compile Include="Controllers\CodeController.cs" />
     <Compile Include="Controllers\CodeTablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HoTroController.cs" />
@@ -695,10 +696,12 @@
     <Content Include="Content\ckeditor\vendor\promise.js" />
     <Content Include="Content\css\jquery-ui.css" />
     <Content Include="Content\css\jquery-ui.min.css" />
+    <Content Include="Content\css\style_blog.css" />
     <Content Include="Content\images\image_code\anhdaidien\demo_code.jpg" />
     <Content Include="Content\images\image_code\anhxemthem\demo1.jpg" />
     <Content Include="Content\images\image_code\anhxemthem\demo2.jpg" />
     <Content Include="Content\images\image_code\anhxemthem\demo3.jpg" />
+    <Content Include="Content\images\image_tintuc\bg_1.jpg" />
     <Content Include="Content\images\image_tintuc\game_technology_news.jpg" />
     <Content Include="Content\images\QuangCao\prudential-tuyen-dung-tu-van-tai-chinh-telemarketing.jpg" />
     <Content Include="Content\images\QuangCao\viec-lam-tu-xa.jpg" />
@@ -748,6 +751,7 @@
     <Content Include="Content\Layout\js\script.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\SQL\script.sql" />
+    <Content Include="Content\SQL\sql_new\script.sql" />
     <Content Include="Content\UI\css\bootstrap.css" />
     <Content Include="Content\UI\css\calendar.css" />
     <Content Include="Content\UI\css\clndr.css" />
@@ -2774,6 +2778,7 @@
     <Content Include="Views\TrangCaNhan\TimKiemCodeTheoTuKhoa.cshtml" />
     <Content Include="Views\CodeTables\TimKiemCodeTheoTuKhoa.cshtml" />
     <Content Include="Views\CodeTables\ThongTinCaNhan.cshtml" />
+    <Content Include="Views\Code\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
