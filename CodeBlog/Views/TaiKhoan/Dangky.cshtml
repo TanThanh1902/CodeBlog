@@ -14,13 +14,13 @@
             </center>
             <form action="@Url.Action("DangKy", "TaiKhoan")" method="post">
                 <b><i class="fa fa-user"></i>Tài khoản</b>
-                <input type="text" class="form-control" name="TaiKhoan" placeholder="Nhập tài khoản..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập tài khoản!')" oninput="this.setCustomValidity('')" />
+                <input type="text" class="form-control" id="txtTaiKhoan" name="TaiKhoan" placeholder="Nhập tài khoản...(tối thiểu 5 kí tự)" autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập tài khoản!')" oninput="this.setCustomValidity('')" />
                 <br />
                 <b><i class="fa fa-key"></i>Mật khẩu</b>
-                <input type="password" class="form-control" name="MatKhau" placeholder="Nhập mật khẩu..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="this.setCustomValidity('')" />
+                <input type="password" class="form-control" id="txtMatKhau" name="MatKhau" placeholder="Nhập mật khẩu...(tối thiểu 8 kí tự)" autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')" oninput="this.setCustomValidity('')" />
                 <br />
                 <b><i class="fa fa-key"></i>Nhập lại mật khẩu</b>
-                <input type="password" class="form-control" name="NhapLaiMatKhau" placeholder="Nhập lại mật khẩu..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập xác nhận mật khẩu!')" oninput="this.setCustomValidity('')" />
+                <input type="password" class="form-control" id="txtNhapLaiMatKhau" name="NhapLaiMatKhau" placeholder="Nhập lại mật khẩu..." autocomplete="off" required oninvalid="this.setCustomValidity('Vui lòng nhập xác nhận mật khẩu!')" oninput="this.setCustomValidity('')" />
                 <br />
                 <input type="checkbox" style="float: left;margin-top: 6px" id="ck_dk" />&nbsp;<a href="#">Tôi đồng ý với các điều khoản của CodeBlog</a>
                 <br /><br />
